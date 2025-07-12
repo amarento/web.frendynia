@@ -1,0 +1,1 @@
+DROP TABLE "amarento.id_client_to_guests";

@@ -1,0 +1,1 @@
+ALTER TABLE "amarento.id_clients" RENAME COLUMN "rsvp_background_url" TO "rsvp_media_id";

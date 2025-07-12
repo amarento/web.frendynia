@@ -1,0 +1,2 @@
+# verify phone number
+GET https://api.whatsapp.com/send?phone=491745646533&text&type=phone_number&app_absent=0

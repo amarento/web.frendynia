@@ -1,0 +1,2 @@
+ALTER TABLE "amarento.id_clients" ADD COLUMN "client_code" varchar(256) NOT NULL;--> statement-breakpoint
+ALTER TABLE "amarento.id_clients" ADD CONSTRAINT "amarento.id_clients_client_code_unique" UNIQUE("client_code");

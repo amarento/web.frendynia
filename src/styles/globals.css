@@ -1,0 +1,331 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text-h1 {
+  @apply text-[35px] leading-snug md:text-[39px] lg:text-[44px] xl:text-[50px] 2xl:text-[56px];
+}
+
+.text-h2 {
+  @apply text-[29px] leading-snug md:text-[33px] lg:text-[37px] xl:text-[42px] 2xl:text-[46px];
+}
+
+.text-h3 {
+  @apply text-[25px] leading-snug md:text-[28px] lg:text-[32px] xl:text-[36px] 2xl:text-[40px];
+}
+
+.text-h4 {
+  @apply text-[20px] leading-relaxed md:text-[22px] lg:text-[25px] xl:text-[28px] 2xl:text-[32px];
+}
+
+.text-h5 {
+  @apply text-[17px] leading-relaxed md:text-[19px] lg:text-[21px] xl:text-[24px] 2xl:text-[27px];
+}
+
+.text-p {
+  @apply text-[14px] leading-relaxed tracking-tight md:text-[15px] lg:text-[16px] xl:text-[17px] 2xl:text-[20px];
+}
+
+.text-h6 {
+  @apply text-[12px] leading-relaxed tracking-tight md:text-[13px] lg:text-[14px] xl:text-[15px] 2xl:text-[16px];
+}
+
+.side-margin {
+  @apply mx-[5%] xl:mx-[7%] 2xl:mx-[12%];
+}
+
+.mb-xs {
+  @apply mb-4 xl:mb-6;
+}
+
+.mb-sm {
+  @apply mb-6 xl:mb-8;
+}
+
+.mb-md {
+  @apply mb-8 xl:mb-10;
+}
+
+.mb-lg {
+  @apply mb-10 xl:mb-12;
+}
+
+.mb-xl {
+  @apply mb-12 md:mb-14 lg:mb-16 xl:mb-20 2xl:mb-24;
+}
+
+.mb-2xl {
+  @apply mb-16 md:mb-20 lg:mb-24 xl:mb-28 2xl:mb-32;
+}
+
+.mb-3xl {
+  @apply mb-20 md:mb-24 lg:mb-28 xl:mb-32 2xl:mb-36;
+}
+
+.mb-4xl {
+  @apply mb-24 md:mb-28 lg:mb-32 xl:mb-36 2xl:mb-40;
+}
+
+.mb-5xl {
+  @apply mb-28 md:mb-32 lg:mb-36 xl:mb-40 2xl:mb-44;
+}
+
+.mt-xs {
+  @apply mt-4 xl:mt-6;
+}
+
+.mt-sm {
+  @apply mt-6 xl:mt-8;
+}
+
+.mt-md {
+  @apply mt-8 xl:mt-10;
+}
+
+.mt-lg {
+  @apply mt-10 xl:mt-12;
+}
+
+.mt-xl {
+  @apply mt-12 md:mt-14 lg:mt-16 xl:mt-20 2xl:mt-24;
+}
+
+.mt-2xl {
+  @apply mt-16 md:mt-20 lg:mt-24 xl:mt-28 2xl:mt-32;
+}
+
+.mt-3xl {
+  @apply mt-20 md:mt-24 lg:mt-28 xl:mt-32 2xl:mt-36;
+}
+
+.mt-4xl {
+  @apply mt-24 md:mt-28 lg:mt-32 xl:mt-36 2xl:mt-40;
+}
+
+.mt-5xl {
+  @apply mt-28 md:mt-32 lg:mt-36 xl:mt-40 2xl:mt-44;
+}
+
+.pb-md {
+  @apply pb-8 xl:pb-10;
+}
+
+.pb-lg {
+  @apply pb-10 xl:pb-12;
+}
+
+.pb-xl {
+  @apply pb-12 md:pb-14 lg:pb-16 xl:pb-20 2xl:pb-24;
+}
+
+.pb-2xl {
+  @apply pb-16 md:pb-20 lg:pb-24 xl:pb-28 2xl:pb-32;
+}
+
+.pt-md {
+  @apply pt-8 xl:pt-10;
+}
+
+.pt-lg {
+  @apply pt-10 xl:pt-12;
+}
+
+.pt-xl {
+  @apply pt-12 md:pt-14 lg:pt-16 xl:pt-20 2xl:pt-24;
+}
+
+.pt-2xl {
+  @apply pt-16 md:pt-20 lg:pt-24 xl:pt-28 2xl:pt-32;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  /* Track (background) of the scrollbar */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  /* Handle (thumb) of the scrollbar */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  .mb-custom-short {
+    @apply mb-4 sm:mb-6 md:mb-8 lg:mb-10 xl:mb-12;
+  }
+
+  .mb-custom-medium {
+    @apply mb-6 sm:mb-8 md:mb-12 lg:mb-16 xl:mb-20 2xl:mb-24;
+  }
+
+  .mb-custom-long {
+    @apply mb-12 sm:mb-16 md:mb-24 lg:mb-32 xl:mb-40 2xl:mb-48;
+  }
+
+  .mt-custom-short {
+    @apply mt-8 sm:mt-12 md:mt-16 lg:mt-20 xl:mt-24 2xl:mt-32;
+  }
+
+  .mt-custom-long {
+    @apply mt-8 sm:mt-16 md:mt-24 lg:mt-32 xl:mt-40 2xl:mt-48;
+  }
+
+  .side-margin {
+    @apply mx-[10%];
+  }
+
+  .max-w-custom {
+    @apply max-w-xs md:max-w-md xl:max-w-xl;
+  }
+
+  .text-custom-h1 {
+    @apply text-[58px] md:text-[67px] xl:text-[75px] 2xl:text-[83px];
+  }
+
+  .text-custom-h2 {
+    @apply text-[44px] md:text-[50px] xl:text-[56px] 2xl:text-[63px];
+  }
+
+  .text-custom-h3 {
+    @apply text-[33px] leading-snug md:text-[38px] xl:text-[42px] 2xl:text-[47px];
+  }
+
+  .text-custom-h4 {
+    @apply text-[25px] md:text-[28px] xl:text-[35px] 2xl:text-[35px];
+  }
+
+  .text-custom-h5 {
+    @apply text-[19px] md:text-[21px] xl:text-[27px] 2xl:text-[27px];
+  }
+
+  .text-custom-h6 {
+    @apply text-base leading-relaxed md:text-lg xl:text-xl 2xl:text-2xl;
+  }
+
+  .text-custom-p {
+    @apply text-sm leading-relaxed md:text-base xl:text-lg 2xl:text-xl;
+  }
+}
+
+@layer utilities {
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in {
+    animation: fadeIn 1.5s ease-in-out forwards;
+  }
+}
