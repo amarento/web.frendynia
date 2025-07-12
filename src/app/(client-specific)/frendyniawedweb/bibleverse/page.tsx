@@ -20,7 +20,7 @@ export default function Bibleverse() {
   };
 
   return (
-    <div className="bg-[#F8F8F7] py-6 md:py-8 text-center font-lastik text-[#43423D]">
+    <div className="bg-[#EFEEEB] pt-6 md:pt-8 lg:pt-10 xl:pt-12 text-center font-lastik text-[#43423D]">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -31,7 +31,7 @@ export default function Bibleverse() {
         <Image
           src={deco}
           alt="Leaf decoration"
-          className="mx-auto w-[12vw] mb-3 md:mb-4"
+          className="mx-auto w-[12vw] md:w-[10vw] lg:w-[8vw] mb-4"
         />
       </motion.div>
 
@@ -41,7 +41,7 @@ export default function Bibleverse() {
         viewport={{ once: true, margin: "-100px" }}
         variants={fadeIn}
         custom={1}
-        className="mx-auto mb-2 w-[90%] text-[14px] md:mb-3 md:text-[16px] xl:text-[20px]"
+        className="mx-auto mb-2 w-[90%] italic text-[14px] md:mb-3 md:text-[16px] xl:text-[20px]"
       >
         ““ So they are no longer two, but one flesh. Therefore what God has
         joined together, let no one separate. ””

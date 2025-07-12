@@ -26,7 +26,7 @@ export default function Photoalbumone() {
   };
 
   return (
-    <div className="flex flex-col justify-center bg-[#EFEEEB] pt-16 pb-12 md:pt-18 md:pb-16 gap-0 lg:flex-row ">
+    <div className="flex flex-col justify-center bg-[#EFEEEB] pt-8 md:pt-10 lg:pt-12 xl:pt-16 pb-12 md:pt-18 md:pb-16 gap-0 lg:flex-row ">
       {/* First column */}
       <div className="flex flex-row items-start lg:flex-col lg:w-1/3 xl:w-[30%] lg:h-1/2">
         <motion.div
