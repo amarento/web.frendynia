@@ -1,9 +1,7 @@
 "use client";
 
-import Image from "next/image";
-import gift from "../../../../../public/envelope.png";
-import { useState } from "react";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { Button } from "~/components/ui/button";
 // import { AnimatedSection } from "../../../_components/AnimatedSection";
 // import { Carousel } from 'react-responsive-carousel'; // Uncomment if needed
