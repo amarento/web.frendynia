@@ -1,8 +1,8 @@
-/** biome-ignore-all lint/complexity/noVoid: <explanation> */
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion } from 'framer-motion';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Button } from '~/components/ui/button';
@@ -17,14 +17,16 @@ const wishSchema = z.object({
   wish: z.string().min(1, { message: 'Wish cannot be empty.' }),
 });
 
-export default function Wish({
-  guestName,
-  guestId,
-}: {
-  guestName?: string;
-  guestId?: number;
-}) {
-  const { data: wishes, refetch } = useServerActionQuery(getAllWishes, {});
+interface IWishProps {
+  readonly guestName: string | undefined;
+  readonly guestId: number | undefined;
+}
+
+export default function Wish({ guestName, guestId }: IWishProps) {
+  const { data: wishes, refetch } = useServerActionQuery(getAllWishes, {
+    input: undefined,
+    queryKey: ['wishes'],
+  });
 
   const { mutateAsync: sendWish } = useServerActionMutation(addWishAction, {
     onSuccess: () => {
@@ -36,6 +38,7 @@ export default function Wish({
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: zodResolver(wishSchema),
     defaultValues: {
@@ -43,6 +46,12 @@ export default function Wish({
       wish: '',
     },
   });
+
+  React.useEffect(() => {
+    reset({
+      name: guestName,
+    });
+  }, [guestName, reset]);
 
   const onSubmit = async (data: z.infer<typeof wishSchema>) => {
     if (guestId) {

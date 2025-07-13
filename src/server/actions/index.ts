@@ -31,27 +31,33 @@ export const addWishAction = createServerAction()
       );
   });
 
-export const getGuestNameByIdAction = async (guestId: number) => {
-  const client = await db.query.clients.findFirst({
-    where: eq(clients.id, 2),
-    with: {
-      events: {
-        with: {
-          eventsToGuests: {
-            with: {
-              guest: true,
+export const getGuestNameByIdAction = createServerAction()
+  .input(
+    z.object({
+      guestId: z.number(),
+    })
+  )
+  .handler(async ({ input }) => {
+    const client = await db.query.clients.findFirst({
+      where: eq(clients.id, 2),
+      with: {
+        events: {
+          with: {
+            eventsToGuests: {
+              with: {
+                guest: true,
+              },
             },
           },
         },
       },
-    },
-  });
+    });
 
-  const guest = client?.events
-    .flatMap((event) => event.eventsToGuests.flatMap((e2g) => e2g.guest))
-    .find((g) => g.id === guestId);
-  return guest?.names;
-};
+    const guest = client?.events
+      .flatMap((event) => event.eventsToGuests.flatMap((e2g) => e2g.guest))
+      .find((g) => g.id === input.guestId);
+    return guest?.names;
+  });
 
 export const getAllWishes = createServerAction().handler(async () => {
   const client = await db.query.clients.findFirst({
