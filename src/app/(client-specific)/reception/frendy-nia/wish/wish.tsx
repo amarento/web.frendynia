@@ -84,29 +84,33 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           whileInView="visible"
         >
           <h1 className="text-[31px] md:text-[39px]">Well Wishes</h1>
-          <h3 className="font-retrofans text-[#5D5C55] text-[16px] md:text-[20px] mb-10 md:mb-12 lg:mb-16">
+          <h3 className="mb-10 font-retrofans text-[#5D5C55] text-[16px] md:mb-12 md:text-[20px] lg:mb-16">
             for groom & bride
           </h3>
-            <div
-              className="flex gap-x-4 px-4 overflow-x-auto scrollbar-hide"
-              style={{
+          <div
+            className="scrollbar-hide flex gap-x-4 overflow-x-auto px-4"
+            style={{
               WebkitOverflowScrolling: 'touch',
               msOverflowStyle: 'none',
               scrollbarWidth: 'none',
-              }}
-            >
-              {wishes && wishes.length > 0
+            }}
+          >
+            {wishes && wishes.length > 0
               ? wishes.map((wish, index) => (
-                <div
-                  className="flex-shrink-0 h-[150px] w-[300px] md:w-[350px] lg:h-[200px] lg:w-[400px] rounded-xl border bg-[#FAFAFA] border-[#B29234] border-solid p-6 md:p-8 lg:p-10 mb-8 md:mb-10 lg:mb-12 shadow flex flex-col justify-center items-center text-center"
-                  key={index.toString()}
-                >
-                  <p className="text-[#5D5C55] text-[16px] md:text-[18px] lg:text-[20px] w-full">{wish.wish}</p>
-                  <p className="text-[#5D5C55] mt-2 text-[14px] md:text-[16px] lg:text-[18px] italic">– {wish.name}</p>
-                </div>
+                  <div
+                    className="mb-8 flex h-[150px] w-[300px] flex-shrink-0 flex-col items-center justify-center rounded-xl border border-[#B29234] border-solid bg-[#FAFAFA] p-6 text-center shadow md:mb-10 md:w-[350px] md:p-8 lg:mb-12 lg:h-[200px] lg:w-[400px] lg:p-10"
+                    key={index.toString()}
+                  >
+                    <p className="w-full text-[#5D5C55] text-[16px] md:text-[18px] lg:text-[20px]">
+                      {wish.wish}
+                    </p>
+                    <p className="mt-2 text-[#5D5C55] text-[14px] italic md:text-[16px] lg:text-[18px]">
+                      – {wish.name}
+                    </p>
+                  </div>
                 ))
               : null}
-            </div>
+          </div>
         </motion.div>
       </div>
       <div className="bg-[#EFEEEB] pt-16 pb-10 md:pb-12">
@@ -118,7 +122,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           whileInView="visible"
         >
           <h1 className="text-[31px] md:text-[39px]">Send Wish</h1>
-          <h3 className="font-retrofans text-[#5D5C55] text-[16px] md:text-[20px] mb-10 md:mb-12 lg:mb-16">
+          <h3 className="mb-10 font-retrofans text-[#5D5C55] text-[16px] md:mb-12 md:text-[20px] lg:mb-16">
             for groom & bride
           </h3>
         </motion.div>
