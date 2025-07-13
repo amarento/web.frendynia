@@ -19,7 +19,7 @@ export default function Holymatrimony() {
 
   const handleYoutubeClick = () => {
     setTimeout(() => {
-      window.open('https://youtu.be/6Wf41An2H-U?si=t_0_vWed-ls14x65');
+      window.open('https://www.youtube.com/embed/3kKyjYuOXis?si=lOYbJaKGYyCBN33a');
     }, 300);
   };
 
@@ -61,7 +61,7 @@ export default function Holymatrimony() {
         <iframe
           allowFullScreen
           className="h-full w-full"
-          src="https://www.youtube.com/embed/6Wf41An2H-U?si=qdmaMOsIgs_8mLS8"
+          src="https://www.youtube.com/embed/3kKyjYuOXis?si=lOYbJaKGYyCBN33a"
           title="Holy Matrimony Youtube"
         />
       </motion.div>
