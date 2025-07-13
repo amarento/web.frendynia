@@ -4,7 +4,7 @@ import { eq } from 'drizzle-orm';
 import { z } from 'zod';
 import { createServerAction } from 'zsa';
 import { db } from '~/server/db';
-import { eventsToGuests, guests } from '~/server/db/schema';
+import { clients, eventsToGuests } from '~/server/db/schema';
 
 export const addWishAction = createServerAction()
   .input(
@@ -21,26 +21,44 @@ export const addWishAction = createServerAction()
   });
 
 export const getGuestNameByIdAction = async (guestId: number) => {
-  const guest = await db
-    .select({
-      name: guests.names,
-    })
-    .from(guests)
-    .where(eq(guests.id, guestId))
-    .limit(1);
+  const client = await db.query.clients.findFirst({
+    where: eq(clients.id, 2),
+    with: {
+      events: {
+        with: {
+          eventsToGuests: {
+            with: {
+              guest: true,
+            },
+          },
+        },
+      },
+    },
+  });
 
-  return guest[0]?.name;
+  const guest = client?.events
+    .flatMap((event) => event.eventsToGuests.flatMap((e2g) => e2g.guest))
+    .find((g) => g.id === guestId);
+  return guest?.names;
 };
 
 export const getAllWishes = createServerAction().handler(async () => {
-  const wishes = await db
-    .select({
-      name: guests.names,
-      wish: eventsToGuests.wish,
-    })
-    .from(eventsToGuests)
-    .leftJoin(guests, eq(eventsToGuests.guestId, guests.id))
-    .where(eq(eventsToGuests.eventId, 1));
+  const client = await db.query.clients.findFirst({
+    where: eq(clients.id, 2),
+    with: {
+      events: {
+        with: {
+          eventsToGuests: {
+            with: {
+              guest: true,
+            },
+          },
+        },
+      },
+    },
+  });
 
-  return wishes.filter((e2g) => e2g.wish !== null);
+  return client?.events
+    .flatMap((event) => event.eventsToGuests.flatMap((e2g) => e2g.wish))
+    .filter((wish) => wish !== null);
 });
