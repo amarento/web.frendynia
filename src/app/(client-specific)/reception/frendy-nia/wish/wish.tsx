@@ -98,7 +98,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
               {wishes && wishes.length > 0
               ? wishes.map((wish, index) => (
                 <div
-                  className="flex-shrink-0 w-[300px] md:w-[350px] lg:w-[400px] rounded-xl border bg-[#FAFAFA] border-[#B29234] border-solid p-6 md:p-8 lg:p-10 mb-8 md:mb-10 lg:mb-12 shadow flex flex-col justify-center items-center text-center"
+                  className="flex-shrink-0 h-[150px] w-[300px] md:w-[350px] lg:h-[200px] lg:w-[400px] rounded-xl border bg-[#FAFAFA] border-[#B29234] border-solid p-6 md:p-8 lg:p-10 mb-8 md:mb-10 lg:mb-12 shadow flex flex-col justify-center items-center text-center"
                   key={index.toString()}
                 >
                   <p className="text-[#5D5C55] text-[16px] md:text-[18px] lg:text-[20px] w-full">{wish.wish}</p>

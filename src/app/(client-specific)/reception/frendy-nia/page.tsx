@@ -13,6 +13,7 @@ import Photoalbumone from './photoalbumone/page';
 import Photoalbumotwo from './photoalbumtwo/page';
 import Thewedding from './thewedding/page';
 import Wish from './wish/wish';
+import Footer from './footer/page';
 
 export default function Page() {
   return (
@@ -45,6 +46,7 @@ function PageContent() {
       <Holymatrimony />
       <Gift />
       <Wish guestId={guestId} guestName={guestName} />
+      <Footer />
     </div>
   );
 }
