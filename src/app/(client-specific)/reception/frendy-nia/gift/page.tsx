@@ -53,7 +53,7 @@ export default function Gift() {
   }
 
   return (
-    <div className="bg-[#EFEEEB] pt-16 pb-8 text-center font-lastik text-[#43423D] md:pb-12">
+    <div className="bg-[#EFEEEB] pt-16 pb-12 text-center font-lastik text-[#43423D] md:pb-16">
       <motion.div
         custom={0}
         initial="hidden"
@@ -67,7 +67,7 @@ export default function Gift() {
         </h3>
         <Image
           alt="Gift"
-          className="mx-auto mb-8 h-auto w-[30vw] md:mb-10 md:w-[24vw] lg:w-[18vw] xl:w-[12vw]"
+          className="mx-auto mb-10 h-auto w-[30vw] md:mb-12 md:w-[24vw] lg:w-[18vw] xl:w-[12vw]"
           src={gift}
         />
       </motion.div>
