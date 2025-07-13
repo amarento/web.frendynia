@@ -232,10 +232,10 @@ export default function Homepage() {
                 loading="eager"
                 priority
                 src={overlayImage}
-                sizes="(max-width: 640px) 60vw, (max-width: 1024px) 50vw, 45vw"
+                sizes="(max-width: 640px) 55vw, (max-width: 768px) 50vw, (max-width: 1024px) 45vw, 40vw"
                 style={{ height: 'auto' }}
                 width={600}
-                height={0}
+                quality={90}
               />
               <p className="mb-4 w-4/5 text-[14px] text-gray-700 md:text-[16px]">
                 By the grace of God, we cordially invite you to witness the
