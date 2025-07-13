@@ -75,12 +75,31 @@ export const getAllWishes = createServerAction().handler(async () => {
     },
   });
 
-  return client?.events
+  if (!client) {
+    return [];
+  }
+
+  const allWishes = client.events
     .flatMap((event) =>
-      event.eventsToGuests.flatMap((e2g) => ({
+      event.eventsToGuests.map((e2g) => ({
+        guestId: e2g.guestId,
         wish: e2g.wish,
         name: e2g.guest.names,
       }))
     )
-    .filter((wish) => wish.wish !== null);
+    .filter(
+      (
+        item
+      ): item is {
+        guestId: number;
+        wish: string;
+        name: string;
+      } => Boolean(item.wish)
+    );
+
+  const uniqueWishes = [
+    ...new Map(allWishes.map((item) => [item.guestId, item])).values(),
+  ];
+
+  return uniqueWishes.map(({ wish, name }) => ({ wish, name }));
 });
