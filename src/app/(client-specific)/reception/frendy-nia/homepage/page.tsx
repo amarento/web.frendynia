@@ -11,7 +11,7 @@ import Countdown from 'react-countdown';
 import { IoCloseSharp } from 'react-icons/io5';
 import { MdOutlineMusicNote, MdOutlineMusicOff } from 'react-icons/md';
 import { Button } from '~/components/ui/button';
-import backgroundImage from '../_images/homepage.jpg';
+import backgroundImage from '../_images/homepage.png';
 import overlayImage from '../_images/overlay.jpg';
 
 const music = '/music.mp3';
