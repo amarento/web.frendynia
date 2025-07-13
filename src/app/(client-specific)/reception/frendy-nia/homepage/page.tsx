@@ -124,19 +124,17 @@ export default function Homepage() {
     <div className="relative min-h-screen overflow-hidden text-center font-lastik">
       <div className="relative flex min-h-screen flex-col items-center">
         <Image
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 z-0 h-full w-full transition-all duration-300"
+          alt="Wedding background"
+          className="inset-0 z-0 h-full w-full"
           fill
           loading="eager"
           priority
           sizes="100vw"
           src={backgroundImage}
+          quality={100}
           style={{
             objectFit: 'cover',
-            objectPosition: 'center bottom',
-            minHeight: '100vh',
-            minWidth: '100vw',
+            objectPosition: 'bottom',
           }}
         />
         <motion.h4
@@ -224,7 +222,7 @@ export default function Homepage() {
                 By the grace of God, we cordially invite you to witness the
                 marriage of
               </p>
-              <h2 className="mb-6 font-queensila font-semibold text-[#B29234] text-[18px] tracking-[0.08em] md:text-[20px]">
+              <h2 className="mb-6 font-queensila font-semibold text-[#B29234] text-[20px] tracking-[0.08em] md:text-[25px]">
                 FRENDY <span className="font-cormorant italic">&</span>{' '}
                 NIA
               </h2>
