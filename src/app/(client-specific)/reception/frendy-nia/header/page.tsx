@@ -18,7 +18,12 @@ export default function Header() {
   const handleLogoClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    return router.push('/frendyniawedweb');
+    const path =
+      window.location.pathname.startsWith('/reception')
+        ? '/reception/frendy-nia'
+        : '/holmat/frendy-nia';
+
+    router.push(path);
   };
 
   const handleScroll = React.useCallback(() => {
