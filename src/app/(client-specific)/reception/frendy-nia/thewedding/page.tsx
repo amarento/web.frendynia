@@ -85,16 +85,16 @@ export default function Thewedding() {
         viewport={{ once: true, margin: '-100px' }}
         whileInView="visible"
       >
-        <p className="mb-1 text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px]">
+        <p className="mb-1 text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px]">
           Saturday, 09 August 2025
         </p>
-        <p className="mb-1 text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px]">
+        <p className="mb-1 text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px]">
           starts at 11:00
         </p>
-        <p className="mb-2 text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px]">
+        <p className="mb-2 text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px]">
           GRII Graha Famili
         </p>
-        <p className="mb-3 text-[10px] md:mb-5 md:text-[12px] lg:text-[14px] xl:text-[16px]">
+        <p className="mb-3 text-[12px] md:mb-5 md:text-[14px] lg:text-[16px] xl:text-[18px]">
           Ruko Plaza Graha Famili blok C1, Surabaya
         </p>
       </motion.div>
@@ -154,16 +154,16 @@ export default function Thewedding() {
             viewport={{ once: true, margin: '-100px' }}
             whileInView="visible"
           >
-            <p className="mb-1 text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px]">
+            <p className="mb-1 text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px]">
               Saturday, 09 August 2025
             </p>
-            <p className="mb-1 text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px]">
+            <p className="mb-1 text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px]">
               starts at 18:00
             </p>
-            <p className="mb-2 text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px]">
+            <p className="mb-2 text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px]">
               X.O Palace Ballroom
             </p>
-            <p className="mb-3 text-[10px] md:mb-5 md:text-[12px] lg:text-[14px] xl:text-[16px]">
+            <p className="mb-3 text-[12px] md:mb-5 md:text-[14px] lg:text-[16px] xl:text-[18px]">
               Jl. Raya Kupang Indah no. 15, Surabaya
             </p>
           </motion.div>
