@@ -188,7 +188,7 @@ export default function Homepage() {
             onClick={handleEnter}
           >
             <div
-              className="relative flex w-[80%] flex-col items-center rounded-2xl bg-white px-4 py-12 md:px-5 md:py-14 lg:px-6 lg:py-16 x  l:px-8 xl:py-18 shadow-2xl sm:w-[70%] md:w-[55%] lg:w-[40%] xl:w-[30%]"
+              className="relative flex w-[80%] flex-col items-center rounded-2xl bg-white px-4 pb-8 pt-12 md:px-5 md:pt-14 lg:px-6 lg:pt-16 xl:px-8 xl:pt-18 shadow-2xl sm:w-[70%] md:w-[55%] lg:w-[40%] xl:w-[30%]"
               onClick={(e) => e.stopPropagation()}
             >
               {/* X Button at top right inside the pop-up */}
