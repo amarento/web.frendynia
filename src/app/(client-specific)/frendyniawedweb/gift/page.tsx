@@ -65,8 +65,8 @@ export default function Gift() {
           custom={1}
           className="mx-auto mb-8 md:mb-0 w-[90%] md:mr-6 md:w-[35%] lg:w-[30%]"
         >
-          <h5 className="text-[18px] md:text-[20px]">BCA 0390484828</h5>
-          <h5 className="mb-2 lg:mb-3 text-[18px] md:text-[20px]">a/n Frendy Miktam</h5>
+          <h5 className="text-[16px] md:text-[18px] lg:text-[20px]">BCA 0390484828</h5>
+          <h5 className="mb-2 lg:mb-3 text-[16px] md:text-[18px] lg:text-[20px]">a/n Frendy Miktam</h5>
             <Button
             onClick={handleCopyFrendyAccount}
             className="rounded-lg bg-[#F8F8F7] px-7 py-2 shadow lg:px-8 lg:py-3 hover:bg-[#F0F0EF] active:bg-[#EDEDEB] active:scale-95"
@@ -84,8 +84,8 @@ export default function Gift() {
           custom={1}
           className="mx-auto w-[90%] pb-8 md:pb-0 md:ml-6 md:w-[35%] lg:w-[30%]"
         >
-          <h5 className="text-[18px] md:text-[20px]">BCA 0885670097</h5>
-          <h5 className="mb-2 lg:mb-3 text-[18px] md:text-[20px]">
+          <h5 className="text-[16px] md:text-[18px] lg:text-[20px]">BCA 0885670097</h5>
+          <h5 className="mb-2 lg:mb-3 text-[16px] md:text-[18px] lg:text-[20px]">
             a/n Nathania Verina
           </h5>
             <Button
