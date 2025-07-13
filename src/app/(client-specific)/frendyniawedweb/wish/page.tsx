@@ -1,10 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "~/components/ui/button";
-// import { AnimatedSection } from "../../../_components/AnimatedSection";
-// import { Carousel } from 'react-responsive-carousel'; // Uncomment if needed
+import { Carousel } from "react-responsive-carousel";
 
 type Wish = {
   name: string;
@@ -29,32 +28,26 @@ export default function Wish() {
     }),
   };
 
-  // useEffect(() => {
-  //   fetch("/api/wishes")
-  //     .then((res) => res.json())
-  //     .then((data: Wish[]) => setWishes(data))
-  //     .catch(() => setWishes([]));
-  // }, []);
+  useEffect(() => {
+    fetch("/api/wishes")
+      .then((res) => res.json())
+      .then((data: Wish[]) => setWishes(data))
+      .catch(() => setWishes([]));
+  }, []);
 
-  const handleSendGiftClick = () => {
-    setTimeout(() => {
-      window.open("https://maps.app.goo.gl/YvGsbE2Tcsyrua5b8");
-    }, 300);
+  const handleSubmit = async () => {
+    if (!name.trim() || !message.trim()) return;
+
+    await fetch("/api/wishes", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, message }),
+    });
+
+    setName("");
+    setMessage("");
+    setWishes((prev) => [...prev, { name, message }]);
   };
-
-  // const handleSubmit = async () => {
-  //   if (!name.trim() || !message.trim()) return;
-
-  //   await fetch("/api/wishes", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ name, message }),
-  //   });
-
-  //   setName("");
-  //   setMessage("");
-  //   setWishes((prev) => [...prev, { name, message }]);
-  // };
 
   return (
     <div className="text-center font-lastik text-[#43423D]">
@@ -71,27 +64,26 @@ export default function Wish() {
           <h3 className="font-retrofans text-[16px] text-[#5D5C55] md:text-[20px]">
             for groom & bride
           </h3>
-          {/* Wish Carousel */}
-          {/* <Carousel
-      showThumbs={false}
-      showStatus={false}
-      autoPlay
-      infiniteLoop
-      interval={4000}
-    >
-      {wishes.map((wish, index) => (
-        <div
-          key={index}
-          className="bg-white border p-4 rounded shadow-md text-center"
-        >
-          <p className="italic">"{wish.message}"</p>
-          <p className="text-sm mt-2">– {wish.name}</p>
-        </div>
-      ))}
-    </Carousel> */}
+          <Carousel
+            showThumbs={false}
+            showStatus={false}
+            autoPlay
+            infiniteLoop
+            interval={4000}
+          >
+            {wishes.map((wish, index) => (
+              <div
+                key={index}
+                className="rounded border bg-white p-4 text-center shadow-md"
+              >
+                <p className="italic">"{wish.message}"</p>
+                <p className="mt-2 text-sm">– {wish.name}</p>
+              </div>
+            ))}
+          </Carousel>
         </motion.div>
       </div>
-      <div className="bg-[#EFEEEB] pt-16 pb-10 md:pb-12">
+      <div className="bg-[#EFEEEB] pb-10 pt-16 md:pb-12">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -103,11 +95,6 @@ export default function Wish() {
           <h3 className="font-retrofans text-[16px] text-[#5D5C55] md:text-[20px]">
             for groom & bride
           </h3>
-          {/* <Image
-            src={gift}
-            alt="Gift"
-            className="mx-auto h-auto mb-8 w-[40vw] md:w-[30vw] lg:w-[25vw] xl:w-[15vw]"
-          /> */}
         </motion.div>
         <motion.div
           initial="hidden"
@@ -137,23 +124,16 @@ export default function Wish() {
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeIn}
           custom={3}
-          className="pt-6 flex justify-center gap-6 md:pt-8"
+          className="flex justify-center gap-6 pt-6 md:pt-8"
         >
           <Button
-            onClick={handleSendGiftClick}
-            className="rounded-lg bg-[#F8F8F7] px-7 py-2 shadow lg:px-8 lg:py-3 hover:bg-[#F0F0EF] active:bg-[#EDEDEB] active:scale-95"
+            onClick={handleSubmit}
+            className="rounded-lg bg-[#F8F8F7] px-7 py-2 shadow hover:bg-[#F0F0EF] active:scale-95 active:bg-[#EDEDEB] lg:px-8 lg:py-3"
           >
             <p className="text-[12px] text-[#5D5C55] md:text-[14px] lg:text-[16px]">
               Send Wish
             </p>
           </Button>
-
-          {/* <button
-          onClick={handleSubmit}
-          className="rounded-lg bg-[#AAA9A1] px-6 py-2 text-[12px] text-white shadow"
-        >
-          Send Wish
-        </button> */}
         </motion.div>
       </div>
     </div>
