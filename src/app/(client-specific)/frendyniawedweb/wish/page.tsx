@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Button } from "~/components/ui/button";
-import { Carousel } from "react-responsive-carousel";
+// import { Carousel } from "react-responsive-carousel";
 
 type Wish = {
   name: string;
@@ -28,26 +28,26 @@ export default function Wish() {
     }),
   };
 
-  useEffect(() => {
-    fetch("/api/wishes")
-      .then((res) => res.json())
-      .then((data: Wish[]) => setWishes(data))
-      .catch(() => setWishes([]));
-  }, []);
+  // useEffect(() => {
+  //   fetch("/api/wishes")
+  //     .then((res) => res.json())
+  //     .then((data: Wish[]) => setWishes(data))
+  //     .catch(() => setWishes([]));
+  // }, []);
 
-  const handleSubmit = async () => {
-    if (!name.trim() || !message.trim()) return;
+  // const handleSubmit = async () => {
+  //   if (!name.trim() || !message.trim()) return;
 
-    await fetch("/api/wishes", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, message }),
-    });
+  //   await fetch("/api/wishes", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ name, message }),
+  //   });
 
-    setName("");
-    setMessage("");
-    setWishes((prev) => [...prev, { name, message }]);
-  };
+  //   setName("");
+  //   setMessage("");
+  //   setWishes((prev) => [...prev, { name, message }]);
+  // };
 
   return (
     <div className="text-center font-lastik text-[#43423D]">
@@ -64,7 +64,7 @@ export default function Wish() {
           <h3 className="font-retrofans text-[16px] text-[#5D5C55] md:text-[20px]">
             for groom & bride
           </h3>
-          <Carousel
+          {/* <Carousel
             showThumbs={false}
             showStatus={false}
             autoPlay
@@ -80,7 +80,7 @@ export default function Wish() {
                 <p className="mt-2 text-sm">– {wish.name}</p>
               </div>
             ))}
-          </Carousel>
+          </Carousel> */}
         </motion.div>
       </div>
       <div className="bg-[#EFEEEB] pb-10 pt-16 md:pb-12">
@@ -127,7 +127,7 @@ export default function Wish() {
           className="flex justify-center gap-6 pt-6 md:pt-8"
         >
           <Button
-            onClick={handleSubmit}
+            // onClick={handleSubmit}
             className="rounded-lg bg-[#F8F8F7] px-7 py-2 shadow hover:bg-[#F0F0EF] active:scale-95 active:bg-[#EDEDEB] lg:px-8 lg:py-3"
           >
             <p className="text-[12px] text-[#5D5C55] md:text-[14px] lg:text-[16px]">
