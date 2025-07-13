@@ -221,8 +221,8 @@ export default function Homepage() {
                 marriage of
               </p>
               <h2 className="mb-6 font-queensila font-semibold text-[#B29234] text-[18px] tracking-[0.08em] md:text-[20px]">
-                FRENDY MIKTAM <span className="font-cormorant italic">&</span>{' '}
-                NATHANIA VERINA
+                FRENDY <span className="font-cormorant italic">&</span>{' '}
+                NIA
               </h2>
               <Button
                 className="rounded-lg bg-[#AAA9A1] px-7 py-3 text-[14px] shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:px-8 md:text-[16px] lg:px-9 lg:py-4"
