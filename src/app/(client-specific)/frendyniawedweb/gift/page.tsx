@@ -25,6 +25,18 @@ export default function Gift() {
     }, 300);
   };
 
+  function handleCopyFrendyAccount(_event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
+    void navigator.clipboard.writeText("0390484828").catch((err) => {
+        console.error("Failed to copy text: ", err);
+      });
+  }
+
+  function handleCopyNathaniaAccount(_event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
+    void navigator.clipboard.writeText("0885670097").catch((err) => {
+        console.error("Failed to copy text: ", err);
+      });
+  }
+
   return (
     <div className="bg-[#EFEEEB] pt-16 md:pb-12 text-center font-lastik text-[#43423D]">
       <motion.div
@@ -41,7 +53,7 @@ export default function Gift() {
         <Image
           src={gift}
           alt="Gift"
-          className="mx-auto mb-10 h-auto w-[35vw] md:mb-12 md:w-[25vw] lg:mb-12 lg:w-[20vw] xl:w-[15vw]"
+          className="mx-auto mb-6 h-auto w-[30vw] md:mb-8 md:w-[24vw] lg:mb-10 lg:w-[18vw] xl:w-[12vw]"
         />
       </motion.div>
       <div className="md:flex md:flex-row">
@@ -55,14 +67,14 @@ export default function Gift() {
         >
           <h5 className="text-[18px] md:text-[20px]">BCA 0390484828</h5>
           <h5 className="mb-2 lg:mb-3 text-[18px] md:text-[20px]">a/n Frendy Miktam</h5>
-          <Button
-            onClick={handleGoogleMapsHolmatClick}
-            className="rounded-lg bg-[#F8F8F7] px-7 py-2 shadow lg:px-8 lg:py-3"
-          >
+            <Button
+            onClick={handleCopyFrendyAccount}
+            className="rounded-lg bg-[#F8F8F7] px-7 py-2 shadow lg:px-8 lg:py-3 hover:bg-[#F0F0EF] active:bg-[#EDEDEB] active:scale-95"
+            >
             <p className="text-[12px] text-[#5D5C55] md:text-[14px] lg:text-[16px]">
               Copy
             </p>
-          </Button>
+            </Button>
         </motion.div>
         <motion.div
           initial="hidden"
@@ -76,14 +88,14 @@ export default function Gift() {
           <h5 className="mb-2 lg:mb-3 text-[18px] md:text-[20px]">
             a/n Nathania Verina
           </h5>
-          <Button
-            onClick={handleGoogleMapsHolmatClick}
-            className="rounded-lg bg-[#F8F8F7] px-7 py-2 shadow lg:px-8 lg:py-3"
-          >
-            <p className="text-[12px] text-[#5D5C55] md:text-[14px] lg:text-[16px]">
-              Copy
-            </p>
-          </Button>
+            <Button
+              onClick={handleCopyNathaniaAccount}
+              className="rounded-lg bg-[#F8F8F7] px-7 py-2 shadow lg:px-8 lg:py-3 hover:bg-[#F0F0EF] active:bg-[#EDEDEB] active:scale-95"
+            >
+              <p className="text-[12px] text-[#5D5C55] md:text-[14px] lg:text-[16px]">
+                Copy
+              </p>
+            </Button>
         </motion.div>
       </div>
     </div>
