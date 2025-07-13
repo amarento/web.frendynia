@@ -126,7 +126,7 @@ export default function Homepage() {
         <Image
           alt=""
           aria-hidden="true"
-          className="inset-0 z-0 h-full w-full object-contain object-bottom transition-all duration-300"
+          className="absolute inset-0 z-0 h-full w-full transition-all duration-300"
           fill
           loading="eager"
           priority
@@ -135,6 +135,8 @@ export default function Homepage() {
           style={{
             objectFit: 'cover',
             objectPosition: 'center bottom',
+            minHeight: '100vh',
+            minWidth: '100vw',
           }}
         />
         <motion.h4
