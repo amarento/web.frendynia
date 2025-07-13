@@ -79,7 +79,7 @@ export default function Wish({
             for groom & bride
           </h3>
 
-          <div className="flex gap-x-4 px-4">
+          <div className="flex gap-x-4 overflow-x-scroll px-4">
             {wishes?.map((wish, index) => (
               <div
                 className="rounded border bg-white p-4 text-center shadow-md lg:w-[24vw] xl:w-[30vw]"

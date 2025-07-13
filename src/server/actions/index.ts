@@ -1,10 +1,10 @@
 'use server';
 
-import { eq } from 'drizzle-orm';
+import { and, eq, inArray } from 'drizzle-orm';
 import { z } from 'zod';
 import { createServerAction } from 'zsa';
 import { db } from '~/server/db';
-import { clients, eventsToGuests } from '~/server/db/schema';
+import { clients, events, eventsToGuests } from '~/server/db/schema';
 
 export const addWishAction = createServerAction()
   .input(
@@ -14,10 +14,21 @@ export const addWishAction = createServerAction()
     })
   )
   .handler(async ({ input }) => {
+    const subquery = db
+      .select({ id: eventsToGuests.guestId })
+      .from(eventsToGuests)
+      .leftJoin(events, eq(eventsToGuests.eventId, events.id))
+      .where(eq(events.clientId, 2));
+
     await db
       .update(eventsToGuests)
       .set({ wish: input.wish })
-      .where(eq(eventsToGuests.guestId, input.guestId));
+      .where(
+        and(
+          eq(eventsToGuests.guestId, input.guestId),
+          inArray(eventsToGuests.guestId, subquery)
+        )
+      );
   });
 
 export const getGuestNameByIdAction = async (guestId: number) => {
@@ -59,6 +70,11 @@ export const getAllWishes = createServerAction().handler(async () => {
   });
 
   return client?.events
-    .flatMap((event) => event.eventsToGuests.flatMap((e2g) => e2g.wish))
-    .filter((wish) => wish !== null);
+    .flatMap((event) =>
+      event.eventsToGuests.flatMap((e2g) => ({
+        wish: e2g.wish,
+        name: e2g.guest.names,
+      }))
+    )
+    .filter((wish) => wish.wish !== null);
 });
