@@ -106,7 +106,7 @@ export default function Thewedding() {
       >
         <Button
           onClick={handleGoogleMapsHolmatClick}
-          className="rounded-lg mb-12 md:mb-16 lg:mb-20 bg-[#AAA9A1] px-7 py-2 lg:px-8 lg:py-3 shadow"
+          className="rounded-lg mb-12 md:mb-16 lg:mb-20 bg-[#AAA9A1] px-7 py-2 md:px-8 md:py-3 lg:px-9 lg:py-4 shadow hover:bg-[#A2A19A] active:bg-[#999892] active:scale-95"
         >
           <p className="text-[12px] text-white md:text-[14px] lg:text-[16px]">
             Open Maps
@@ -173,9 +173,9 @@ export default function Thewedding() {
       >
         <Button
           onClick={handleGoogleMapsReceptionClick}
-          className="rounded-lg bg-[#AAA9A1] px-6 py-2 lg:px-7 lg:py-3 shadow"
+          className="rounded-lg bg-[#AAA9A1] px-7 py-2 md:px-8 md:py-3 lg:px-9 lg:py-4 shadow hover:bg-[#A2A19A] active:bg-[#999892] active:scale-95"
         >
-          <p className="text-[12px] text-white md:text-[14px] lg:text-[16px]">
+          <p className="text-[12px] text-white md:text-[14px] lg:text-[16px] ">
             Open Maps
           </p>
         </Button>

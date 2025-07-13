@@ -76,7 +76,7 @@ export default function Holymatrimony() {
       >
         <Button
           onClick={handleYoutubeClick}
-          className="rounded-lg bg-[#AAA9A1] px-7 py-2 lg:px-8 lg:py-3 shadow" 
+          className="rounded-lg bg-[#AAA9A1] px-7 py-2 md:px-8 md:py-3 lg:px-9 lg:py-4 shadow hover:bg-[#A2A19A] active:bg-[#999892] active:scale-95" 
         >
           <p className="text-[12px] text-white md:text-[14px] lg:text-[16px] 2xl:text-[18px]">
             Join Link

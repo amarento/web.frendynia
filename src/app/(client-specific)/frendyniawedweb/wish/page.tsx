@@ -141,7 +141,7 @@ export default function Wish() {
         >
           <Button
             onClick={handleSendGiftClick}
-            className="rounded-lg bg-[#F8F8F7] px-7 py-2 shadow lg:px-8 lg:py-3"
+            className="rounded-lg bg-[#F8F8F7] px-7 py-2 shadow lg:px-8 lg:py-3 hover:bg-[#F0F0EF] active:bg-[#EDEDEB] active:scale-95"
           >
             <p className="text-[12px] text-[#5D5C55] md:text-[14px] lg:text-[16px]">
               Send Wish

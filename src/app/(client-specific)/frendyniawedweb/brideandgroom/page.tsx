@@ -30,7 +30,7 @@ export default function Brideandgroom() {
         viewport={{ once: true, margin: "-100px" }}
         variants={fadeIn}
         custom={0}
-        className="mb-1 mt-12 font-beau text-[25px] text-[#B29234] md:text-[39px]"
+        className="mt-12 font-beau text-[25px] text-[#B29234] md:text-[39px]"
       >
         By the Grace of God,
       </motion.h1>
@@ -40,7 +40,7 @@ export default function Brideandgroom() {
         viewport={{ once: true, margin: "-100px" }}
         variants={fadeIn}
         custom={0}
-        className="md:mb-18 mb-16 text-[14px] md:text-[16px] lg:mb-20 lg:text-[18px]"
+        className="md:mb-18 italic mb-16 text-[14px] md:text-[16px] lg:mb-20 lg:text-[18px]"
       >
         we cordially invite you to be witness of our unity
       </motion.p>
@@ -73,7 +73,7 @@ export default function Brideandgroom() {
           variants={fadeIn}
           custom={2}
         >
-          <h2 className="mb-6 italic text-[16px] md:mb-8 lg:mb-0 lg:mt-10 md:text-[20px] lg:flex lg:items-center lg:justify-center lg:text-[25px] xl:text-[31px]">
+          <h2 className="mb-6 italic text-[16px] md:mb-8 lg:mb-0 lg:mt-10 md:text-[20px] lg:flex lg:items-center lg:justify-center xl:text-[25px]">
             and
           </h2>
         </motion.div>
@@ -119,7 +119,7 @@ export default function Brideandgroom() {
           <Image
             src={brideGroomImage}
             alt="Bride and Groom"
-            className="mx-auto h-full w-auto rounded-t-[900px] border-x-2 border-t-2 border-solid border-[#B29234] px-1 pt-1"
+            className="mx-auto h-full w-auto rounded-t-[900px] border-2 border-solid border-[#B29234] p-1"
           />
         </motion.div>
         {/* Blue Decoration */}
