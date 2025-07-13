@@ -149,7 +149,7 @@ export default function Homepage() {
           fill
           priority
           quality={100}
-          sizes="(max-width: 768px) 100vw, 100vw"
+
           className="inset-0 z-0"
           style={{
             objectFit: "cover",
@@ -229,12 +229,13 @@ export default function Homepage() {
               <Image
                 alt="Bride and Groom"
                 className="mx-auto mb-6 h-full w-[55%] border-2 border-solid border-[#B29234] p-1 sm:w-[50%] md:w-[45%] lg:w-[40%]"
-                height={400}
                 loading="eager"
                 priority
                 src={overlayImage}
-                // Remove blur placeholder for instant render
+                sizes="(max-width: 640px) 60vw, (max-width: 1024px) 50vw, 45vw"
+                style={{ height: 'auto' }}
                 width={600}
+                height={0}
               />
               <p className="mb-4 w-4/5 text-[14px] text-gray-700 md:text-[16px]">
                 By the grace of God, we cordially invite you to witness the
