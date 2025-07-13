@@ -188,7 +188,7 @@ export default function Homepage() {
             onClick={handleEnter}
           >
             <div
-              className="relative flex w-[75%] sm:w-[65%] flex-col items-center rounded-2xl bg-white py-12 px-4 shadow-2xl md:w-[55%] lg:w-[40%] xl:w-[30%]"
+              className="relative flex w-[80%] flex-col items-center rounded-2xl bg-white px-4 py-12 shadow-2xl sm:w-[70%] md:w-[55%] lg:w-[40%] xl:w-[30%]"
               onClick={(e) => e.stopPropagation()}
             >
               {/* X Button at top right inside the pop-up */}
@@ -196,13 +196,13 @@ export default function Homepage() {
                 type="button"
                 aria-label="Close overlay"
                 onClick={handleEnter}
-                className="absolute right-1 top-1 z-[1000] p-2 text-[#43423D] hover:text-[#444444] focus:outline-none md:right-2 md:top-2 "
+                className="absolute right-1 top-1 z-[1000] p-2 text-[#43423D] hover:text-[#444444] focus:outline-none md:right-2 md:top-2"
                 variant="ghost"
                 size="icon"
               >
                 <IoCloseSharp className="h-8 w-8 md:h-10 md:w-10 lg:h-12 lg:w-12 xl:h-16 xl:w-16" />
               </Button>
-              <h2 className="mb-6 font-cormorant text-[25px] font-bold text-[#43423D] ">
+              <h2 className="mb-6 font-cormorant text-[25px] font-bold text-[#43423D]">
                 WEDDING INVITATION
               </h2>
               <Image
@@ -210,11 +210,11 @@ export default function Homepage() {
                 alt="Bride and Groom"
                 width={600}
                 height={400}
-                className="mx-auto mb-6 h-full w-[55%] sm:w-[50%] border-2 border-solid border-[#B29234] p-1 md:w-[45%] lg:w-[40%]"
+                className="mx-auto mb-6 h-full w-[55%] border-2 border-solid border-[#B29234] p-1 sm:w-[50%] md:w-[45%] lg:w-[40%]"
                 // Remove blur placeholder for instant render
                 loading="eager"
               />
-              <p className="mb-4 w-4/5 text-[14px] text-gray-700 md:text-[16px] ">
+              <p className="mb-4 w-4/5 text-[14px] text-gray-700 md:text-[16px]">
                 By the grace of God, we cordially invite you to witness the
                 marriage of
               </p>
@@ -224,9 +224,9 @@ export default function Homepage() {
               </h2>
               <Button
                 onClick={handleEnter}
-                className="rounded-lg bg-[#AAA9A1] px-7 py-2 text-[14px] shadow md:text-[16px] "
+                className="rounded-lg bg-[#AAA9A1] px-7 py-3 text-[14px] shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:px-8 md:text-[16px] lg:px-9 lg:py-4"
               >
-                Open invitation
+                Open Invitation
               </Button>
             </div>
           </div>
