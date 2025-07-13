@@ -118,7 +118,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           whileInView="visible"
         >
           <h1 className="text-[31px] md:text-[39px]">Send Wish</h1>
-          <h3 className="font-retrofans text-[#5D5C55] text-[16px] md:text-[20px]">
+          <h3 className="font-retrofans text-[#5D5C55] text-[16px] md:text-[20px] mb-10 md:mb-12 lg:mb-16">
             for groom & bride
           </h3>
         </motion.div>
