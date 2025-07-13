@@ -17,7 +17,7 @@ import overlayImage from '../_images/overlay.jpg';
 const music = '/music.mp3';
 
 export default function Homepage() {
-  const targetDate = new Date('2025-08-09T18:00:00').getTime();
+  const targetDate = new Date('2025-08-09T04:00:00Z').getTime();
 
   // fadeIn variant with custom delay
   const fadeIn = {
@@ -212,9 +212,11 @@ export default function Homepage() {
                 className="mx-auto mb-6 h-full w-[55%] border-2 border-[#B29234] border-solid p-1 sm:w-[50%] md:w-[45%] lg:w-[40%]"
                 height={400}
                 loading="eager"
+                priority
                 src={overlayImage}
                 // Remove blur placeholder for instant render
                 width={600}
+                
               />
               <p className="mb-4 w-4/5 text-[14px] text-gray-700 md:text-[16px]">
                 By the grace of God, we cordially invite you to witness the
