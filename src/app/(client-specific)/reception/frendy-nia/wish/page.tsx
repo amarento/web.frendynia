@@ -79,16 +79,18 @@ export default function Wish({
             for groom & bride
           </h3>
 
-          <div className="flex gap-x-4 overflow-x-scroll px-4">
-            {wishes?.map((wish, index) => (
-              <div
-                className="rounded border bg-white p-4 text-center shadow-md lg:w-[24vw] xl:w-[30vw]"
-                key={index.toString()}
-              >
-                <p className="italic">{wish.wish}</p>
-                <p className="mt-2 text-sm">– {wish.name}</p>
-              </div>
-            ))}
+          <div className="flex gap-x-4 px-4">
+            {wishes && wishes?.length > 0
+              ? wishes?.map((wish, index) => (
+                  <div
+                    className="rounded border bg-white p-4 text-center shadow-md lg:w-[24vw] xl:w-[30vw]"
+                    key={index.toString()}
+                  >
+                    <p className="italic">{wish.wish}</p>
+                    <p className="mt-2 text-sm">– {wish.name}</p>
+                  </div>
+                ))
+              : null}
           </div>
         </motion.div>
       </div>
