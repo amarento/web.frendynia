@@ -74,7 +74,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
 
   return (
     <div className="text-center font-lastik text-[#43423D]">
-      <div className="bg-[#F8F8F7] pt-10 pb-6">
+      <div className="bg-[#F8F8F7] py-10 md:py-12 lg:py-16">
         <motion.div
           className=""
           custom={0}
@@ -84,23 +84,29 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           whileInView="visible"
         >
           <h1 className="text-[31px] md:text-[39px]">Well Wishes</h1>
-          <h3 className="font-retrofans text-[#5D5C55] text-[16px] md:text-[20px]">
+          <h3 className="font-retrofans text-[#5D5C55] text-[16px] md:text-[20px] mb-10 md:mb-12 lg:mb-16">
             for groom & bride
           </h3>
-
-          <div className="flex gap-x-4 px-4">
-            {wishes && wishes?.length > 0
-              ? wishes?.map((wish, index) => (
-                  <div
-                    className="rounded border bg-white p-4 text-center shadow-md lg:w-[24vw] xl:w-[30vw]"
-                    key={index.toString()}
-                  >
-                    <p className="italic">{wish.wish}</p>
-                    <p className="mt-2 text-sm">– {wish.name}</p>
-                  </div>
+            <div
+              className="flex gap-x-4 px-4 overflow-x-auto scrollbar-hide"
+              style={{
+              WebkitOverflowScrolling: 'touch',
+              msOverflowStyle: 'none',
+              scrollbarWidth: 'none',
+              }}
+            >
+              {wishes && wishes.length > 0
+              ? wishes.map((wish, index) => (
+                <div
+                  className="flex-shrink-0 w-[300px] md:w-[350px] lg:w-[400px] rounded-xl border bg-[#FAFAFA] border-[#B29234] border-solid p-6 md:p-8 lg:p-10 mb-8 md:mb-10 lg:mb-12 shadow flex flex-col justify-center items-center text-center"
+                  key={index.toString()}
+                >
+                  <p className="text-[#5D5C55] text-[16px] md:text-[18px] lg:text-[20px] w-full">{wish.wish}</p>
+                  <p className="text-[#5D5C55] mt-2 text-[14px] md:text-[16px] lg:text-[18px] italic">– {wish.name}</p>
+                </div>
                 ))
               : null}
-          </div>
+            </div>
         </motion.div>
       </div>
       <div className="bg-[#EFEEEB] pt-16 pb-10 md:pb-12">
