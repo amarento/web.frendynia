@@ -5,13 +5,15 @@ import { Suspense } from 'react';
 import { useServerActionQuery } from '~/lib/hooks/server-action-hooks';
 import { getGuestNameByIdAction } from '~/server/actions';
 import Bibleverse from '../../reception/frendy-nia/bibleverse/page';
+import Photoalbumone from '../../reception/frendy-nia/photoalbumone/page';
 import Brideandgroom from '../../reception/frendy-nia/brideandgroom/page';
 import Gift from '../../reception/frendy-nia/gift/page';
 import Holymatrimony from '../../reception/frendy-nia/holymatrimony/page';
 import Homepage from '../../reception/frendy-nia/homepage/page';
-import Photoalbumone from '../../reception/frendy-nia/photoalbumone/page';
+import Photoalbumtwo from '../../reception/frendy-nia/photoalbumtwo/page';
 import Thewedding from '../../reception/frendy-nia/thewedding/page';
 import Wish from '../../reception/frendy-nia/wish/wish';
+import Footer from '../../reception/frendy-nia/footer/page';
 
 export default function Page() {
   return (
@@ -41,11 +43,11 @@ function PageContent() {
         <Bibleverse />
         <Photoalbumone />
         <Thewedding />
-        <Photoalbumone />
+        <Photoalbumtwo />
         <Holymatrimony />
         <Gift />
-
         <Wish guestId={guestId} guestName={guestName} />
+        <Footer />
       </div>
     </Suspense>
   );
