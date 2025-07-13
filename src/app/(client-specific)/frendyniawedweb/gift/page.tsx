@@ -5,7 +5,12 @@ import gift from "../../../../../public/envelope.png";
 import { motion } from "framer-motion";
 import { Button } from "~/components/ui/button";
 
+import React, { useState } from "react";
+
 export default function Gift() {
+  const [copiedFrendy, setCopiedFrendy] = useState(false);
+  const [copiedNathania, setCopiedNathania] = useState(false);
+
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
@@ -25,20 +30,36 @@ export default function Gift() {
     }, 300);
   };
 
-  function handleCopyFrendyAccount(_event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
-    void navigator.clipboard.writeText("0390484828").catch((err) => {
+  function handleCopyFrendyAccount(
+    _event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ): void {
+    void navigator.clipboard
+      .writeText("0390484828")
+      .then(() => {
+        setCopiedFrendy(true);
+        setTimeout(() => setCopiedFrendy(false), 1500);
+      })
+      .catch((err) => {
         console.error("Failed to copy text: ", err);
       });
   }
 
-  function handleCopyNathaniaAccount(_event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
-    void navigator.clipboard.writeText("0885670097").catch((err) => {
+  function handleCopyNathaniaAccount(
+    _event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ): void {
+    void navigator.clipboard
+      .writeText("0885670097")
+      .then(() => {
+        setCopiedNathania(true);
+        setTimeout(() => setCopiedNathania(false), 1500);
+      })
+      .catch((err) => {
         console.error("Failed to copy text: ", err);
       });
   }
 
   return (
-    <div className="bg-[#EFEEEB] pt-16 md:pb-12 text-center font-lastik text-[#43423D]">
+    <div className="bg-[#EFEEEB] pt-16 text-center font-lastik text-[#43423D] md:pb-12">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -47,7 +68,7 @@ export default function Gift() {
         custom={0}
       >
         <h1 className="text-[31px] md:text-[39px]">Send Gift</h1>
-        <h3 className="mb-8 font-retrofans text-[16px] text-[#5D5C55] md:text-[18px] md:mb-10 lg:mb-12 lg:text-[20px]">
+        <h3 className="mb-8 font-retrofans text-[16px] text-[#5D5C55] md:mb-10 md:text-[18px] lg:mb-12 lg:text-[20px]">
           for groom & bride
         </h3>
         <Image
@@ -63,18 +84,29 @@ export default function Gift() {
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeIn}
           custom={1}
-          className="mx-auto mb-8 md:mb-0 w-[90%] md:mr-6 md:w-[35%] lg:w-[30%]"
+          className="mx-auto mb-8 w-[90%] md:mb-0 md:mr-6 md:w-[35%] lg:w-[30%]"
         >
-          <h5 className="text-[16px] md:text-[18px] lg:text-[20px]">BCA 0390484828</h5>
-          <h5 className="mb-2 lg:mb-3 text-[16px] md:text-[18px] lg:text-[20px]">a/n Frendy Miktam</h5>
-            <Button
+          <h5 className="text-[16px] md:text-[18px] lg:text-[20px]">
+            BCA 0390484828
+          </h5>
+          <h5 className="mb-2 text-[16px] md:text-[18px] lg:mb-3 lg:text-[20px]">
+            a/n Frendy Miktam
+          </h5>
+          <Button
             onClick={handleCopyFrendyAccount}
-            className="rounded-lg bg-[#F8F8F7] px-7 py-2 shadow lg:px-8 lg:py-3 hover:bg-[#F0F0EF] active:bg-[#EDEDEB] active:scale-95"
+            className={`rounded-lg px-7 py-2 shadow active:scale-95 lg:px-8 lg:py-3 ${
+              copiedFrendy ? "active:bg-[#43423D]" : "bg-[#F8F8F7] hover:bg-[#F0F0EF]"
+            }`}
+            disabled={copiedFrendy}
+          >
+            <p
+              className={`text-[12px] md:text-[14px] lg:text-[16px] ${
+                copiedFrendy ? "text-white" : "text-[#5D5C55]"
+              }`}
             >
-            <p className="text-[12px] text-[#5D5C55] md:text-[14px] lg:text-[16px]">
-              Copy
+              {copiedFrendy ? "Copied!" : "Copy"}
             </p>
-            </Button>
+          </Button>
         </motion.div>
         <motion.div
           initial="hidden"
@@ -82,20 +114,29 @@ export default function Gift() {
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeIn}
           custom={1}
-          className="mx-auto w-[90%] pb-8 md:pb-0 md:ml-6 md:w-[35%] lg:w-[30%]"
+          className="mx-auto w-[90%] pb-8 md:ml-6 md:w-[35%] md:pb-0 lg:w-[30%]"
         >
-          <h5 className="text-[16px] md:text-[18px] lg:text-[20px]">BCA 0885670097</h5>
-          <h5 className="mb-2 lg:mb-3 text-[16px] md:text-[18px] lg:text-[20px]">
+          <h5 className="text-[16px] md:text-[18px] lg:text-[20px]">
+            BCA 0885670097
+          </h5>
+          <h5 className="mb-2 text-[16px] md:text-[18px] lg:mb-3 lg:text-[20px]">
             a/n Nathania Verina
           </h5>
-            <Button
-              onClick={handleCopyNathaniaAccount}
-              className="rounded-lg bg-[#F8F8F7] px-7 py-2 shadow lg:px-8 lg:py-3 hover:bg-[#F0F0EF] active:bg-[#EDEDEB] active:scale-95"
+          <Button
+            onClick={handleCopyNathaniaAccount}
+            className={`rounded-lg px-7 py-2 shadow active:scale-95 lg:px-8 lg:py-3 ${
+              copiedNathania ? "active:bg-[#43423D]" : "bg-[#F8F8F7] hover:bg-[#F0F0EF]"
+            }`}
+            disabled={copiedNathania}
+          >
+            <p
+              className={`text-[12px] md:text-[14px] lg:text-[16px] ${
+                copiedNathania ? "text-white" : "text-[#5D5C55]"
+              }`}
             >
-              <p className="text-[12px] text-[#5D5C55] md:text-[14px] lg:text-[16px]">
-                Copy
-              </p>
-            </Button>
+              {copiedNathania ? "Copied!" : "Copy"}
+            </p>
+          </Button>
         </motion.div>
       </div>
     </div>
