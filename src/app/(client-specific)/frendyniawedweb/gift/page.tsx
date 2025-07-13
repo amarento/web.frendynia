@@ -24,12 +24,6 @@ export default function Gift() {
     }),
   };
 
-  const handleGoogleMapsHolmatClick: () => void = () => {
-    setTimeout(() => {
-      window.open("https://maps.app.goo.gl/YvGsbE2Tcsyrua5b8");
-    }, 300);
-  };
-
   function handleCopyFrendyAccount(
     _event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ): void {
@@ -59,7 +53,7 @@ export default function Gift() {
   }
 
   return (
-    <div className="bg-[#EFEEEB] pt-16 text-center font-lastik text-[#43423D] md:pb-12">
+    <div className="bg-[#EFEEEB] pt-16 text-center font-lastik text-[#43423D] pb-8 md:pb-12">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -74,22 +68,22 @@ export default function Gift() {
         <Image
           src={gift}
           alt="Gift"
-          className="mx-auto mb-6 h-auto w-[30vw] md:mb-8 md:w-[24vw] lg:mb-10 lg:w-[18vw] xl:w-[12vw]"
+          className="mx-auto mb-8 h-auto w-[30vw] md:mb-10 md:w-[24vw] lg:w-[18vw] xl:w-[12vw]"
         />
       </motion.div>
-      <div className="md:flex md:flex-row">
+      <div className="flex flex-row justify-center">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeIn}
           custom={1}
-          className="mx-auto mb-8 w-[90%] md:mb-0 md:mr-6 md:w-[35%] lg:w-[30%]"
+          className="mx-auto w-[45%] ml-10 md:mr-6 md:w-[35%] lg:w-[30%]"
         >
-          <h5 className="text-[16px] md:text-[18px] lg:text-[20px]">
+          <h5 className="text-[14px] md:text-[18px] lg:text-[20px]">
             BCA 0390484828
           </h5>
-          <h5 className="mb-2 text-[16px] md:text-[18px] lg:mb-3 lg:text-[20px]">
+          <h5 className="mb-2 md:mb-3 text-[14px] md:text-[18px] lg:text-[20px]">
             a/n Frendy Miktam
           </h5>
           <Button
@@ -114,12 +108,12 @@ export default function Gift() {
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeIn}
           custom={1}
-          className="mx-auto w-[90%] pb-8 md:ml-6 md:w-[35%] md:pb-0 lg:w-[30%]"
+          className="mx-auto w-[45%] mr-10 md:ml-6 md:w-[35%] md:pb-0 lg:w-[30%]"
         >
-          <h5 className="text-[16px] md:text-[18px] lg:text-[20px]">
+          <h5 className="text-[14px] md:text-[18px] lg:text-[20px]">
             BCA 0885670097
           </h5>
-          <h5 className="mb-2 text-[16px] md:text-[18px] lg:mb-3 lg:text-[20px]">
+          <h5 className="mb-2 md:mb-3 text-[14px] md:text-[18px] lg:text-[20px]">
             a/n Nathania Verina
           </h5>
           <Button
