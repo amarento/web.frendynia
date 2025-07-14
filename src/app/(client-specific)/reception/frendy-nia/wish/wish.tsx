@@ -74,7 +74,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
 
   return (
     <div className="text-center font-lastik text-[#43423D]">
-      <div className="bg-[#F8F8F7] py-10 md:py-12 lg:py-16">
+      <div className="bg-[#F8F8F7] pb-16 pt-10 md:pb-20 md:pt-12 lg:pt-16">
         <motion.div
           className=""
           custom={0}
@@ -84,7 +84,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           whileInView="visible"
         >
           <h1 className="text-[31px] md:text-[39px]">Well Wishes</h1>
-          <h3 className="mb-10 font-retrofans text-[16px] text-[#5D5C55] md:mb-12 md:text-[20px] lg:mb-16">
+          <h3 className="mb-10 font-retrofans text-[16px] text-[#5D5C55] md:mb-12 md:text-[20px] lg:mb-14">
             for groom & bride
           </h3>
           <div
@@ -99,7 +99,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
             {wishes && wishes.length > 0
               ? [...wishes].reverse().map((wish, index) => (
                   <div
-                    className="mb-8 flex h-[150px] w-[300px] flex-shrink-0 flex-col items-center justify-center rounded-xl border border-[#B29234] border-solid bg-[#FAFAFA] p-6 text-center shadow md:mb-10 md:w-[350px] md:p-8 lg:mb-12 lg:h-[200px] lg:w-[400px] lg:p-10"
+                    className="flex w-[90vw] flex-shrink-0 flex-col items-center justify-center rounded-xl border border-solid border-[#B29234] bg-[#FAFAFA] p-6 text-center shadow md:w-[95vw] md:p-8 lg:w-[80vw] lg:p-10 xl:w-[58vw]"
                     key={index.toString()}
                   >
                     <p className="w-full text-[16px] text-[#5D5C55] md:text-[18px] lg:text-[20px]">
