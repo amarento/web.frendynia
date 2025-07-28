@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import { Toaster } from "~/components/ui/toaster";
 import "~/styles/globals.css";
 import Providers from "./providers";
-import { Inter, Cormorant_Garamond, Beau_Rivage, Bellefair} from "next/font/google";
+import { Inter, Cormorant_Garamond, Beau_Rivage, Bellefair, Bodoni_Moda } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Amarento",
@@ -32,6 +32,12 @@ const beau = Beau_Rivage({
 
 const bellefair = Bellefair({
   variable: "--font-bellefair",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const bodoni = Bodoni_Moda({
+  variable: "--font-bodoni",
   weight: "400",
   subsets: ["latin"],
 });
@@ -72,13 +78,19 @@ const queensila = localFont({
   weight: "400",
 });
 
+const snell = localFont({
+  src: "./_assets/fonts/Snell-BT-Regular.woff2",
+  variable: "--font-snell",
+  weight: "400",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${cormorant.variable} ${beau.variable} ${bellefair.variable} ${marjorie.variable} ${marjorieSemiBold.variable} ${lastik.variable} ${melodrame.variable} ${retrofans.variable} ${queensila.variable}`}
+      className={`${inter.variable} ${cormorant.variable} ${beau.variable} ${bellefair.variable} ${bodoni.variable} ${marjorie.variable} ${marjorieSemiBold.variable} ${lastik.variable} ${melodrame.variable} ${retrofans.variable} ${queensila.variable} ${snell.variable}`}
     >
       <body className="overflow-hidden bg-white">
         <Providers>{children}</Providers>
