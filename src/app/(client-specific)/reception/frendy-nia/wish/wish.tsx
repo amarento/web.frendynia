@@ -1,8 +1,13 @@
+/** biome-ignore-all lint/a11y/noStaticElementInteractions: drag scrolling functionality */
+/** biome-ignore-all lint/a11y/useKeyWithClickEvents: drag scrolling functionality */
+/** biome-ignore-all lint/nursery/useSortedClasses: embla carousel styling */
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import Autoplay from 'embla-carousel-autoplay';
+import useEmblaCarousel from 'embla-carousel-react';
 import { motion } from 'framer-motion';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Button } from '~/components/ui/button';
@@ -30,9 +35,62 @@ export default function Wish({ guestName, guestId }: IWishProps) {
 
   const { mutateAsync: sendWish } = useServerActionMutation(addWishAction, {
     onSuccess: () => {
+      // biome-ignore lint: required for promise handling
       void refetch();
     },
   });
+
+  // Progress bar state
+  const [progress, setProgress] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  // Embla Carousel setup with autoplay
+  const autoplayPlugin = Autoplay({ delay: 4000, stopOnInteraction: false });
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      loop: true,
+      align: 'center',
+      skipSnaps: false,
+    },
+    [autoplayPlugin]
+  );
+
+  // Progress bar effect
+  useEffect(() => {
+    if (!emblaApi) {
+      return;
+    }
+    if (!isPlaying) {
+      return;
+    }
+
+    let interval: NodeJS.Timeout;
+    const resetProgress = () => {
+      setProgress(0);
+      clearInterval(interval);
+      interval = setInterval(() => {
+        setProgress((prev) => {
+          if (prev >= 100) {
+            return 0;
+          }
+          return prev + 100 / 40; // 4000ms / 100ms intervals = 40 steps
+        });
+      }, 100);
+    };
+
+    // Reset progress when slide changes
+    const onSlideChange = () => {
+      resetProgress();
+    };
+
+    emblaApi.on('select', onSlideChange);
+    resetProgress(); // Start initial progress
+
+    return () => {
+      clearInterval(interval);
+      emblaApi.off('select', onSlideChange);
+    };
+  }, [emblaApi, isPlaying]);
 
   const {
     register,
@@ -87,30 +145,46 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           <h3 className="mb-10 font-retrofans text-[#5D5C55] text-[16px] md:mb-12 md:text-[20px] lg:mb-14">
             for groom & bride
           </h3>
-          <div
-            className="scrollbar-hide flex gap-x-4 overflow-x-auto px-4"
-            style={{
-              WebkitOverflowScrolling: 'touch',
-              msOverflowStyle: 'none',
-              scrollbarWidth: 'none',
-              overflowY: 'hidden',
-            }}
-          >
-            {wishes && wishes.length > 0
-              ? [...wishes].reverse().map((wish, index) => (
-                  <div
-                    className="flex w-[90vw] flex-shrink-0 flex-col items-center justify-center rounded-xl border border-[#B29234] border-solid bg-[#FAFAFA] p-6 text-center shadow md:w-[95vw] md:p-8 lg:w-[80vw] lg:p-10 xl:w-[58vw]"
-                    key={index.toString()}
-                  >
-                    <p className="w-full text-[#5D5C55] text-[16px] md:text-[18px] lg:text-[20px]">
-                      {wish.wish}
-                    </p>
-                    <p className="mt-2 text-[#5D5C55] text-[14px] italic md:text-[16px] lg:text-[18px]">
-                      – {wish.name}
-                    </p>
-                  </div>
-                ))
-              : null}
+
+          {/* Progress Bar */}
+          {wishes && wishes.length > 1 && (
+            <div className="mx-auto mb-6 w-32 h-1 bg-gray-200 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-[#B29234] transition-all duration-100 ease-linear"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+          )}
+
+          {/* Carousel Container with Gradients */}
+          <div className="relative">
+            {/* Left Gradient Overlay */}
+            <div className="absolute left-0 top-0 bottom-0 w-80 bg-gradient-to-r from-[#F8F8F7] to-transparent z-10 pointer-events-none" />
+
+            {/* Right Gradient Overlay */}
+            <div className="absolute right-0 top-0 bottom-0 w-80 bg-gradient-to-l from-[#F8F8F7] to-transparent z-10 pointer-events-none" />
+
+            {/* Embla Carousel */}
+            <div className="embla overflow-hidden px-4" ref={emblaRef}>
+              <div className="embla__container flex gap-x-4">
+                {wishes && wishes.length > 0
+                  ? [...wishes].reverse().map((wish, index) => (
+                      <div
+                        className="embla__slide flex w-[90vw] flex-col items-center justify-center rounded-xl border border-solid border-[#B29234] bg-[#FAFAFA] p-6 text-center shadow md:w-[95vw] md:p-8 lg:w-[80vw] lg:p-10 xl:w-[58vw]"
+                        key={index.toString()}
+                        style={{ flex: '0 0 auto' }}
+                      >
+                        <p className="w-full text-[16px] text-[#5D5C55] md:text-[18px] lg:text-[20px]">
+                          {wish.wish}
+                        </p>
+                        <p className="mt-2 text-[14px] italic text-[#5D5C55] md:text-[16px] lg:text-[18px]">
+                          – {wish.name}
+                        </p>
+                      </div>
+                    ))
+                  : null}
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>
