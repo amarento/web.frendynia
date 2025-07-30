@@ -4,6 +4,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import AutoHeight from 'embla-carousel-auto-height';
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import { motion } from 'framer-motion';
@@ -42,25 +43,22 @@ export default function Wish({ guestName, guestId }: IWishProps) {
 
   // Progress bar state
   const [progress, setProgress] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
 
-  // Embla Carousel setup with autoplay
+  // Embla Carousel setup with autoplay and auto height
   const autoplayPlugin = Autoplay({ delay: 4000, stopOnInteraction: false });
+  const autoHeightPlugin = AutoHeight();
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
       align: 'center',
       skipSnaps: false,
     },
-    [autoplayPlugin]
+    [autoplayPlugin, autoHeightPlugin]
   );
 
   // Progress bar effect
   useEffect(() => {
     if (!emblaApi) {
-      return;
-    }
-    if (!isPlaying) {
       return;
     }
 
@@ -90,7 +88,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
       clearInterval(interval);
       emblaApi.off('select', onSlideChange);
     };
-  }, [emblaApi, isPlaying]);
+  }, [emblaApi]);
 
   const {
     register,
@@ -165,14 +163,16 @@ export default function Wish({ guestName, guestId }: IWishProps) {
             <div className="absolute right-0 top-0 bottom-0 lg:w-80 w-8 bg-gradient-to-l from-[#F8F8F7] to-transparent z-10 pointer-events-none" />
 
             {/* Embla Carousel */}
-            <div className="embla overflow-hidden px-4" ref={emblaRef}>
+            <div
+              className="embla embla--auto-height overflow-hidden px-4"
+              ref={emblaRef}
+            >
               <div className="embla__container flex gap-x-[13px]">
                 {wishes && wishes.length > 0
                   ? [...wishes].reverse().map((wish, index) => (
                       <div
-                        className="embla__slide flex w-[90vw] flex-col items-center justify-center rounded-xl border border-solid border-[#B29234] bg-[#FAFAFA] p-6 text-center shadow md:w-[95vw] md:p-8 lg:w-[80vw] lg:p-10 xl:w-[58vw]"
+                        className="embla__slide flex w-[90vw] flex-col items-center justify-center rounded-xl border border-solid border-[#B29234] bg-[#FAFAFA] p-6 text-center shadow md:w-[95vw] md:p-8 lg:w-[40vw] lg:p-10"
                         key={index.toString()}
-                        style={{ flex: '0 0 auto' }}
                       >
                         <p className="w-full text-[16px] text-[#5D5C55] md:text-[18px] lg:text-[20px]">
                           {wish.wish}

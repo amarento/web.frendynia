@@ -328,4 +328,24 @@ body {
   .fade-in {
     animation: fadeIn 1.5s ease-in-out forwards;
   }
+
+  /* Embla Carousel Auto Height Styles */
+  .embla {
+    overflow: hidden;
+  }
+  
+  .embla__container {
+    backface-visibility: hidden;
+    display: flex;
+    touch-action: pan-y pinch-zoom;
+  }
+  
+  .embla__slide {
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+  
+  .embla--auto-height .embla__container {
+    align-items: flex-start;
+  }
 }
