@@ -27,9 +27,13 @@ export const createTable = pgTableCreator((name) => `${name}`);
 export const rsvpStatus = pgEnum('rsvp_status', [
   'DRAFT',
   'SENT',
+  'DELIVERED',
+  'READ',
+  'FAILED',
   'ATTENDING',
   'DECLINED',
   'CHECKED_IN',
+  'ANSWERING',
 ]);
 
 export const eventType = pgEnum('event_type', ['personal', 'organization']);
@@ -44,6 +48,28 @@ export const eventCategory = pgEnum('event_category', [
   'conference',
   'other',
 ]);
+
+export const messageType = pgEnum('message_type', [
+  'initial',
+  'reminder',
+  'follow_up',
+  'notification',
+]);
+
+export const messageStatus = pgEnum('message_status', [
+  'SENT',
+  'DELIVERED',
+  'READ',
+  'FAILED',
+]);
+
+export const angpaoRecipient = pgEnum('angpao_recipient', [
+  'bride',
+  'groom',
+  'both',
+]);
+
+export const angpaoType = pgEnum('angpao_type', ['digital', 'physical']);
 
 // TABLES
 export const clients = createTable('clients', {
@@ -74,6 +100,7 @@ export const events = createTable('events', {
   time: time('time').notNull(),
 
   // rsvp fields
+  eventCode: varchar('event_code', { length: 256 }).notNull(),
   rsvpServer: varchar('rsvp_server', { length: 256 }),
   imageId: varchar('image_id', { length: 256 }),
 
@@ -106,6 +133,7 @@ export const eventRelations = relations(events, ({ one, many }) => ({
   }),
   eventsToGuests: many(eventsToGuests),
   tasks: many(tasks),
+  angpaos: many(angpaos),
   relatedEvent: one(events, {
     fields: [events.relatedEventId],
     references: [events.id],
@@ -153,6 +181,8 @@ export const guests = createTable('guests', {
 
 export const guestsRelations = relations(guests, ({ many }) => ({
   eventsToGuests: many(eventsToGuests),
+  broughtAngpaos: many(angpaos, { relationName: 'BringerGuest' }),
+  fromAngpaos: many(angpaos, { relationName: 'FromGuest' }),
 }));
 
 export const eventsToGuests = createTable('events_to_guests', {
@@ -167,13 +197,12 @@ export const eventsToGuests = createTable('events_to_guests', {
   side: varchar('side', { length: 256 }), // Groom or Bride
   nRsvp: integer('n_rsvp').notNull(),
   nRsvpWa: integer('n_rsvp_wa'),
+  nameList: text('name_list'), // List of names for the guest
   respondedAt: timestamp('responded_at', { withTimezone: true }),
   wish: text('wish'),
   nAttendees: integer('n_attendees'),
   tableName: varchar('table_name', { length: 256 }),
-  angpao: boolean('angpao').default(false),
   souvenir: boolean('souvenir').default(false),
-  entrustedGiftFrom: varchar('entrusted_gift_from', { length: 256 }),
   createdAt: timestamp('created_at', { withTimezone: true })
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
@@ -182,14 +211,86 @@ export const eventsToGuests = createTable('events_to_guests', {
   ),
 });
 
-export const eventsToGuestsRelations = relations(eventsToGuests, ({ one }) => ({
-  event: one(events, {
-    fields: [eventsToGuests.eventId],
-    references: [events.id],
+export const eventsToGuestsRelations = relations(
+  eventsToGuests,
+  ({ one, many }) => ({
+    event: one(events, {
+      fields: [eventsToGuests.eventId],
+      references: [events.id],
+    }),
+    guest: one(guests, {
+      fields: [eventsToGuests.guestId],
+      references: [guests.id],
+    }),
+    rsvpMessages: many(rsvpMessages),
+  })
+);
+
+export const rsvpMessages = createTable('rsvp_messages', {
+  id: serial('id').primaryKey(),
+  eventToGuestId: integer('event_to_guest_id')
+    .references(() => eventsToGuests.id, { onDelete: 'cascade' })
+    .notNull(),
+  messageType: messageType('message_type').notNull().default('initial'),
+  sentAt: timestamp('sent_at', { withTimezone: true }).notNull(),
+  wamid: varchar('wamid', { length: 256 }).notNull(), // WhatsApp message ID
+  messageStatus: messageStatus('message_status').notNull().default('SENT'),
+  deliveredAt: timestamp('delivered_at', { withTimezone: true }),
+  readAt: timestamp('read_at', { withTimezone: true }),
+  failureReason: text('failure_reason'),
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).$onUpdate(
+    () => new Date()
+  ),
+});
+
+export const rsvpMessagesRelations = relations(rsvpMessages, ({ one }) => ({
+  eventToGuest: one(eventsToGuests, {
+    fields: [rsvpMessages.eventToGuestId],
+    references: [eventsToGuests.id],
   }),
-  guest: one(guests, {
-    fields: [eventsToGuests.guestId],
+}));
+
+export const angpaos = createTable('angpaos', {
+  id: serial('id').primaryKey(),
+  bringerGuestId: integer('bringer_guest_id')
+    .references(() => guests.id, { onDelete: 'cascade' })
+    .notNull(),
+  fromGuestId: integer('from_guest_id')
+    .references(() => guests.id, { onDelete: 'cascade' })
+    .notNull(),
+  eventId: integer('event_id')
+    .references(() => events.id, { onDelete: 'cascade' })
+    .notNull(),
+  recipient: angpaoRecipient('recipient').notNull().default('both'), // Who receives the angpao: bride, groom, or both
+  type: angpaoType('type').notNull().default('physical'), // Type of angpao: digital or physical
+  isReceived: boolean('is_received').default(false).notNull(),
+  amount: varchar('amount', { length: 100 }), // Optional: to track angpao amount
+  notes: text('notes'), // Optional: additional notes about the angpao
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).$onUpdate(
+    () => new Date()
+  ),
+});
+
+export const angpaosRelations = relations(angpaos, ({ one }) => ({
+  bringerGuest: one(guests, {
+    fields: [angpaos.bringerGuestId],
     references: [guests.id],
+    relationName: 'BringerGuest',
+  }),
+  fromGuest: one(guests, {
+    fields: [angpaos.fromGuestId],
+    references: [guests.id],
+    relationName: 'FromGuest',
+  }),
+  event: one(events, {
+    fields: [angpaos.eventId],
+    references: [events.id],
   }),
 }));
 
