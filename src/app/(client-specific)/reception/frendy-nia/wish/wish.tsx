@@ -166,7 +166,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
 
             {/* Embla Carousel */}
             <div className="embla overflow-hidden px-4" ref={emblaRef}>
-              <div className="embla__container flex gap-x-4">
+              <div className="embla__container flex gap-x-[13px]">
                 {wishes && wishes.length > 0
                   ? [...wishes].reverse().map((wish, index) => (
                       <div
