@@ -159,10 +159,10 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           {/* Carousel Container with Gradients */}
           <div className="relative">
             {/* Left Gradient Overlay */}
-            <div className="absolute left-0 top-0 bottom-0 w-80 bg-gradient-to-r from-[#F8F8F7] to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 lg:w-80 w-8 bg-gradient-to-r from-[#F8F8F7] to-transparent z-10 pointer-events-none" />
 
             {/* Right Gradient Overlay */}
-            <div className="absolute right-0 top-0 bottom-0 w-80 bg-gradient-to-l from-[#F8F8F7] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 lg:w-80 w-8 bg-gradient-to-l from-[#F8F8F7] to-transparent z-10 pointer-events-none" />
 
             {/* Embla Carousel */}
             <div className="embla overflow-hidden px-4" ref={emblaRef}>
