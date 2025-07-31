@@ -20,12 +20,12 @@ export default function Bibleverse() {
   };
 
   return (
-    <div className="bg-[#EFEEEB] pt-6 text-center font-lastik text-[#43423D] md:pt-8 lg:pt-10 xl:pt-12">
+    <div className="bg-[#F4EFE9] pt-8 text-center font-bodoni tracking-tight text-[#30302E] md:pt-8 lg:pt-10 xl:pt-12">
       <motion.div
         custom={0}
         initial="hidden"
         variants={fadeIn}
-        viewport={{ once: true, margin: '-100px' }}
+        viewport={{ once: true, margin: "-100px" }}
         whileInView="visible"
       >
         <Image
@@ -36,15 +36,14 @@ export default function Bibleverse() {
       </motion.div>
 
       <motion.p
-        className="mx-auto mb-2 w-[90%] text-[14px] italic md:mb-3 md:text-[16px] xl:text-[20px]"
+        className="mx-auto mb-1 w-[90%] text-[16px] italic md:mb-3 md:text-[16px] xl:text-[20px]"
         custom={1}
         initial="hidden"
         variants={fadeIn}
-        viewport={{ once: true, margin: '-100px' }}
+        viewport={{ once: true, margin: "-100px" }}
         whileInView="visible"
       >
-        ““ So they are no longer two, but one flesh. Therefore what God has
-        joined together, let no one separate. ””
+        “ We love because he first loved us. ”
       </motion.p>
 
       <motion.p
@@ -52,10 +51,10 @@ export default function Bibleverse() {
         custom={2}
         initial="hidden"
         variants={fadeIn}
-        viewport={{ once: true, margin: '-100px' }}
+        viewport={{ once: true, margin: "-100px" }}
         whileInView="visible"
       >
-        Matthew 19:6
+        1 John 4:19
       </motion.p>
     </div>
   );

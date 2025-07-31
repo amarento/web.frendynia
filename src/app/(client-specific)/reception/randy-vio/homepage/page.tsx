@@ -11,8 +11,8 @@ import Countdown from "react-countdown";
 import { IoCloseSharp } from "react-icons/io5";
 import { MdOutlineMusicNote, MdOutlineMusicOff } from "react-icons/md";
 import { Button } from "~/components/ui/button";
-import backgroundImage from "../_images/2.png";
-import backgroundImageMobile from "../_images/2.png";
+import backgroundImage from "../_images/1.png";
+import backgroundImageMobile from "../_images/1.png";
 import overlayImage from "../_images/2.png";
 
 const music = "/music.mp3";
@@ -34,7 +34,7 @@ function useMediaQuery(query: string) {
 }
 
 export default function Homepage() {
-  const targetDate = new Date("2025-08-09T04:00:00Z").getTime();
+  const targetDate = new Date("2025-09-19T04:00:00Z").getTime();
 
   // fadeIn variant with custom delay
   const fadeIn = {
@@ -114,8 +114,8 @@ export default function Homepage() {
     seconds: number;
   }) => (
     <motion.div
-      className="flex justify-center gap-4 text-xl text-[#E0E0E0] drop-shadow-2xl"
-      custom={4}
+      className="flex justify-center gap-4 text-xl text-[#F0F0F0] drop-shadow-2xl"
+      custom={5}
       initial="hidden"
       variants={fadeIn}
       viewport={{ once: true, margin: "-100px" }}
@@ -141,7 +141,7 @@ export default function Homepage() {
   const imageSrc = isMobile ? backgroundImageMobile : backgroundImage;
 
   return (
-    <div className="relative min-h-screen overflow-hidden text-center font-lastik">
+    <div className="relative min-h-screen overflow-hidden text-center font-bodoni text-[#F0F0F0]">
       <div className="relative flex min-h-screen flex-col items-center">
         <Image
           src={imageSrc}
@@ -149,7 +149,6 @@ export default function Homepage() {
           fill
           priority
           quality={100}
-
           className="inset-0 z-0"
           style={{
             objectFit: "cover",
@@ -157,47 +156,59 @@ export default function Homepage() {
           }}
         />
         <motion.h4
-          className="mt-20 font-cormorant text-[25px] font-semibold text-[#E0E0E0] drop-shadow-2xl lg:-mb-1 lg:text-[31px]"
+          className="mb-1 mt-20 text-[20px] drop-shadow-2xl lg:-mb-1 lg:text-[25px]"
           custom={0}
           initial="hidden"
           variants={fadeIn}
           viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
         >
-          THE WEDDING
+          The Wedding of
         </motion.h4>
 
-        <motion.h6
-          className="-mb-4 font-beau text-[25px] text-[#E0E0E0] drop-shadow-2xl lg:-mb-6 lg:text-[31px]"
+        <motion.h1
+          className="mb-1 font-snell text-[39px] font-medium drop-shadow-2xl lg:text-[76px]"
           custom={1}
           initial="hidden"
           variants={fadeIn}
           viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
         >
-          of
-        </motion.h6>
+          Aaron Randy Kuncoro
+        </motion.h1>
 
-        <motion.h1
-          className="mb-2 font-cormorant text-[61px] font-medium text-[#E0E0E0] drop-shadow-2xl lg:text-[76px]"
+        <motion.h5
+          className="mb-1 text-[20px] font-medium drop-shadow-2xl lg:text-[76px]"
           custom={2}
           initial="hidden"
           variants={fadeIn}
           viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
         >
-          Frendy <span className="italic">&</span> Nia
-        </motion.h1>
+          and
+        </motion.h5>
 
-        <motion.h5
-          className="mb-3 text-[20px] text-[#E0E0E0] drop-shadow-2xl"
+        <motion.h1
+          className="mb-3 font-snell text-[39px] font-medium drop-shadow-2xl lg:text-[76px]"
           custom={3}
           initial="hidden"
           variants={fadeIn}
           viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
         >
-          09 AUGUST 2025
+          Vionita Hartanto
+        </motion.h1>
+
+        <motion.h5
+          className="mb-3 text-[18px] drop-shadow-2xl"
+          custom={4}
+          initial="hidden"
+          variants={fadeIn}
+          viewport={{ once: true, margin: "-100px" }}
+          whileInView="visible"
+        >
+          <span className="text-[20px] italic">Friday</span>, 19th of September
+          2025
         </motion.h5>
 
         {mounted && <Countdown date={targetDate} renderer={renderer} />}
@@ -209,7 +220,7 @@ export default function Homepage() {
             onClick={handleEnter}
           >
             <div
-              className="xl:pt-18 relative flex w-[80%] flex-col items-center rounded-2xl bg-white px-4 pb-8 pt-12 shadow-2xl sm:w-[70%] md:w-[55%] md:px-5 md:pt-14 lg:w-[40%] lg:px-6 lg:pt-16 xl:w-[30%] xl:px-8"
+              className="xl:pt-18 relative flex w-[85%] flex-col items-center rounded-2xl bg-white px-4 pb-8 pt-12 shadow-2xl sm:w-[70%] md:w-[55%] md:px-5 md:pt-14 lg:w-[40%] lg:px-6 lg:pt-16 xl:w-[30%] xl:px-8"
               onClick={(e) => e.stopPropagation()}
             >
               {/* X Button at top right inside the pop-up */}
@@ -223,8 +234,8 @@ export default function Homepage() {
               >
                 <IoCloseSharp className="h-8 w-8 md:h-10 md:w-10 lg:h-12 lg:w-12 xl:h-16 xl:w-16" />
               </Button>
-              <h2 className="mb-6 font-cormorant text-[25px] font-bold text-[#43423D]">
-                WEDDING INVITATION
+              <h2 className="mb-6 font-bodoni text-[25px] text-[#43423D]">
+                Wedding Invitation
               </h2>
               <Image
                 alt="Bride and Groom"
@@ -233,16 +244,22 @@ export default function Homepage() {
                 priority
                 src={overlayImage}
                 sizes="(max-width: 640px) 55vw, (max-width: 768px) 50vw, (max-width: 1024px) 45vw, 40vw"
-                style={{ height: 'auto' }}
+                style={{ height: "auto" }}
                 width={600}
                 quality={90}
               />
-              <p className="mb-4 w-4/5 text-[14px] text-gray-700 md:text-[16px]">
+              <p className="mb-4 w-4/5 font-bodoni tracking-tight text-[14px] text-[#30302E] md:text-[16px]">
                 By the grace of God, we cordially invite you to witness the
                 marriage of
               </p>
-              <h2 className="mb-6 font-queensila text-[20px] font-semibold tracking-[0.08em] text-[#B29234] md:text-[25px]">
-                FRENDY <span className="font-cormorant italic">&</span> NIA
+              <h2 className="font-snell mb-2 text-[25px] text-[#30302E] md:text-[25px]">
+                Aaron Randy Kuncoro
+              </h2>
+              <p className="font-bodoni mb-2 text-[16px] text-[#30302E] md:text-[25px]">
+                and
+              </p>
+              <h2 className="mb-6 font-snell text-[25px] text-[#30302E] md:text-[25px]">
+                Vionita Hartanto
               </h2>
               <Button
                 className="rounded-lg bg-[#AAA9A1] px-7 py-3 text-[14px] shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:px-8 md:text-[16px] lg:px-9 lg:py-4"
@@ -258,7 +275,7 @@ export default function Homepage() {
         <audio loop preload="auto" ref={audioRef} src={music} />
         <button
           aria-label={isPlaying ? "Mute music" : "Play music"}
-          className="fixed bottom-6 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-[#333333] text-white shadow-lg transition hover:bg-[#444] focus:outline-none"
+          className="fixed bottom-6 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-[#333333] shadow-lg transition hover:bg-[#444] focus:outline-none"
           onClick={toggleMusic}
           type="button"
         >

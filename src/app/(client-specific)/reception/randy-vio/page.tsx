@@ -7,12 +7,11 @@ import { getGuestNameByIdAction } from '~/server/actions';
 import Bibleverse from './bibleverse/page';
 import Brideandgroom from './brideandgroom/page';
 import Gift from './gift/page';
-import Holymatrimony from './holymatrimony/page';
 import Homepage from './homepage/page';
 import Photoalbumone from './photoalbumone/page';
 import Photoalbumotwo from './photoalbumtwo/page';
 import Thewedding from './thewedding/page';
-import Wish from './wish/wish';
+import Wish from './wish/page';
 import Footer from './footer/page';
 
 export default function Page() {
@@ -43,7 +42,6 @@ function PageContent() {
       <Photoalbumone />
       <Thewedding />
       <Photoalbumotwo />
-      <Holymatrimony />
       <Gift />
       <Wish guestId={guestId} guestName={guestName} />
       <Footer />

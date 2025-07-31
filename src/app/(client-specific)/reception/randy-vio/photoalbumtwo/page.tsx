@@ -3,9 +3,9 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-import image10 from '../_images/2.png';
-import image11 from '../_images/2.png';
-import image12 from '../_images/2.png';
+import image4 from '../_images/4.png';
+import image5 from '../_images/5.png';
+import image6 from '../_images/6.png';
 import image7 from '../_images/7.png';
 import image8 from '../_images/8.png';
 import image9 from '../_images/9.png';
@@ -38,10 +38,10 @@ export default function Photoalbumtwo() {
           whileInView="visible"
         >
           <Image
-            alt="Image 7"
+            alt="Image 4"
             className="h-auto w-[90%] md:w-[85%] "
             height={400}
-            src={image7}
+            src={image4}
             width={600}
           />
         </motion.div>
@@ -54,10 +54,10 @@ export default function Photoalbumtwo() {
           whileInView="visible"
         >
           <Image
-            alt="Image 8"
+            alt="Image 5"
             className="h-auto w-[90%] md:w-[85%]"
             height={400}
-            src={image8}
+            src={image5}
             width={600}
           />
         </motion.div>
@@ -73,10 +73,10 @@ export default function Photoalbumtwo() {
           whileInView="visible"
         >
           <Image
-            alt="Image 9"
+            alt="Image 6"
             className="h-auto w-[90%] md:w-[85%] "
             height={400}
-            src={image9}
+            src={image6}
             width={600}
           />
         </motion.div>
@@ -89,10 +89,10 @@ export default function Photoalbumtwo() {
           whileInView="visible"
         >
           <Image
-            alt="Image 10"
+            alt="Image 7"
             className="h-auto w-[90%] md:w-[85%] "
             height={400}
-            src={image10}
+            src={image7}
             width={600}
           />
         </motion.div>
@@ -108,10 +108,10 @@ export default function Photoalbumtwo() {
           whileInView="visible"
         >
           <Image
-            alt="Image 11"
+            alt="Image 8"
             className="h-auto w-[90%] md:w-[85%] "
             height={400}
-            src={image11}
+            src={image8}
             width={600}
           />
         </motion.div>
@@ -124,10 +124,10 @@ export default function Photoalbumtwo() {
           whileInView="visible"
         >
           <Image
-            alt="Image 12"
+            alt="Image 9"
             className="h-auto w-[90%] md:w-[85%] "
             height={400}
-            src={image12}
+            src={image9}
             width={600}
           />
         </motion.div>

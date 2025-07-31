@@ -73,7 +73,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
   };
 
   return (
-    <div className="text-center font-lastik text-[#43423D]">
+    <div className="text-center font-bodoni text-[#43423D]">
       <div className="bg-[#F8F8F7] pb-16 pt-10 md:pb-20 md:pt-12 lg:pt-16">
         <motion.div
           className=""
@@ -83,9 +83,9 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
         >
-          <h1 className="text-[31px] md:text-[39px]">Well Wishes</h1>
-          <h3 className="mb-10 font-retrofans text-[16px] text-[#5D5C55] md:mb-12 md:text-[20px] lg:mb-14">
-            for groom & bride
+          <h1 className="font-snell text-[39px] md:text-[49px]">Well Wishes</h1>
+          <h3 className="mb-10 font-medium -mt-1 text-[16px] md:mb-12 md:text-[20px] lg:mb-14">
+            For Groom & Bride
           </h3>
           <div
             className="scrollbar-hide flex gap-x-4 overflow-x-auto px-4"
@@ -122,9 +122,9 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
         >
-          <h1 className="text-[31px] md:text-[39px]">Send Wish</h1>
-          <h3 className="mb-10 font-retrofans text-[16px] text-[#5D5C55] md:mb-12 md:text-[20px] lg:mb-16">
-            for groom & bride
+          <h1 className="font-snell text-[39px] md:text-[39px]">Send Wish</h1>
+          <h3 className="mb-10 -mt-1 text-[16px] font-medium md:mb-12 md:text-[20px] lg:mb-16">
+            For Groom & Bride
           </h3>
         </motion.div>
         <form onSubmit={handleSubmit(onSubmit)}>

@@ -38,7 +38,7 @@ const bellefair = Bellefair({
 
 const bodoni = Bodoni_Moda({
   variable: "--font-bodoni",
-  weight: "400",
+  weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
 });
 
