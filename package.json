@@ -73,6 +73,7 @@
     "react-thermal-printer": "^0.18.1",
     "react-to-print": "^3.0.2",
     "secret-santa-generator": "^0.1.22",
+    "sharp": "^0.34.3",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
