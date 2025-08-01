@@ -12,7 +12,7 @@ import Holymatrimony from "../../reception/frendy-nia/holymatrimony/page";
 import Homepage from "../../reception/frendy-nia/homepage/page";
 import Photoalbumtwo from "../../reception/frendy-nia/photoalbumtwo/page";
 import Thewedding from "../../reception/frendy-nia/thewedding/page";
-import Wish from "../../reception/frendy-nia/wish/page";
+import Wish from "../../reception/frendy-nia/wish/wish";
 import Footer from "../../reception/frendy-nia/footer/page";
 
 export default function Page() {

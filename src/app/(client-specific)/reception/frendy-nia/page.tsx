@@ -12,7 +12,7 @@ import Homepage from "./homepage/page";
 import Photoalbumone from "./photoalbumone/page";
 import Photoalbumotwo from "./photoalbumtwo/page";
 import Thewedding from "./thewedding/page";
-import Wish from "./wish/page";
+import Wish from "./wish/wish";
 import Footer from "./footer/page";
 
 export default function Page() {
