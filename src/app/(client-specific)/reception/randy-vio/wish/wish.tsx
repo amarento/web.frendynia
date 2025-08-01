@@ -148,7 +148,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           {wishes && wishes.length > 1 && (
             <div className="mx-auto mb-6 h-1 w-32 overflow-hidden rounded-full bg-gray-200">
               <div
-                className="h-full bg-gray-400 transition-all duration-100 ease-linear"
+                className="h-full bg-[#777777] transition-all duration-100 ease-linear"
                 style={{ width: `${progress}%` }}
               />
             </div>
