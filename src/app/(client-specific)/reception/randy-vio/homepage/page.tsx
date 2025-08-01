@@ -15,7 +15,7 @@ import backgroundImage from "../_images/1.png";
 import backgroundImageMobile from "../_images/1mobile.png";
 import overlayImage from "../_images/2.png";
 
-// const music = "/music.mp3";
+const music = "/music-randy-vio.mp3";
 
 function useMediaQuery(query: string) {
   const [matches, setMatches] = useState(false);
@@ -34,7 +34,7 @@ function useMediaQuery(query: string) {
 }
 
 export default function Homepage() {
-  const targetDate = new Date("2025-09-19T04:00:00Z").getTime();
+  const targetDate = new Date("2025-09-19T06:30:00Z").getTime();
 
   // fadeIn variant with custom delay
   const fadeIn = {
@@ -114,7 +114,7 @@ export default function Homepage() {
     seconds: number;
   }) => (
     <motion.div
-      className="flex justify-center gap-4 text-[#F0F0F0] drop-shadow-2xl"
+      className="flex justify-center gap-4 lg:-mb-2 text-[#F0F0F0] drop-shadow-2xl"
       custom={6}
       initial="hidden"
       variants={fadeIn}
@@ -167,7 +167,7 @@ export default function Homepage() {
         </motion.h4>
 
         <motion.h1
-          className="mb-1 font-snell text-[39px] font-medium drop-shadow-2xl lg:text-[76px]"
+          className="mb-1 font-snell text-[39px] font-medium drop-shadow-2xl lg:text-[49px]"
           custom={1}
           initial="hidden"
           variants={fadeIn}
@@ -178,7 +178,7 @@ export default function Homepage() {
         </motion.h1>
 
         <motion.h5
-          className="mb-1 text-[20px] font-medium italic drop-shadow-2xl lg:text-[31px]"
+          className="mb-1 text-[20px] font-medium italic drop-shadow-2xl lg:-mt-1 lg:text-[25px]"
           custom={2}
           initial="hidden"
           variants={fadeIn}
@@ -189,7 +189,7 @@ export default function Homepage() {
         </motion.h5>
 
         <motion.h1
-          className="mb-3 font-snell text-[39px] font-medium drop-shadow-2xl lg:text-[76px]"
+          className="mb-1 font-snell text-[39px] font-medium drop-shadow-2xl lg:-mt-1 lg:text-[49px]"
           custom={3}
           initial="hidden"
           variants={fadeIn}
@@ -263,17 +263,17 @@ export default function Homepage() {
                 By the grace of God, we cordially invite you to witness the
                 marriage of
               </p>
-              <h2 className="mb-2 font-snell text-[25px] text-[#43423D] md:text-[25px]">
+              <h2 className="mb-2 font-snell text-[25px] text-[#43423D] md:text-[25px] lg:text-[31px]">
                 Aaron Randy Kuncoro
               </h2>
-              <p className="mb-2 font-bodoni text-[16px] italic text-[#43423D] md:text-[25px]">
+              <p className="mb-2 font-bodoni text-[16px] italic text-[#43423D] lg:text-[18px]">
                 and
               </p>
-              <h2 className="mb-6 font-snell text-[25px] text-[#43423D] md:text-[25px]">
+              <h2 className="mb-6 font-snell text-[25px] text-[#43423D] md:text-[25px] lg:text-[31px]">
                 Vionita Hartanto
               </h2>
               <Button
-                className="rounded-lg bg-[#AAA9A1] px-7 py-3 text-[14px] shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:px-8 md:text-[16px] lg:px-9 lg:py-4"
+                className="rounded-lg bg-[#AAA9A1] px-7 py-3 text-[14px] shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892]"
                 onClick={handleEnter}
               >
                 Open Invitation
@@ -283,7 +283,7 @@ export default function Homepage() {
         )}
 
         {/* Music player button */}
-        {/* <audio loop preload="auto" ref={audioRef} src={music} /> */}
+        <audio loop preload="auto" ref={audioRef} src={music} />
         <button
           aria-label={isPlaying ? "Mute music" : "Play music"}
           className="fixed bottom-6 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-[#333333] shadow-lg transition hover:bg-[#444] focus:outline-none"

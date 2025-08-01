@@ -36,7 +36,7 @@ export default function Bibleverse() {
       </motion.div>
 
       <motion.p
-        className="mx-auto mb-1 w-[90%] text-[16px] italic md:mb-3 md:text-[16px] xl:text-[20px]"
+        className="mx-auto mb-1 w-[90%] text-[16px] italic md:text-[18px] xl:text-[20px]"
         custom={1}
         initial="hidden"
         variants={fadeIn}

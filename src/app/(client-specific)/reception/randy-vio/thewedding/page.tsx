@@ -65,7 +65,7 @@ export default function Thewedding() {
         />
       </motion.div>
       <motion.h2
-        className="mb-4 font-bodoni text-[20px] leading-tight md:text-[31px] lg:text-[39px]"
+        className="mb-4 font-bodoni text-[20px] leading-tight md:mb-5 md:text-[25px] lg:text-[31px]"
         custom={2}
         initial="hidden"
         variants={fadeIn}
@@ -76,17 +76,17 @@ export default function Thewedding() {
         <div className="mt-1 text-[16px] italic">(Family Only)</div>
       </motion.h2>
       <motion.div
-        className="mb-4"
+        className="mb-4 md:mb-5"
         custom={3}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
         whileInView="visible"
       >
-        <p className="mb-2 text-[18px] font-semibold md:text-[16px] lg:text-[18px] xl:text-[20px]">
+        <p className="mb-2 text-[18px] font-semibold md:mb-3 md:text-[16px] lg:text-[18px] xl:text-[20px]">
           14.30 WITA
         </p>
-        <p className="text-[16px] font-semibold italic md:mb-5 md:text-[14px] lg:text-[16px] xl:text-[18px]">
+        <p className="text-[16px] font-semibold italic md:text-[14px] lg:text-[16px] xl:text-[18px]">
           Cendana Conference Room
         </p>
         <p className="text-[14px] font-normal">
@@ -102,7 +102,7 @@ export default function Thewedding() {
       >
         <Button
           className={
-            "mb-12 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20 lg:px-9 lg:py-4"
+            "mb-12 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20"
           }
           onClick={handleGoogleMapsHolmatClick}
         >
@@ -127,7 +127,7 @@ export default function Thewedding() {
         />
       </motion.div>
       <motion.h2
-        className="mb-4 font-bodoni text-[20px] leading-tight md:text-[31px] lg:text-[39px]"
+        className="mb-4 font-bodoni text-[20px] leading-tight md:mb-5 md:text-[25px] lg:text-[31px]"
         custom={6}
         initial="hidden"
         variants={fadeIn}
@@ -137,17 +137,17 @@ export default function Thewedding() {
         Holy Matrimony
       </motion.h2>
       <motion.div
-        className="mb-4"
+        className="mb-4 md:mb-5"
         custom={7}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
         whileInView="visible"
       >
-        <p className="mb-2 text-[18px] font-semibold md:text-[16px] lg:text-[18px] xl:text-[20px]">
+        <p className="mb-2 text-[18px] font-semibold md:mb-3 md:text-[16px] lg:text-[18px] xl:text-[20px]">
           16.00 WITA
         </p>
-        <p className="text-[16px] font-semibold italic md:mb-5 md:text-[14px] lg:text-[16px] xl:text-[18px]">
+        <p className="text-[16px] font-semibold italic md:text-[14px] lg:text-[16px] xl:text-[18px]">
           SKY Ampitheatre
         </p>
         <p className="text-[14px] font-normal">
@@ -163,7 +163,7 @@ export default function Thewedding() {
       >
         <Button
           className={
-            "mb-12 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20 lg:px-9 lg:py-4"
+            "mb-12 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20"
           }
           onClick={handleGoogleMapsHolmatClick}
         >
@@ -188,7 +188,7 @@ export default function Thewedding() {
         />
       </motion.div>
       <motion.h2
-        className="mb-4 font-bodoni text-[20px] leading-tight md:text-[31px] lg:text-[39px]"
+        className="mb-4 font-bodoni text-[20px] leading-tight md:mb-5 md:text-[25px] lg:text-[31px]"
         custom={10}
         initial="hidden"
         variants={fadeIn}
@@ -198,17 +198,17 @@ export default function Thewedding() {
         Cocktail Hour
       </motion.h2>
       <motion.div
-        className="mb-4"
+        className="mb-4 md:mb-5"
         custom={11}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
         whileInView="visible"
       >
-        <p className="mb-2 text-[18px] font-semibold md:text-[16px] lg:text-[18px] xl:text-[20px]">
+        <p className="mb-2 text-[18px] font-semibold md:mb-3 md:text-[16px] lg:text-[18px] xl:text-[20px]">
           17.30 WITA
         </p>
-        <p className="text-[16px] font-semibold italic md:mb-5 md:text-[14px] lg:text-[16px] xl:text-[18px]">
+        <p className="text-[16px] font-semibold italic md:text-[14px] lg:text-[16px] xl:text-[18px]">
           SKY Lawn
         </p>
         <p className="text-[14px] font-normal">
@@ -224,7 +224,7 @@ export default function Thewedding() {
       >
         <Button
           className={
-            "mb-12 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20 lg:px-9 lg:py-4"
+            "mb-12 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20"
           }
           onClick={handleGoogleMapsHolmatClick}
         >
@@ -249,7 +249,7 @@ export default function Thewedding() {
         />
       </motion.div>
       <motion.h2
-        className="mb-4 font-bodoni text-[20px] leading-tight md:text-[31px] lg:text-[39px]"
+        className="mb-4 font-bodoni text-[20px] leading-tight md:mb-5 md:text-[25px] lg:text-[31px]"
         custom={14}
         initial="hidden"
         variants={fadeIn}
@@ -259,17 +259,17 @@ export default function Thewedding() {
         Dinner Reception
       </motion.h2>
       <motion.div
-        className="mb-4"
+        className="mb-4 md:mb-5"
         custom={15}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
         whileInView="visible"
       >
-        <p className="mb-2 text-[18px] font-semibold md:text-[16px] lg:text-[18px] xl:text-[20px]">
+        <p className="mb-2 text-[18px] font-semibold md:mb-3 md:text-[16px] lg:text-[18px] xl:text-[20px]">
           18.00 WITA
         </p>
-        <p className="text-[16px] font-semibold italic md:mb-5 md:text-[14px] lg:text-[16px] xl:text-[18px]">
+        <p className="text-[16px] font-semibold italic md:text-[14px] lg:text-[16px] xl:text-[18px]">
           SKY Lawn
         </p>
         <p className="text-[14px] font-normal">
@@ -285,7 +285,7 @@ export default function Thewedding() {
       >
         <Button
           className={
-            "mb-12 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20 lg:px-9 lg:py-4"
+            "mb-12 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20"
           }
           onClick={handleGoogleMapsHolmatClick}
         >
@@ -310,7 +310,7 @@ export default function Thewedding() {
         />
       </motion.div>
       <motion.h2
-        className="mb-4 font-bodoni text-[20px] leading-tight md:text-[31px] lg:text-[39px]"
+        className="mb-4 font-bodoni text-[20px] leading-tight md:mb-5 md:text-[25px] lg:text-[31px]"
         custom={18}
         initial="hidden"
         variants={fadeIn}
@@ -320,17 +320,17 @@ export default function Thewedding() {
         After Party
       </motion.h2>
       <motion.div
-        className="mb-4"
+        className="mb-4 md:mb-5"
         custom={19}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
         whileInView="visible"
       >
-        <p className="mb-2 text-[18px] font-semibold md:text-[16px] lg:text-[18px] xl:text-[20px]">
+        <p className="mb-2 text-[18px] font-semibold md:mb-3 md:text-[16px] lg:text-[18px] xl:text-[20px]">
           21.30 WITA
         </p>
-        <p className="text-[16px] font-semibold italic md:mb-5 md:text-[14px] lg:text-[16px] xl:text-[18px]">
+        <p className="text-[16px] font-semibold italic md:text-[14px] lg:text-[16px] xl:text-[18px]">
           After Rock
         </p>
         <p className="text-[14px] font-normal">
@@ -346,7 +346,7 @@ export default function Thewedding() {
       >
         <Button
           className={
-            "mb-12 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20 lg:px-9 lg:py-4"
+            "mb-12 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20"
           }
           onClick={handleGoogleMapsHolmatClick}
         >

@@ -71,9 +71,9 @@ export default function Gift() {
           src={gift}
         />
       </motion.div>
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col justify-center md:flex md:flex-row">
         <motion.div
-          className="mx-auto mb-8"
+          className="mx-auto mb-8 md:mr-12"
           custom={1}
           initial="hidden"
           variants={fadeIn}
@@ -105,7 +105,7 @@ export default function Gift() {
           </Button>
         </motion.div>
         <motion.div
-          className="mx-auto"
+          className="mx-auto md:ml-12"
           custom={1}
           initial="hidden"
           variants={fadeIn}
