@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import gift from 'public/envelope.png';
-import type React from 'react';
-import { useState } from 'react';
-import { Button } from '~/components/ui/button';
+import { motion } from "framer-motion";
+import Image from "next/image";
+import gift from "public/envelope.png";
+import type React from "react";
+import { useState } from "react";
+import { Button } from "~/components/ui/button";
 
 export default function Gift() {
   const [copiedFrendy, setCopiedFrendy] = useState(false);
@@ -19,41 +19,41 @@ export default function Gift() {
       transition: {
         delay: i * 0.1,
         duration: 0.5,
-        ease: 'easeOut',
+        ease: "easeOut",
       },
     }),
   };
 
   function handleCopyFrendyAccount(
-    _event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    _event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ): void {
     void navigator.clipboard
-      .writeText('0390484828')
+      .writeText("0390484828")
       .then(() => {
         setCopiedFrendy(true);
         setTimeout(() => setCopiedFrendy(false), 1500);
       })
       .catch((err) => {
-        console.error('Failed to copy text: ', err);
+        console.error("Failed to copy text: ", err);
       });
   }
 
   function handleCopyNathaniaAccount(
-    _event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    _event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ): void {
     void navigator.clipboard
-      .writeText('0885670097')
+      .writeText("0885670097")
       .then(() => {
         setCopiedNathania(true);
         setTimeout(() => setCopiedNathania(false), 1500);
       })
       .catch((err) => {
-        console.error('Failed to copy text: ', err);
+        console.error("Failed to copy text: ", err);
       });
   }
 
   return (
-    <div className="bg-[#EFEEEB] pb-12 pt-16 text-center font-bodoni text-[#43423D] md:pb-16">
+    <div className="bg-[#FCFCF8] pb-12 pt-16 text-center font-bodoni text-[#43423D] md:pb-16">
       <motion.div
         custom={0}
         initial="hidden"
@@ -71,19 +71,19 @@ export default function Gift() {
           src={gift}
         />
       </motion.div>
-      <div className="flex flex-row justify-center">
+      <div className="flex flex-col justify-center">
         <motion.div
-          className="mx-auto ml-10 w-[45%] md:mr-6 md:w-[35%] lg:w-[30%]"
+          className="mx-auto mb-8"
           custom={1}
           initial="hidden"
           variants={fadeIn}
           viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
         >
-          <h5 className="text-[14px] font-semibold md:text-[18px] lg:text-[20px]">
+          <h5 className="text-[16px] font-medium md:text-[18px] lg:text-[20px]">
             Rek. BCA 6730355597
           </h5>
-          <h5 className="mb-2 text-[14px] font-medium md:mb-3 md:text-[18px] lg:text-[20px]">
+          <h5 className="mb-2 text-[14px] italic md:mb-3 md:text-[18px] lg:text-[20px]">
             a/n Aaron Randy Kuncoro
           </h5>
           <Button
@@ -105,17 +105,17 @@ export default function Gift() {
           </Button>
         </motion.div>
         <motion.div
-          className="mx-auto mr-10 w-[45%] md:ml-6 md:w-[35%] md:pb-0 lg:w-[30%]"
+          className="mx-auto"
           custom={1}
           initial="hidden"
           variants={fadeIn}
           viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
         >
-          <h5 className="text-[14px] font-semibold md:text-[18px] lg:text-[20px]">
+          <h5 className="text-[16px] font-medium md:text-[18px] lg:text-[20px]">
             Rek. BCA 7880770556
           </h5>
-          <h5 className="mb-2 text-[14px] font-medium md:mb-3 md:text-[18px] lg:text-[20px]">
+          <h5 className="mb-2 text-[14px] italic md:mb-3 md:text-[18px] lg:text-[20px]">
             a/n Vionita Hartanto
           </h5>
           <Button

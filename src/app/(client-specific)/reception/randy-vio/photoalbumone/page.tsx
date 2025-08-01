@@ -21,23 +21,23 @@ export default function Photoalbumone() {
   };
 
   return (
-    <div className="md:pt-18 flex flex-col justify-center gap-0 bg-[#F4EFE9] pt-12 md:pb-16 md:pt-10 lg:flex-row lg:pt-12 xl:pt-16">
-        <motion.div
-          className="mb-6 ml-2 flex justify-center md:mb-12 md:ml-8 lg:mb-0 lg:ml-0"
-          custom={2}
-          initial="hidden"
-          variants={fadeIn}
-          viewport={{ once: true, margin: "-100px" }}
-          whileInView="visible"
-        >
-          <Image
-            alt="Image 3"
-            className="h-auto w-[90%] md:w-[85%]"
-            height={400}
-            src={image3}
-            width={600}
-          />
-        </motion.div>
+    <div className="md:pt-18 flex flex-col justify-center gap-0 bg-[#FCFCF8] pt-12 md:pb-16 md:pt-10 lg:flex-row lg:pt-12 xl:pt-16">
+      <motion.div
+        className="mb-6 ml-2  flex justify-center md:mb-12 md:ml-8 lg:mb-0 lg:ml-0"
+        custom={2}
+        initial="hidden"
+        variants={fadeIn}
+        viewport={{ once: true, margin: "-100px" }}
+        whileInView="visible"
+      >
+        <Image
+          alt="Image 3"
+          className="h-auto w-[85%]"
+          height={400}
+          src={image3}
+          width={600}
+        />
+      </motion.div>
     </div>
   );
 }

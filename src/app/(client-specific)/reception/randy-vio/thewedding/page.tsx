@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { usePathname } from 'next/navigation';
-import castle from 'public/castle.png';
-import dining from 'public/dining.png';
-import { Button } from '~/components/ui/button';
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import castle from "public/castle.png";
+import dining from "public/dining.png";
+import { Button } from "~/components/ui/button";
 
 export default function Thewedding() {
   const path = usePathname();
@@ -19,25 +19,25 @@ export default function Thewedding() {
       transition: {
         delay: i * 0.1,
         duration: 0.5,
-        ease: 'easeOut',
+        ease: "easeOut",
       },
     }),
   };
 
   const handleGoogleMapsHolmatClick: () => void = () => {
     setTimeout(() => {
-      window.open('https://maps.app.goo.gl/YvGsbE2Tcsyrua5b8');
+      window.open("https://maps.app.goo.gl/YvGsbE2Tcsyrua5b8");
     }, 300);
   };
 
   const handleGoogleMapsReceptionClick = () => {
     setTimeout(() => {
-      window.open('https://maps.app.goo.gl/1TQ35AcUKo6VdoZ68');
+      window.open("https://maps.app.goo.gl/1TQ35AcUKo6VdoZ68");
     }, 300);
   };
 
   return (
-    <div className="bg-[#F4EFE9] pt-16 text-center font-bodoni tracking-tight text-[#30302E]">
+    <div className="bg-[#FCFCF8] pt-12 text-center font-bodoni tracking-tight text-[#43423D]">
       {/* Title */}
       <motion.h1
         className="mb-8 font-snell text-[31px] tracking-normal md:text-[39px]"
@@ -64,9 +64,8 @@ export default function Thewedding() {
           src={castle}
         />
       </motion.div>
-
       <motion.h2
-        className="mb-5 font-bodoni text-[25px] leading-tight md:text-[31px] lg:text-[39px]"
+        className="mb-4 font-bodoni text-[20px] leading-tight md:text-[31px] lg:text-[39px]"
         custom={2}
         initial="hidden"
         variants={fadeIn}
@@ -76,24 +75,24 @@ export default function Thewedding() {
         Tea Pai Ceremony
         <div className="mt-1 text-[16px] italic">(Family Only)</div>
       </motion.h2>
-      {/* Grouped paragraphs */}
       <motion.div
-        className="mb-5"
+        className="mb-4"
         custom={3}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
         whileInView="visible"
       >
-        <p className="mb-1 text-[18px] font-semibold md:text-[16px] lg:text-[18px] xl:text-[20px]">
-          14.00 WITA
+        <p className="mb-2 text-[18px] font-semibold md:text-[16px] lg:text-[18px] xl:text-[20px]">
+          14.30 WITA
         </p>
-        <p className="text-[14px] font-bold italic md:mb-5 md:text-[14px] lg:text-[16px] xl:text-[18px]">
-          Meeting Room{" "}
-          <span className="font-normal"> at AYANA Resort, Jimbaran, Bali </span>
+        <p className="text-[16px] font-semibold italic md:mb-5 md:text-[14px] lg:text-[16px] xl:text-[18px]">
+          Cendana Conference Room
+        </p>
+        <p className="text-[14px] font-normal">
+          at AYANA Resort, Jimbaran, Bali
         </p>
       </motion.div>
-      {/* Button */}
       <motion.div
         custom={4}
         initial="hidden"
@@ -115,7 +114,7 @@ export default function Thewedding() {
 
       {/* Holy Matrimony Section */}
       <motion.div
-        custom={1}
+        custom={5}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
@@ -128,8 +127,8 @@ export default function Thewedding() {
         />
       </motion.div>
       <motion.h2
-        className="mb-5 font-bodoni text-[25px] leading-tight md:text-[31px] lg:text-[39px]"
-        custom={2}
+        className="mb-4 font-bodoni text-[20px] leading-tight md:text-[31px] lg:text-[39px]"
+        custom={6}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
@@ -137,26 +136,26 @@ export default function Thewedding() {
       >
         Holy Matrimony
       </motion.h2>
-      {/* Grouped paragraphs */}
       <motion.div
-        className="mb-5"
-        custom={3}
+        className="mb-4"
+        custom={7}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
         whileInView="visible"
       >
-        <p className="mb-1 text-[18px] font-semibold md:text-[16px] lg:text-[18px] xl:text-[20px]">
-          15.30 WITA
+        <p className="mb-2 text-[18px] font-semibold md:text-[16px] lg:text-[18px] xl:text-[20px]">
+          16.00 WITA
         </p>
-        <p className="text-[14px] font-bold italic md:mb-5 md:text-[14px] lg:text-[16px] xl:text-[18px]">
-          SKY Ampitheatre{" "}
-          <span className="font-normal"> at AYANA Resort, Jimbaran, Bali </span>
+        <p className="text-[16px] font-semibold italic md:mb-5 md:text-[14px] lg:text-[16px] xl:text-[18px]">
+          SKY Ampitheatre
+        </p>
+        <p className="text-[14px] font-normal">
+          at AYANA Resort, Jimbaran, Bali
         </p>
       </motion.div>
-      {/* Button */}
       <motion.div
-        custom={4}
+        custom={8}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
@@ -176,7 +175,7 @@ export default function Thewedding() {
 
       {/* Cocktail Hour Section */}
       <motion.div
-        custom={1}
+        custom={9}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
@@ -189,8 +188,8 @@ export default function Thewedding() {
         />
       </motion.div>
       <motion.h2
-        className="mb-5 font-bodoni text-[25px] leading-tight md:text-[31px] lg:text-[39px]"
-        custom={2}
+        className="mb-4 font-bodoni text-[20px] leading-tight md:text-[31px] lg:text-[39px]"
+        custom={10}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
@@ -198,26 +197,26 @@ export default function Thewedding() {
       >
         Cocktail Hour
       </motion.h2>
-      {/* Grouped paragraphs */}
       <motion.div
-        className="mb-5"
-        custom={3}
+        className="mb-4"
+        custom={11}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
         whileInView="visible"
       >
-        <p className="mb-1 text-[18px] font-semibold md:text-[16px] lg:text-[18px] xl:text-[20px]">
+        <p className="mb-2 text-[18px] font-semibold md:text-[16px] lg:text-[18px] xl:text-[20px]">
           17.30 WITA
         </p>
-        <p className="text-[14px] font-bold italic md:mb-5 md:text-[14px] lg:text-[16px] xl:text-[18px]">
-          SKY Lawn{" "}
-          <span className="font-normal"> at AYANA Resort, Jimbaran, Bali </span>
+        <p className="text-[16px] font-semibold italic md:mb-5 md:text-[14px] lg:text-[16px] xl:text-[18px]">
+          SKY Lawn
+        </p>
+        <p className="text-[14px] font-normal">
+          at AYANA Resort, Jimbaran, Bali
         </p>
       </motion.div>
-      {/* Button */}
       <motion.div
-        custom={4}
+        custom={12}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
@@ -237,7 +236,7 @@ export default function Thewedding() {
 
       {/* Dinner Reception Section */}
       <motion.div
-        custom={1}
+        custom={13}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
@@ -250,8 +249,8 @@ export default function Thewedding() {
         />
       </motion.div>
       <motion.h2
-        className="mb-5 font-bodoni text-[25px] leading-tight md:text-[31px] lg:text-[39px]"
-        custom={2}
+        className="mb-4 font-bodoni text-[20px] leading-tight md:text-[31px] lg:text-[39px]"
+        custom={14}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
@@ -259,26 +258,26 @@ export default function Thewedding() {
       >
         Dinner Reception
       </motion.h2>
-      {/* Grouped paragraphs */}
       <motion.div
-        className="mb-5"
-        custom={3}
+        className="mb-4"
+        custom={15}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
         whileInView="visible"
       >
-        <p className="mb-1 text-[18px] font-semibold md:text-[16px] lg:text-[18px] xl:text-[20px]">
-          18.30 WITA
+        <p className="mb-2 text-[18px] font-semibold md:text-[16px] lg:text-[18px] xl:text-[20px]">
+          18.00 WITA
         </p>
-        <p className="text-[14px] font-bold italic md:mb-5 md:text-[14px] lg:text-[16px] xl:text-[18px]">
-          SKY Lawn{" "}
-          <span className="font-normal"> at AYANA Resort, Jimbaran, Bali </span>
+        <p className="text-[16px] font-semibold italic md:mb-5 md:text-[14px] lg:text-[16px] xl:text-[18px]">
+          SKY Lawn
+        </p>
+        <p className="text-[14px] font-normal">
+          at AYANA Resort, Jimbaran, Bali
         </p>
       </motion.div>
-      {/* Button */}
       <motion.div
-        custom={4}
+        custom={16}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
@@ -298,7 +297,7 @@ export default function Thewedding() {
 
       {/* After Party Section */}
       <motion.div
-        custom={1}
+        custom={17}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
@@ -311,8 +310,8 @@ export default function Thewedding() {
         />
       </motion.div>
       <motion.h2
-        className="mb-5 font-bodoni text-[25px] leading-tight md:text-[31px] lg:text-[39px]"
-        custom={2}
+        className="mb-4 font-bodoni text-[20px] leading-tight md:text-[31px] lg:text-[39px]"
+        custom={18}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
@@ -320,26 +319,26 @@ export default function Thewedding() {
       >
         After Party
       </motion.h2>
-      {/* Grouped paragraphs */}
       <motion.div
-        className="mb-5"
-        custom={3}
+        className="mb-4"
+        custom={19}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
         whileInView="visible"
       >
-        <p className="mb-1 text-[18px] font-semibold md:text-[16px] lg:text-[18px] xl:text-[20px]">
+        <p className="mb-2 text-[18px] font-semibold md:text-[16px] lg:text-[18px] xl:text-[20px]">
           21.30 WITA
         </p>
-        <p className="text-[14px] font-bold italic md:mb-5 md:text-[14px] lg:text-[16px] xl:text-[18px]">
-          After Rock{" "}
-          <span className="font-normal"> at AYANA Resort, Jimbaran, Bali </span>
+        <p className="text-[16px] font-semibold italic md:mb-5 md:text-[14px] lg:text-[16px] xl:text-[18px]">
+          After Rock
+        </p>
+        <p className="text-[14px] font-normal">
+          at AYANA Resort, Jimbaran, Bali
         </p>
       </motion.div>
-      {/* Button */}
       <motion.div
-        custom={4}
+        custom={20}
         initial="hidden"
         variants={fadeIn}
         viewport={{ once: true, margin: "-100px" }}
@@ -351,7 +350,7 @@ export default function Thewedding() {
           }
           onClick={handleGoogleMapsHolmatClick}
         >
-          <p className="text-[14px] text-white md:text-[14px] lg:text-[16px]">
+          <p className="text-[12px] text-white md:text-[14px] lg:text-[16px]">
             Open Maps
           </p>
         </Button>

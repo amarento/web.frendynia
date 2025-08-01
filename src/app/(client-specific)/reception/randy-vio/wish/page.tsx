@@ -74,7 +74,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
 
   return (
     <div className="text-center font-bodoni text-[#43423D]">
-      <div className="bg-[#F8F8F7] pb-16 pt-10 md:pb-20 md:pt-12 lg:pt-16">
+      <div className="bg-[#FAFAF8] pb-16 pt-10 md:pb-20 md:pt-12 lg:pt-16">
         <motion.div
           className=""
           custom={0}
@@ -84,7 +84,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           whileInView="visible"
         >
           <h1 className="font-snell text-[39px] md:text-[49px]">Well Wishes</h1>
-          <h3 className="mb-10 font-medium -mt-1 text-[16px] md:mb-12 md:text-[20px] lg:mb-14">
+          <h3 className="-mt-1 mb-10 text-[16px] font-medium md:mb-12 md:text-[20px] lg:mb-14">
             For Groom & Bride
           </h3>
           <div
@@ -114,7 +114,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           </div>
         </motion.div>
       </div>
-      <div className="bg-[#EFEEEB] pb-10 pt-16 md:pb-12">
+      <div className="bg-[#FCFCF8] pb-10 pt-16 md:pb-12">
         <motion.div
           custom={1}
           initial="hidden"
@@ -122,8 +122,8 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
         >
-          <h1 className="font-snell text-[39px] md:text-[39px]">Send Wish</h1>
-          <h3 className="mb-10 -mt-1 text-[16px] font-medium md:mb-12 md:text-[20px] lg:mb-16">
+          <h1 className="font-snell text-[39px] md:text-[49px]">Send Wish</h1>
+          <h3 className="-mt-1 mb-10 text-[16px] font-medium md:mb-12 md:text-[20px] lg:mb-16">
             For Groom & Bride
           </h3>
         </motion.div>

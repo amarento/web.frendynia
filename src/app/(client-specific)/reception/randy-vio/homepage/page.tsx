@@ -12,10 +12,10 @@ import { IoCloseSharp } from "react-icons/io5";
 import { MdOutlineMusicNote, MdOutlineMusicOff } from "react-icons/md";
 import { Button } from "~/components/ui/button";
 import backgroundImage from "../_images/1.png";
-import backgroundImageMobile from "../_images/1.png";
+import backgroundImageMobile from "../_images/1mobile.png";
 import overlayImage from "../_images/2.png";
 
-const music = "/music.mp3";
+// const music = "/music.mp3";
 
 function useMediaQuery(query: string) {
   const [matches, setMatches] = useState(false);
@@ -114,8 +114,8 @@ export default function Homepage() {
     seconds: number;
   }) => (
     <motion.div
-      className="flex justify-center gap-4 text-xl text-[#F0F0F0] drop-shadow-2xl"
-      custom={5}
+      className="flex justify-center gap-4 text-[#F0F0F0] drop-shadow-2xl"
+      custom={6}
       initial="hidden"
       variants={fadeIn}
       viewport={{ once: true, margin: "-100px" }}
@@ -128,8 +128,8 @@ export default function Homepage() {
         { label: "Seconds", value: seconds },
       ].map((item) => (
         <span className="flex flex-col items-center" key={item.label}>
-          <span className="text-[14px]">{item.label}</span>
-          <span className="flex h-[44px] w-[46px] items-center justify-center rounded-2xl bg-[#88888850] pt-1 text-[25px]">
+          <span className="text-[14px] mb-1">{item.label}</span>
+          <span className="flex h-[42px] w-[44px] items-center justify-center rounded-2xl bg-[#88888850] pt-1 text-[20px]">
             {String(item.value).padStart(2, "0")}
           </span>
         </span>
@@ -178,7 +178,7 @@ export default function Homepage() {
         </motion.h1>
 
         <motion.h5
-          className="mb-1 text-[20px] font-medium drop-shadow-2xl lg:text-[76px]"
+          className="mb-1 text-[20px] font-medium italic drop-shadow-2xl lg:text-[31px]"
           custom={2}
           initial="hidden"
           variants={fadeIn}
@@ -207,11 +207,22 @@ export default function Homepage() {
           viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
         >
-          <span className="text-[20px] italic">Friday</span>, 19th of September
-          2025
+          <span className="text-[20px] italic">Friday</span>, 19<sup>th</sup> of
+          September 2025
         </motion.h5>
 
         {mounted && <Countdown date={targetDate} renderer={renderer} />}
+
+        <motion.h5
+          className="mt-4 text-[16px] italic drop-shadow-2xl"
+          custom={5}
+          initial="hidden"
+          variants={fadeIn}
+          viewport={{ once: true, margin: "-100px" }}
+          whileInView="visible"
+        >
+          #VIORANtothealtar
+        </motion.h5>
 
         {/* Overlay for user interaction to enable autoplay */}
         {showOverlay && (
@@ -239,7 +250,7 @@ export default function Homepage() {
               </h2>
               <Image
                 alt="Bride and Groom"
-                className="mx-auto mb-6 h-full w-[55%] border-2 border-solid border-[#B29234] p-1 sm:w-[50%] md:w-[45%] lg:w-[40%]"
+                className="mx-auto mb-6 h-full w-[55%] border-2 border-solid border-[#30302E] p-1 sm:w-[50%] md:w-[45%] lg:w-[40%]"
                 loading="eager"
                 priority
                 src={overlayImage}
@@ -248,17 +259,17 @@ export default function Homepage() {
                 width={600}
                 quality={90}
               />
-              <p className="mb-4 w-4/5 font-bodoni tracking-tight text-[14px] text-[#30302E] md:text-[16px]">
+              <p className="mb-4 w-4/5 font-bodoni text-[14px] tracking-tight text-[#43423D] md:text-[16px]">
                 By the grace of God, we cordially invite you to witness the
                 marriage of
               </p>
-              <h2 className="font-snell mb-2 text-[25px] text-[#30302E] md:text-[25px]">
+              <h2 className="mb-2 font-snell text-[25px] text-[#43423D] md:text-[25px]">
                 Aaron Randy Kuncoro
               </h2>
-              <p className="font-bodoni mb-2 text-[16px] text-[#30302E] md:text-[25px]">
+              <p className="mb-2 font-bodoni text-[16px] italic text-[#43423D] md:text-[25px]">
                 and
               </p>
-              <h2 className="mb-6 font-snell text-[25px] text-[#30302E] md:text-[25px]">
+              <h2 className="mb-6 font-snell text-[25px] text-[#43423D] md:text-[25px]">
                 Vionita Hartanto
               </h2>
               <Button
@@ -272,7 +283,7 @@ export default function Homepage() {
         )}
 
         {/* Music player button */}
-        <audio loop preload="auto" ref={audioRef} src={music} />
+        {/* <audio loop preload="auto" ref={audioRef} src={music} /> */}
         <button
           aria-label={isPlaying ? "Mute music" : "Play music"}
           className="fixed bottom-6 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-[#333333] shadow-lg transition hover:bg-[#444] focus:outline-none"

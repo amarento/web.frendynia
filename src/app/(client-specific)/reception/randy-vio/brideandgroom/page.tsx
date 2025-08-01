@@ -20,7 +20,7 @@ export default function Brideandgroom() {
   };
 
   return (
-    <div className="flex flex-col bg-[#F4EFE9] text-center font-bodoni tracking-tight text-[#30302E]">
+    <div className="flex flex-col bg-[#FCFCF8] text-center font-bodoni tracking-tight text-[#43423D]">
       <motion.h1
         className="mt-12 font-snell text-[25px] md:text-[39px]"
         custom={0}
@@ -44,7 +44,7 @@ export default function Brideandgroom() {
       <div className="lg:flex lg:flex-row lg:justify-center lg:px-12">
         {/* Randy Block */}
         <motion.div
-          className="mb-8 lg:mb-0 lg:mr-6 xl:mr-16"
+          className="mb-6 lg:mb-0 lg:mr-6 xl:mr-16"
           custom={1}
           initial="hidden"
           variants={fadeIn}
@@ -54,12 +54,10 @@ export default function Brideandgroom() {
           <h2 className="mb-2 font-bodoni text-[24px] md:text-[31px] lg:mb-4">
             AARON RANDY KUNCORO
           </h2>
-            <p className="mb-2 text-[14px] md:text-[16px] lg:text-[18px]">
-            2
-            <sup>nd</sup>
-            {' '}child, only son of
-            </p>
-          <p className="mx-auto mb-6 w-[70vw] text-[16px] md:mb-8 md:text-[18px] lg:mb-20 lg:w-full lg:text-[20px]">
+          <p className="mb-2 text-[14px] md:text-[16px] lg:text-[18px]">
+            2<sup>nd</sup> child, only son of
+          </p>
+          <p className="mx-auto mb-4 w-[70vw] text-[16px] md:mb-8 md:text-[18px] lg:mb-20 lg:w-full lg:text-[20px]">
             Mr. Kwe Hendro Kuncoro & Mrs. Jap Henny Kusuma Dewi
           </p>
         </motion.div>
@@ -72,7 +70,7 @@ export default function Brideandgroom() {
           viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
         >
-          <p className="mx-auto italic w-[70vw] text-[16px] md:mb-8 md:text-[18px] lg:mb-20 lg:w-full lg:text-[20px]">
+          <p className="mx-auto w-[70vw] text-[16px] italic md:mb-8 md:text-[18px] lg:mb-20 lg:w-full lg:text-[20px]">
             and
           </p>
         </motion.div>
@@ -90,9 +88,7 @@ export default function Brideandgroom() {
             VIONITA HARTANTO
           </h2>
           <p className="mb-2 text-[14px] md:text-[16px] lg:text-[18px]">
-            1
-            <sup>st</sup>
-            {' '}child, only daughter of
+            1<sup>st</sup> child, only daughter of
           </p>
           <p className="mx-auto mb-16 w-[70vw] text-[16px] md:text-[18px] lg:w-full lg:text-[20px]">
             Mr. Wahjudi Hartanto & Mrs. Kwee Vita Kwenandar
@@ -111,7 +107,7 @@ export default function Brideandgroom() {
         >
           <Image
             alt="Bride and Groom"
-            className="mx-auto h-full w-auto border-2 border-solid border-[#B29234] p-1"
+            className="mx-auto h-full w-auto border-2 border-solid border-[#30302E] p-1"
             src={brideGroomImage}
           />
         </motion.div>

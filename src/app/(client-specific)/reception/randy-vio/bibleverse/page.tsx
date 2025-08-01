@@ -20,7 +20,7 @@ export default function Bibleverse() {
   };
 
   return (
-    <div className="bg-[#F4EFE9] pt-8 text-center font-bodoni tracking-tight text-[#30302E] md:pt-8 lg:pt-10 xl:pt-12">
+    <div className="bg-[#FCFCF9] pt-8 text-center font-bodoni tracking-tight text-[#43423D] md:pt-8 lg:pt-10 xl:pt-12">
       <motion.div
         custom={0}
         initial="hidden"
