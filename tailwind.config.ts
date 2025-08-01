@@ -90,7 +90,9 @@ const config: Config = {
         melodrame: ['var(--font-melodrame)', 'serif', ...fontFamily.serif],
         retrofans: ['var(--font-retrofans)', 'serif', ...fontFamily.serif],
         bellefair: ['var(--font-bellefair)', 'serif', ...fontFamily.serif],
+        bodoni: ['var(--font-bodoni)', 'serif', ...fontFamily.serif],
         queensila: ['var(--font-queensila)', 'serif', ...fontFamily.serif],
+        snell: ['var(--font-snell)', 'serif', ...fontFamily.serif],
       },
       borderRadius: {
         lg: "var(--radius)",
