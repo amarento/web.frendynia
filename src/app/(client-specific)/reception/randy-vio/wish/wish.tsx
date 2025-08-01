@@ -45,7 +45,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
   const [progress, setProgress] = useState(0);
 
   // Embla Carousel setup with autoplay and auto height
-  const autoplayPlugin = Autoplay({ delay: 4000, stopOnInteraction: false });
+  const autoplayPlugin = Autoplay({ delay: 8000, stopOnInteraction: false });
   const autoHeightPlugin = AutoHeight();
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
@@ -71,7 +71,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           if (prev >= 100) {
             return 0;
           }
-          return prev + 100 / 40; // 4000ms / 100ms intervals = 40 steps
+          return prev + 100 / 80;
         });
       }, 100);
     };
@@ -130,25 +130,25 @@ export default function Wish({ guestName, guestId }: IWishProps) {
 
   return (
     <div className="text-center font-bodoni text-[#43423D]">
-      <div className="bg-[#FAFAF8] pt-10 pb-16 md:pt-12 md:pb-20 lg:pt-16">
+      <div className="bg-[#FAFAF8] pb-16 pt-10 md:pb-20 md:pt-12 lg:pt-16">
         <motion.div
           className=""
           custom={0}
           initial="hidden"
           variants={fadeIn}
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
         >
-          <h1 className="text-[39px] font-snell md:text-[49px]">Well Wishes</h1>
-          <h3 className="mb-10 -mt-1 text-[#5D5C55] text-[16px] md:mb-12 md:text-[20px] lg:mb-14">
+          <h1 className="font-snell text-[39px] md:text-[49px]">Well Wishes</h1>
+          <h3 className="-mt-1 mb-10 text-[16px] text-[#5D5C55] md:mb-12 md:text-[20px] lg:mb-14">
             for groom & bride
           </h3>
 
           {/* Progress Bar */}
           {wishes && wishes.length > 1 && (
-            <div className="mx-auto mb-6 w-32 h-1 bg-gray-200 rounded-full overflow-hidden">
+            <div className="mx-auto mb-6 h-1 w-32 overflow-hidden rounded-full bg-gray-200">
               <div
-                className="h-full bg-[#B29234] transition-all duration-100 ease-linear"
+                className="h-full bg-[#43423D] transition-all duration-100 ease-linear"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -157,10 +157,10 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           {/* Carousel Container with Gradients */}
           <div className="relative">
             {/* Left Gradient Overlay */}
-            <div className="absolute left-0 top-0 bottom-0 lg:w-80 w-8 bg-gradient-to-r from-[#F8F8F7] to-transparent z-10 pointer-events-none" />
+            <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-8 bg-gradient-to-r from-[#F8F8F7] to-transparent lg:w-80" />
 
             {/* Right Gradient Overlay */}
-            <div className="absolute right-0 top-0 bottom-0 lg:w-80 w-8 bg-gradient-to-l from-[#F8F8F7] to-transparent z-10 pointer-events-none" />
+            <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-8 bg-gradient-to-l from-[#F8F8F7] to-transparent lg:w-80" />
 
             {/* Embla Carousel */}
             <div
@@ -171,7 +171,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
                 {wishes && wishes.length > 0
                   ? [...wishes].reverse().map((wish, index) => (
                       <div
-                        className="embla__slide flex w-[90vw] flex-col items-center justify-center rounded-xl border border-solid border-[#B29234] bg-[#FAFAFA] p-6 text-center shadow md:w-[95vw] md:p-8 lg:w-[40vw] lg:p-10"
+                        className="embla__slide flex w-[90vw] flex-col items-center justify-center rounded-xl border border-solid border-[#43423D] bg-[#FAFAFA] p-6 text-center shadow md:w-[95vw] md:p-8 lg:w-[40vw] lg:p-10"
                         key={index.toString()}
                       >
                         <p className="w-full text-[16px] text-[#5D5C55] md:text-[18px] lg:text-[20px]">
@@ -188,16 +188,16 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           </div>
         </motion.div>
       </div>
-      <div className="bg-[#FCFCF8] pt-16 pb-10 md:pb-12">
+      <div className="bg-[#FCFCF8] pb-10 pt-16 md:pb-12">
         <motion.div
           custom={1}
           initial="hidden"
           variants={fadeIn}
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
         >
-          <h1 className="text-[39px] font-snell md:text-[49px]">Send Wish</h1>
-          <h3 className="mb-10 -mt-1 text-[#5D5C55] text-[16px] md:mb-12 md:text-[20px] lg:mb-16">
+          <h1 className="font-snell text-[39px] md:text-[49px]">Send Wish</h1>
+          <h3 className="-mt-1 mb-10 text-[16px] text-[#5D5C55] md:mb-12 md:text-[20px] lg:mb-16">
             for groom & bride
           </h3>
         </motion.div>
@@ -207,18 +207,18 @@ export default function Wish({ guestName, guestId }: IWishProps) {
             custom={2}
             initial="hidden"
             variants={fadeIn}
-            viewport={{ once: true, margin: '-100px' }}
+            viewport={{ once: true, margin: "-100px" }}
             whileInView="visible"
           >
             <p className="pl-1 text-[14px] md:text-[16px]">Full Name</p>
             <input
-              {...register('name')}
+              {...register("name")}
               className="mb-4 block w-full rounded-lg border bg-white p-2 text-[14px] text-muted-foreground"
               disabled={!!guestName}
             />
             <p className="pl-1 text-[14px] md:text-[16px]">Your Wishes</p>
             <textarea
-              {...register('wish')}
+              {...register("wish")}
               className="block h-32 w-full resize-none rounded-lg border p-2 text-[12px] placeholder:text-left placeholder:align-top md:text-[14px]"
               placeholder="Type Your Wishes"
             />
@@ -231,14 +231,14 @@ export default function Wish({ guestName, guestId }: IWishProps) {
             custom={3}
             initial="hidden"
             variants={fadeIn}
-            viewport={{ once: true, margin: '-100px' }}
+            viewport={{ once: true, margin: "-100px" }}
             whileInView="visible"
           >
             <Button
               className="rounded-lg bg-[#F8F8F7] px-7 py-2 shadow hover:bg-[#F0F0EF] active:scale-95 active:bg-[#EDEDEB] lg:px-8 lg:py-3"
               type="submit"
             >
-              <p className="text-[#5D5C55] text-[12px] md:text-[14px] lg:text-[16px]">
+              <p className="text-[12px] text-[#5D5C55] md:text-[14px] lg:text-[16px]">
                 Send Wish
               </p>
             </Button>
