@@ -39,7 +39,7 @@ export default function Brideandgroom() {
         viewport={{ once: true, margin: "-100px" }}
         whileInView="visible"
       >
-        we cordially invite you to be witness of our unity
+        We cordially invite you to the wedding of
       </motion.p>
       <div className="lg:flex lg:flex-row lg:justify-center lg:px-12">
         {/* Randy Block */}
@@ -57,8 +57,9 @@ export default function Brideandgroom() {
           <p className="mb-2 text-[14px] md:text-[16px] lg:text-[18px]">
             2<sup>nd</sup> child, only son of
           </p>
-          <p className="mx-auto mb-4 w-[70vw] text-[16px] md:mb-8 md:text-[18px] lg:mb-20 lg:w-full">
-            Mr. Kwe Hendro Kuncoro & Mrs. Jap Henny Kusuma Dewi
+          <p className="mx-auto mb-4 w-[80vw] text-[16px] md:mb-8 md:text-[18px] lg:mb-20 lg:w-full">
+            Mr. Kwe Hendro Kuncoro & <br className="md:hidden" /> Mrs. Jap Henny
+            Kusuma Dewi
           </p>
         </motion.div>
 
@@ -70,7 +71,7 @@ export default function Brideandgroom() {
           viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
         >
-          <p className="mx-auto lg:mt-12 w-[70vw] text-[16px] italic md:mb-8 md:text-[18px] lg:mb-20 lg:w-full lg:text-[20px]">
+          <p className="mx-auto w-[70vw] text-[16px] italic md:mb-8 md:text-[18px] lg:mb-20 lg:mt-12 lg:w-full lg:text-[20px]">
             and
           </p>
         </motion.div>
@@ -91,7 +92,8 @@ export default function Brideandgroom() {
             1<sup>st</sup> child, only daughter of
           </p>
           <p className="mx-auto mb-16 w-[70vw] text-[16px] md:text-[18px] lg:w-full">
-            Mr. Wahjudi Hartanto & Mrs. Kwee Vita Kwenandar
+            Mr. Wahjudi Hartanto & <br className="md:hidden" />
+            Mrs. Kwee Vita Kwenandar
           </p>
         </motion.div>
       </div>

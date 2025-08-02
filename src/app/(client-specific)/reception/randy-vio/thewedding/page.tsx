@@ -17,24 +17,31 @@ export default function Thewedding() {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.1,
+        delay: i * 0.05,
         duration: 0.5,
         ease: "easeOut",
       },
     }),
   };
 
-  const handleGoogleMapsHolmatClick: () => void = () => {
+  const handleTeaPaiClick = () => {
     setTimeout(() => {
-      window.open("https://maps.app.goo.gl/YvGsbE2Tcsyrua5b8");
+      window.open("https://maps.app.goo.gl/xfqEXFbeS3PLYWBr6?g_st=ipc");
     }, 300);
   };
 
-  const handleGoogleMapsReceptionClick = () => {
+  const handleMainEventClick = () => {
     setTimeout(() => {
-      window.open("https://maps.app.goo.gl/1TQ35AcUKo6VdoZ68");
+      window.open("https://maps.app.goo.gl/e6BLyBGBbn979x6h8?g_st=ipc");
     }, 300);
   };
+
+  const handleAfterPartyClick = () => {
+    setTimeout(() => {
+      window.open("https://maps.app.goo.gl/toEfdyvyzDXMsSAZ9?g_st=ipc");
+    }, 300);
+  };
+
 
   return (
     <div className="bg-[#FCFCF8] pt-12 text-center font-bodoni tracking-tight text-[#43423D]">
@@ -104,7 +111,7 @@ export default function Thewedding() {
           className={
             "mb-12 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20"
           }
-          onClick={handleGoogleMapsHolmatClick}
+          onClick={handleTeaPaiClick}
         >
           <p className="text-[12px] text-white md:text-[14px] lg:text-[16px]">
             Open Maps
@@ -165,7 +172,7 @@ export default function Thewedding() {
           className={
             "mb-12 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20"
           }
-          onClick={handleGoogleMapsHolmatClick}
+          onClick={handleMainEventClick}
         >
           <p className="text-[12px] text-white md:text-[14px] lg:text-[16px]">
             Open Maps
@@ -226,7 +233,7 @@ export default function Thewedding() {
           className={
             "mb-12 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20"
           }
-          onClick={handleGoogleMapsHolmatClick}
+          onClick={handleMainEventClick}
         >
           <p className="text-[12px] text-white md:text-[14px] lg:text-[16px]">
             Open Maps
@@ -287,7 +294,7 @@ export default function Thewedding() {
           className={
             "mb-12 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20"
           }
-          onClick={handleGoogleMapsHolmatClick}
+          onClick={handleMainEventClick}
         >
           <p className="text-[12px] text-white md:text-[14px] lg:text-[16px]">
             Open Maps
@@ -348,7 +355,7 @@ export default function Thewedding() {
           className={
             "mb-12 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20"
           }
-          onClick={handleGoogleMapsHolmatClick}
+          onClick={handleAfterPartyClick}
         >
           <p className="text-[12px] text-white md:text-[14px] lg:text-[16px]">
             Open Maps

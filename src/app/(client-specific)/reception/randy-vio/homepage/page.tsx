@@ -167,7 +167,7 @@ export default function Homepage() {
         </motion.h4>
 
         <motion.h1
-          className="mb-1 font-snell text-[39px] font-medium drop-shadow-2xl lg:text-[49px]"
+          className="mb-1 pl-4 font-snell text-[39px] font-medium drop-shadow-2xl lg:text-[49px]"
           custom={1}
           initial="hidden"
           variants={fadeIn}
@@ -260,8 +260,7 @@ export default function Homepage() {
                 quality={90}
               />
               <p className="mb-4 w-4/5 font-bodoni text-[14px] tracking-tight text-[#43423D] md:text-[16px]">
-                By the grace of God, we cordially invite you to witness the
-                marriage of
+                By the grace of God, we cordially invite you to the wedding of
               </p>
               <h2 className="mb-2 font-snell text-[25px] text-[#43423D] md:text-[25px] lg:text-[31px]">
                 Aaron Randy Kuncoro

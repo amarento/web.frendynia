@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import deco from 'public/decoration.png';
+import { motion } from "framer-motion";
+import Image from "next/image";
+import deco from "public/decoration.png";
 
 export default function Bibleverse() {
   // Child animation variant with custom delay
@@ -14,7 +14,7 @@ export default function Bibleverse() {
       transition: {
         delay: i * 0.1,
         duration: 0.5,
-        ease: 'easeOut',
+        ease: "easeOut",
       },
     }),
   };
@@ -28,10 +28,9 @@ export default function Bibleverse() {
         viewport={{ once: true, margin: "-100px" }}
         whileInView="visible"
       >
-        <Image
-          alt="Leaf decoration"
-          className="mx-auto mb-4 w-[12vw] md:w-[10vw] lg:w-[8vw]"
-          src={deco}
+        <hr
+          className="mx-auto mb-4 w-6 border-t-2 border-[#333333] md:w-32 lg:w-40"
+          aria-hidden="true"
         />
       </motion.div>
 
