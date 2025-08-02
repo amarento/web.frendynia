@@ -45,7 +45,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
   const [progress, setProgress] = useState(0);
 
   // Embla Carousel setup with autoplay and auto height
-  const autoplayPlugin = Autoplay({ delay: 8000, stopOnInteraction: false });
+  const autoplayPlugin = Autoplay({ delay: 10000, stopOnInteraction: false });
   const autoHeightPlugin = AutoHeight();
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
@@ -71,7 +71,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           if (prev >= 100) {
             return 0;
           }
-          return prev + 100 / 80;
+          return prev + 100 / 100; // 10000ms / 100ms intervals = 100 steps
         });
       }, 100);
     };
@@ -144,16 +144,6 @@ export default function Wish({ guestName, guestId }: IWishProps) {
             for groom & bride
           </h3>
 
-          {/* Progress Bar */}
-          {wishes && wishes.length > 1 && (
-            <div className="mx-auto mb-6 h-1 w-32 overflow-hidden rounded-full bg-gray-200">
-              <div
-                className="h-full bg-[#777777] transition-all duration-100 ease-linear"
-                style={{ width: `${progress}%` }}
-              />
-            </div>
-          )}
-
           {/* Carousel Container with Gradients */}
           <div className="relative">
             {/* Left Gradient Overlay */}
@@ -186,6 +176,16 @@ export default function Wish({ guestName, guestId }: IWishProps) {
               </div>
             </div>
           </div>
+
+          {/* Progress Bar */}
+          {wishes && wishes.length > 1 && (
+            <div className="mx-auto mt-6 h-[3px] w-16 overflow-hidden rounded-full bg-gray-200">
+              <div
+                className="h-full bg-[#888888] transition-all duration-100 ease-linear"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+          )}
         </motion.div>
       </div>
       <div className="bg-[#EFEEEB] pb-10 pt-16 md:pb-12">
