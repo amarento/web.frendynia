@@ -3,9 +3,13 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import castle from "public/castle.png";
-import dining from "public/dining.png";
 import { Button } from "~/components/ui/button";
+
+import teaPai from "../_images/teapot.png";
+import holmat from "../_images/ring.png";
+import cocktail from "../_images/cocktail.png";
+import reception from "../_images/dining.png";
+import afterParty from "../_images/bottle.png";
 
 export default function Thewedding() {
   const path = usePathname();
@@ -42,7 +46,6 @@ export default function Thewedding() {
     }, 300);
   };
 
-
   return (
     <div className="bg-[#FCFCF8] pt-12 text-center font-bodoni tracking-tight text-[#43423D]">
       {/* Title */}
@@ -66,9 +69,9 @@ export default function Thewedding() {
         whileInView="visible"
       >
         <Image
-          alt="Castle"
-          className="mx-auto mb-5 h-auto w-[60vw] md:w-[50vw] lg:w-[40vw] xl:w-[25vw] 2xl:w-[20vw]"
-          src={castle}
+          alt="Tea Pai"
+          className="mx-auto md:-mb-3 h-auto w-[50vw] md:w-[40vw] lg:w-[30vw] xl:w-[20vw] 2xl:w-[15vw]"
+          src={teaPai}
         />
       </motion.div>
       <motion.h2
@@ -91,7 +94,7 @@ export default function Thewedding() {
         whileInView="visible"
       >
         <p className="mb-2 text-[18px] font-semibold md:mb-3 md:text-[16px] lg:text-[18px] xl:text-[20px]">
-          14.30 WITA
+          15.00 WITA
         </p>
         <p className="text-[16px] font-semibold italic md:text-[14px] lg:text-[16px] xl:text-[18px]">
           Cendana Conference Room
@@ -109,7 +112,7 @@ export default function Thewedding() {
       >
         <Button
           className={
-            "mb-12 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20"
+            "mb-14 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20"
           }
           onClick={handleTeaPaiClick}
         >
@@ -128,9 +131,9 @@ export default function Thewedding() {
         whileInView="visible"
       >
         <Image
-          alt="Castle"
-          className="mx-auto mb-5 h-auto w-[60vw] md:w-[50vw] lg:w-[40vw] xl:w-[25vw] 2xl:w-[20vw]"
-          src={castle}
+          alt="Holy Matrimony"
+          className="mx-auto mb-7 md:mb-9 h-auto w-[40vw] md:w-[30vw] lg:w-[25vw] xl:w-[15vw]"
+          src={holmat}
         />
       </motion.div>
       <motion.h2
@@ -152,7 +155,7 @@ export default function Thewedding() {
         whileInView="visible"
       >
         <p className="mb-2 text-[18px] font-semibold md:mb-3 md:text-[16px] lg:text-[18px] xl:text-[20px]">
-          16.00 WITA
+          16.30 WITA
         </p>
         <p className="text-[16px] font-semibold italic md:text-[14px] lg:text-[16px] xl:text-[18px]">
           SKY Ampitheatre
@@ -170,7 +173,7 @@ export default function Thewedding() {
       >
         <Button
           className={
-            "mb-12 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20"
+            "mb-14 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20"
           }
           onClick={handleMainEventClick}
         >
@@ -189,9 +192,9 @@ export default function Thewedding() {
         whileInView="visible"
       >
         <Image
-          alt="Castle"
-          className="mx-auto mb-5 h-auto w-[60vw] md:w-[50vw] lg:w-[40vw] xl:w-[25vw] 2xl:w-[20vw]"
-          src={castle}
+          alt="Cocktail"
+          className="mx-auto mb-7 md:mb-9 h-auto w-[50vw] md:w-[45vw] lg:w-[40vw] xl:w-[25vw] 2xl:w-[15vw]"
+          src={cocktail}
         />
       </motion.div>
       <motion.h2
@@ -231,7 +234,7 @@ export default function Thewedding() {
       >
         <Button
           className={
-            "mb-12 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20"
+            "mb-10 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20"
           }
           onClick={handleMainEventClick}
         >
@@ -250,9 +253,9 @@ export default function Thewedding() {
         whileInView="visible"
       >
         <Image
-          alt="Castle"
-          className="mx-auto mb-5 h-auto w-[60vw] md:w-[50vw] lg:w-[40vw] xl:w-[25vw] 2xl:w-[20vw]"
-          src={castle}
+          alt="Reception"
+          className="mx-auto mb-1 md:-mb-1 h-auto w-[50vw] md:w-[37vw] lg:w-[35vw] xl:w-[22vw] 2xl:w-[20vw]"
+          src={reception}
         />
       </motion.div>
       <motion.h2
@@ -274,7 +277,7 @@ export default function Thewedding() {
         whileInView="visible"
       >
         <p className="mb-2 text-[18px] font-semibold md:mb-3 md:text-[16px] lg:text-[18px] xl:text-[20px]">
-          18.00 WITA
+          18.30 WITA
         </p>
         <p className="text-[16px] font-semibold italic md:text-[14px] lg:text-[16px] xl:text-[18px]">
           SKY Lawn
@@ -292,7 +295,7 @@ export default function Thewedding() {
       >
         <Button
           className={
-            "mb-12 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20"
+            "mb-14 rounded-lg bg-[#AAA9A1] px-7 py-2 shadow hover:bg-[#A2A19A] active:scale-95 active:bg-[#999892] md:mb-16 md:px-8 md:py-3 lg:mb-20"
           }
           onClick={handleMainEventClick}
         >
@@ -311,9 +314,9 @@ export default function Thewedding() {
         whileInView="visible"
       >
         <Image
-          alt="Castle"
-          className="mx-auto mb-5 h-auto w-[60vw] md:w-[50vw] lg:w-[40vw] xl:w-[25vw] 2xl:w-[20vw]"
-          src={castle}
+          alt="After Party"
+          className="mx-auto mb-7 md:mb-8 h-auto w-[50vw] md:w-[40vw] lg:w-[37vw] xl:w-[22vw] 2xl:w-[15vw]"
+          src={afterParty}
         />
       </motion.div>
       <motion.h2
