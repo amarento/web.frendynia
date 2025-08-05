@@ -50,7 +50,7 @@ export default function Thewedding() {
     <div className="bg-[#FCFCF8] pt-12 text-center font-bodoni tracking-tight text-[#43423D]">
       {/* Title */}
       <motion.h1
-        className="mb-8 font-snell text-[31px] tracking-normal md:text-[39px]"
+        className="mb-8 pl-4 font-snell text-[31px] tracking-normal md:text-[39px]"
         custom={0}
         initial="hidden"
         variants={fadeIn}
@@ -193,7 +193,7 @@ export default function Thewedding() {
       >
         <Image
           alt="Cocktail"
-          className="mx-auto mb-7 md:mb-9 h-auto w-[50vw] md:w-[45vw] lg:w-[40vw] xl:w-[25vw] 2xl:w-[15vw]"
+          className="mx-auto mb-7 md:mb-9 h-auto w-[55vw] md:w-[47vw] lg:w-[40vw] xl:w-[25vw] 2xl:w-[15vw]"
           src={cocktail}
         />
       </motion.div>

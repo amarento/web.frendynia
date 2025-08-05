@@ -61,7 +61,7 @@ export default function Gift() {
         viewport={{ once: true, margin: "-100px" }}
         whileInView="visible"
       >
-        <h1 className="font-snell text-[49px] md:text-[49px]">Send Gift</h1>
+        <h1 className="font-snell pl-6 text-[49px] md:text-[49px]">Send Gift</h1>
         <h3 className="mb-8 text-[16px] font-medium md:mb-10 md:text-[18px] lg:mb-12 lg:text-[20px]">
           For Groom & Bride
         </h3>

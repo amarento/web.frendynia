@@ -139,7 +139,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
         >
-          <h1 className="font-snell text-[39px] md:text-[49px]">Well Wishes</h1>
+          <h1 className="font-snell pl-6 text-[39px] md:text-[49px]">Well Wishes</h1>
           <h3 className="-mt-1 mb-10 text-[16px] text-[#5D5C55] md:mb-12 md:text-[20px] lg:mb-14">
             for groom & bride
           </h3>
@@ -196,7 +196,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
         >
-          <h1 className="font-snell text-[39px] md:text-[49px]">Send Wish</h1>
+          <h1 className="font-snell pl-6 text-[39px] md:text-[49px]">Send Wish</h1>
           <h3 className="-mt-1 mb-10 text-[16px] text-[#5D5C55] md:mb-12 md:text-[20px] lg:mb-16">
             for groom & bride
           </h3>
