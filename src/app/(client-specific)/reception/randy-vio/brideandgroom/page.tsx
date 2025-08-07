@@ -22,7 +22,7 @@ export default function Brideandgroom() {
   return (
     <div className="flex flex-col bg-[#FCFCF8] text-center font-bodoni tracking-tight text-[#43423D]">
       <motion.h1
-        className="mt-12 font-snell text-[25px] md:text-[39px]"
+        className="mt-12 pl-4 font-snell text-[25px] md:text-[39px]"
         custom={0}
         initial="hidden"
         variants={fadeIn}
