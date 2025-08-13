@@ -1,26 +1,26 @@
 /** biome-ignore-all lint/a11y/noStaticElementInteractions: drag scrolling functionality */
 /** biome-ignore-all lint/a11y/useKeyWithClickEvents: drag scrolling functionality */
 /** biome-ignore-all lint/nursery/useSortedClasses: embla carousel styling */
-'use client';
+"use client";
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import AutoHeight from 'embla-carousel-auto-height';
-import Autoplay from 'embla-carousel-autoplay';
-import useEmblaCarousel from 'embla-carousel-react';
-import { motion } from 'framer-motion';
-import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { Button } from '~/components/ui/button';
+import { zodResolver } from "@hookform/resolvers/zod";
+import AutoHeight from "embla-carousel-auto-height";
+import Autoplay from "embla-carousel-autoplay";
+import useEmblaCarousel from "embla-carousel-react";
+import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Button } from "~/components/ui/button";
 import {
   useServerActionMutation,
   useServerActionQuery,
-} from '~/lib/hooks/server-action-hooks';
-import { addWishAction, getAllWishes } from '~/server/actions';
+} from "~/lib/hooks/server-action-hooks";
+import { addWishAction, getAllWishes } from "~/server/actions/randy-vio";
 
 const wishSchema = z.object({
   name: z.string(),
-  wish: z.string().min(1, { message: 'Wish cannot be empty.' }),
+  wish: z.string().min(1, { message: "Wish cannot be empty." }),
 });
 
 interface IWishProps {
@@ -31,7 +31,7 @@ interface IWishProps {
 export default function Wish({ guestName, guestId }: IWishProps) {
   const { data: wishes, refetch } = useServerActionQuery(getAllWishes, {
     input: undefined,
-    queryKey: ['wishes'],
+    queryKey: ["wishes"],
   });
 
   const { mutateAsync: sendWish } = useServerActionMutation(addWishAction, {
@@ -50,10 +50,10 @@ export default function Wish({ guestName, guestId }: IWishProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
-      align: 'center',
+      align: "center",
       skipSnaps: false,
     },
-    [autoplayPlugin, autoHeightPlugin]
+    [autoplayPlugin, autoHeightPlugin],
   );
 
   // Progress bar effect
@@ -81,12 +81,12 @@ export default function Wish({ guestName, guestId }: IWishProps) {
       resetProgress();
     };
 
-    emblaApi.on('select', onSlideChange);
+    emblaApi.on("select", onSlideChange);
     resetProgress(); // Start initial progress
 
     return () => {
       clearInterval(interval);
-      emblaApi.off('select', onSlideChange);
+      emblaApi.off("select", onSlideChange);
     };
   }, [emblaApi]);
 
@@ -98,8 +98,8 @@ export default function Wish({ guestName, guestId }: IWishProps) {
   } = useForm({
     resolver: zodResolver(wishSchema),
     defaultValues: {
-      name: guestName ?? '',
-      wish: '',
+      name: guestName ?? "",
+      wish: "",
     },
   });
 
@@ -123,7 +123,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
       transition: {
         delay: i * 0.1,
         duration: 0.5,
-        ease: 'easeOut',
+        ease: "easeOut",
       },
     }),
   };
@@ -139,7 +139,9 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
         >
-          <h1 className="font-snell pl-6 text-[39px] md:text-[49px]">Well Wishes</h1>
+          <h1 className="pl-6 font-snell text-[39px] md:text-[49px]">
+            Well Wishes
+          </h1>
           <h3 className="-mt-1 mb-10 text-[16px] text-[#5D5C55] md:mb-12 md:text-[20px] lg:mb-14">
             for groom & bride
           </h3>
@@ -196,7 +198,9 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
         >
-          <h1 className="font-snell pl-6 text-[39px] md:text-[49px]">Send Wish</h1>
+          <h1 className="pl-6 font-snell text-[39px] md:text-[49px]">
+            Send Wish
+          </h1>
           <h3 className="-mt-1 mb-10 text-[16px] text-[#5D5C55] md:mb-12 md:text-[20px] lg:mb-16">
             for groom & bride
           </h3>

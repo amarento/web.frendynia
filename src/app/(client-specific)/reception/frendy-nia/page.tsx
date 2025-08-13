@@ -3,7 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 import { useServerActionQuery } from "~/lib/hooks/server-action-hooks";
-import { getGuestNameByIdAction } from "~/server/actions";
+import { getGuestNameByIdAction } from "~/server/actions/frendy-nia";
 import Bibleverse from "./bibleverse/page";
 import Brideandgroom from "./brideandgroom/page";
 import Gift from "./gift/page";
