@@ -42,7 +42,7 @@ export default function Bibleverse() {
         viewport={{ once: true, margin: "-100px" }}
         whileInView="visible"
       >
-        “ We love because he first loved us. ”
+        “ We love because He first loved us. ”
       </motion.p>
 
       <motion.p
