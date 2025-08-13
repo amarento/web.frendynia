@@ -16,7 +16,7 @@ import {
   useServerActionMutation,
   useServerActionQuery,
 } from "~/lib/hooks/server-action-hooks";
-import { addWishAction, getAllWishes } from "~/server/actions/frendy-nia";
+import { addWishAction, getAllWishes } from "~/server/actions";
 
 const wishSchema = z.object({
   name: z.string(),
@@ -30,7 +30,9 @@ interface IWishProps {
 
 export default function Wish({ guestName, guestId }: IWishProps) {
   const { data: wishes, refetch } = useServerActionQuery(getAllWishes, {
-    input: undefined,
+    input: {
+      clientId: 2,
+    },
     queryKey: ["wishes"],
   });
 
@@ -111,7 +113,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
 
   const onSubmit = async (data: z.infer<typeof wishSchema>) => {
     if (guestId) {
-      await sendWish({ guestId, wish: data.wish });
+      await sendWish({ guestId, wish: data.wish, clientId: 2 });
     }
   };
 

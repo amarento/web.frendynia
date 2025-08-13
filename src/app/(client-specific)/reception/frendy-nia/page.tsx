@@ -3,7 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 import { useServerActionQuery } from "~/lib/hooks/server-action-hooks";
-import { getGuestNameByIdAction } from "~/server/actions/frendy-nia";
+import { getGuestNameByIdAction } from "~/server/actions";
 import Bibleverse from "./bibleverse/page";
 import Brideandgroom from "./brideandgroom/page";
 import Gift from "./gift/page";
@@ -30,6 +30,7 @@ function PageContent() {
 
   const { data: guestName } = useServerActionQuery(getGuestNameByIdAction, {
     input: {
+      clientId: 2,
       guestId,
     },
     queryKey: ["guest-name"],
