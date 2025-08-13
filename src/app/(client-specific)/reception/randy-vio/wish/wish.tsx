@@ -1,26 +1,28 @@
 /** biome-ignore-all lint/a11y/noStaticElementInteractions: drag scrolling functionality */
 /** biome-ignore-all lint/a11y/useKeyWithClickEvents: drag scrolling functionality */
 /** biome-ignore-all lint/nursery/useSortedClasses: embla carousel styling */
-"use client";
+'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import AutoHeight from "embla-carousel-auto-height";
-import Autoplay from "embla-carousel-autoplay";
-import useEmblaCarousel from "embla-carousel-react";
-import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { Button } from "~/components/ui/button";
+import { zodResolver } from '@hookform/resolvers/zod';
+import AutoHeight from 'embla-carousel-auto-height';
+import Autoplay from 'embla-carousel-autoplay';
+import useEmblaCarousel from 'embla-carousel-react';
+import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import { z } from 'zod';
+import { Button } from '~/components/ui/button';
+
 import {
   useServerActionMutation,
   useServerActionQuery,
-} from "~/lib/hooks/server-action-hooks";
-import { addWishAction, getAllWishes } from "~/server/actions";
+} from '~/lib/hooks/server-action-hooks';
+import { addWishAction, getAllWishes } from '~/server/actions';
 
 const wishSchema = z.object({
   name: z.string(),
-  wish: z.string().min(1, { message: "Wish cannot be empty." }),
+  wish: z.string().min(1, { message: 'Wish cannot be empty.' }),
 });
 
 interface IWishProps {
@@ -33,7 +35,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
     input: {
       clientId: 4,
     },
-    queryKey: ["wishes"],
+    queryKey: ['wishes'],
   });
 
   const { mutateAsync: sendWish } = useServerActionMutation(addWishAction, {
@@ -41,21 +43,26 @@ export default function Wish({ guestName, guestId }: IWishProps) {
       // biome-ignore lint: required for promise handling
       void refetch();
     },
+    onError: (error) => {
+      toast.error(
+        `An error occurred while adding wish. Error: ${error.message}`
+      );
+    },
   });
 
   // Progress bar state
   const [progress, setProgress] = useState(0);
 
   // Embla Carousel setup with autoplay and auto height
-  const autoplayPlugin = Autoplay({ delay: 10000, stopOnInteraction: false });
+  const autoplayPlugin = Autoplay({ delay: 10_000, stopOnInteraction: false });
   const autoHeightPlugin = AutoHeight();
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
-      align: "center",
+      align: 'center',
       skipSnaps: false,
     },
-    [autoplayPlugin, autoHeightPlugin],
+    [autoplayPlugin, autoHeightPlugin]
   );
 
   // Progress bar effect
@@ -83,12 +90,12 @@ export default function Wish({ guestName, guestId }: IWishProps) {
       resetProgress();
     };
 
-    emblaApi.on("select", onSlideChange);
+    emblaApi.on('select', onSlideChange);
     resetProgress(); // Start initial progress
 
     return () => {
       clearInterval(interval);
-      emblaApi.off("select", onSlideChange);
+      emblaApi.off('select', onSlideChange);
     };
   }, [emblaApi]);
 
@@ -100,8 +107,8 @@ export default function Wish({ guestName, guestId }: IWishProps) {
   } = useForm({
     resolver: zodResolver(wishSchema),
     defaultValues: {
-      name: guestName ?? "",
-      wish: "",
+      name: guestName ?? '',
+      wish: '',
     },
   });
 
@@ -112,6 +119,10 @@ export default function Wish({ guestName, guestId }: IWishProps) {
   }, [guestName, reset]);
 
   const onSubmit = async (data: z.infer<typeof wishSchema>) => {
+    if (!guestId) {
+      toast.error('An error occured while adding wish. Guest not found.');
+    }
+
     if (guestId) {
       await sendWish({ guestId, wish: data.wish, clientId: 4 });
     }
@@ -125,7 +136,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
       transition: {
         delay: i * 0.1,
         duration: 0.5,
-        ease: "easeOut",
+        ease: 'easeOut',
       },
     }),
   };
@@ -138,7 +149,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           custom={0}
           initial="hidden"
           variants={fadeIn}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           whileInView="visible"
         >
           <h1 className="pl-6 font-snell text-[39px] md:text-[49px]">
@@ -197,7 +208,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           custom={1}
           initial="hidden"
           variants={fadeIn}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           whileInView="visible"
         >
           <h1 className="pl-6 font-snell text-[39px] md:text-[49px]">
@@ -213,18 +224,18 @@ export default function Wish({ guestName, guestId }: IWishProps) {
             custom={2}
             initial="hidden"
             variants={fadeIn}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             whileInView="visible"
           >
             <p className="pl-1 text-[14px] md:text-[16px]">Full Name</p>
             <input
-              {...register("name")}
+              {...register('name')}
               className="mb-4 block w-full rounded-lg border bg-white p-2 text-[14px] text-muted-foreground"
               disabled={!!guestName}
             />
             <p className="pl-1 text-[14px] md:text-[16px]">Your Wishes</p>
             <textarea
-              {...register("wish")}
+              {...register('wish')}
               className="block h-32 w-full resize-none rounded-lg border p-2 text-[12px] placeholder:text-left placeholder:align-top md:text-[14px]"
               placeholder="Type Your Wishes"
             />
@@ -237,7 +248,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
             custom={3}
             initial="hidden"
             variants={fadeIn}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             whileInView="visible"
           >
             <Button
