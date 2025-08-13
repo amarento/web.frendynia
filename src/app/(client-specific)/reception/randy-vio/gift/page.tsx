@@ -8,8 +8,8 @@ import { useState } from "react";
 import { Button } from "~/components/ui/button";
 
 export default function Gift() {
-  const [copiedFrendy, setCopiedFrendy] = useState(false);
-  const [copiedNathania, setCopiedNathania] = useState(false);
+  const [copiedGroom, setCopiedGroom] = useState(false);
+  const [copiedBride, setCopiedBride] = useState(false);
 
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -24,28 +24,28 @@ export default function Gift() {
     }),
   };
 
-  function handleCopyFrendyAccount(
+  function handleCopyGroomAccount(
     _event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ): void {
     void navigator.clipboard
-      .writeText("0390484828")
+      .writeText("6730355597")
       .then(() => {
-        setCopiedFrendy(true);
-        setTimeout(() => setCopiedFrendy(false), 1500);
+        setCopiedGroom(true);
+        setTimeout(() => setCopiedGroom(false), 1500);
       })
       .catch((err) => {
         console.error("Failed to copy text: ", err);
       });
   }
 
-  function handleCopyNathaniaAccount(
+  function handleCopyBrideAccount(
     _event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ): void {
     void navigator.clipboard
-      .writeText("0885670097")
+      .writeText("7880770556")
       .then(() => {
-        setCopiedNathania(true);
-        setTimeout(() => setCopiedNathania(false), 1500);
+        setCopiedBride(true);
+        setTimeout(() => setCopiedBride(false), 1500);
       })
       .catch((err) => {
         console.error("Failed to copy text: ", err);
@@ -88,19 +88,19 @@ export default function Gift() {
           </h5>
           <Button
             className={`rounded-lg px-7 py-2 shadow active:scale-95 lg:px-8 lg:py-3 ${
-              copiedFrendy
+              copiedGroom
                 ? "active:bg-[#43423D]"
                 : "bg-[#F8F8F7] hover:bg-[#F0F0EF]"
             }`}
-            disabled={copiedFrendy}
-            onClick={handleCopyFrendyAccount}
+            disabled={copiedGroom}
+            onClick={handleCopyGroomAccount}
           >
             <p
               className={`text-[12px] md:text-[14px] lg:text-[16px] ${
-                copiedFrendy ? "text-white" : "text-[#5D5C55]"
+                copiedGroom ? "text-white" : "text-[#5D5C55]"
               }`}
             >
-              {copiedFrendy ? "Copied!" : "Copy"}
+              {copiedGroom ? "Copied!" : "Copy"}
             </p>
           </Button>
         </motion.div>
@@ -120,19 +120,19 @@ export default function Gift() {
           </h5>
           <Button
             className={`rounded-lg px-7 py-2 shadow active:scale-95 lg:px-8 lg:py-3 ${
-              copiedNathania
+              copiedBride
                 ? "active:bg-[#43423D]"
                 : "bg-[#F8F8F7] hover:bg-[#F0F0EF]"
             }`}
-            disabled={copiedNathania}
-            onClick={handleCopyNathaniaAccount}
+            disabled={copiedBride}
+            onClick={handleCopyBrideAccount}
           >
             <p
               className={`text-[12px] md:text-[14px] lg:text-[16px] ${
-                copiedNathania ? "text-white" : "text-[#5D5C55]"
+                copiedBride ? "text-white" : "text-[#5D5C55]"
               }`}
             >
-              {copiedNathania ? "Copied!" : "Copy"}
+              {copiedBride ? "Copied!" : "Copy"}
             </p>
           </Button>
         </motion.div>
