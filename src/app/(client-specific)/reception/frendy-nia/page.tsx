@@ -30,6 +30,7 @@ function PageContent() {
 
   const { data: guestName } = useServerActionQuery(getGuestNameByIdAction, {
     input: {
+      clientId: 2,
       guestId,
     },
     queryKey: ["guest-name"],

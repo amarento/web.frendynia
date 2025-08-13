@@ -9,6 +9,7 @@ import { clients, events, eventsToGuests } from '~/server/db/schema';
 export const addWishAction = createServerAction()
   .input(
     z.object({
+      clientId: z.number(),
       guestId: z.number(),
       wish: z.string(),
     })
@@ -18,7 +19,7 @@ export const addWishAction = createServerAction()
       .select({ id: eventsToGuests.guestId })
       .from(eventsToGuests)
       .leftJoin(events, eq(eventsToGuests.eventId, events.id))
-      .where(eq(events.clientId, 2));
+      .where(eq(events.clientId, input.clientId));
 
     await db
       .update(eventsToGuests)
@@ -34,12 +35,13 @@ export const addWishAction = createServerAction()
 export const getGuestNameByIdAction = createServerAction()
   .input(
     z.object({
+      clientId: z.number(),
       guestId: z.number(),
     })
   )
   .handler(async ({ input }) => {
     const client = await db.query.clients.findFirst({
-      where: eq(clients.id, 2),
+      where: eq(clients.id, input.clientId),
       with: {
         events: {
           with: {
@@ -59,21 +61,27 @@ export const getGuestNameByIdAction = createServerAction()
     return guest?.names;
   });
 
-export const getAllWishes = createServerAction().handler(async () => {
-  const client = await db.query.clients.findFirst({
-    where: eq(clients.id, 2),
-    with: {
-      events: {
-        with: {
-          eventsToGuests: {
-            with: {
-              guest: true,
+export const getAllWishes = createServerAction()
+  .input(
+      z.object({
+        clientId: z.number(),
+      })
+    )
+  .handler(async ({ input }) => {
+    const client = await db.query.clients.findFirst({
+      where: eq(clients.id, input.clientId),
+      with: {
+        events: {
+          with: {
+            eventsToGuests: {
+              with: {
+                guest: true,
+              },
             },
           },
         },
       },
-    },
-  });
+    });
 
   if (!client) {
     return [];
