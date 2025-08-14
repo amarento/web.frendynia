@@ -12,7 +12,7 @@ import Timeline from "./timeline/page";
 import Dresscode from "./dresscode/page";
 import Gift from "./gift/page";
 import Photoalbum from "./photoalbum/page";
-import Wish from "./wish/page";
+import Wish from "./wish/wish";
 import Footer from "./footer/page";
 
 export default function Page() {
