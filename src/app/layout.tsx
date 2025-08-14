@@ -1,12 +1,21 @@
-import { type Metadata } from "next";
+import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Toaster } from "~/components/ui/toaster";
 import "~/styles/globals.css";
 import Providers from "./providers";
-import { Inter, Cormorant_Garamond, Beau_Rivage, Bellefair, Bodoni_Moda } from "next/font/google";
+import {
+  Inter,
+  Cormorant_Garamond,
+  Beau_Rivage,
+  Bellefair,
+  Bodoni_Moda,
+  Beth_Ellen,
+  Homemade_Apple,
+  Schoolbell,
+} from "next/font/google";
 
 export const metadata: Metadata = {
-  title: "Amarento",
+  title: "Amarento", 
   description: "WhatsApp RSVP",
   icons: [{ rel: "icon", url: "/logo-white.svg" }],
 };
@@ -19,7 +28,7 @@ const inter = Inter({
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
-  weight: ["400", "500","600"],
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
   subsets: ["latin"],
 });
@@ -39,6 +48,24 @@ const bellefair = Bellefair({
 const bodoni = Bodoni_Moda({
   variable: "--font-bodoni",
   weight: ["400", "500", "600", "700", "800"],
+  subsets: ["latin"],
+});
+
+const beth = Beth_Ellen({
+  variable: "--font-beth",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const apple = Homemade_Apple({
+  variable: "--font-apple",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const schoolbell = Schoolbell({
+  variable: "--font-schoolbell",
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -90,7 +117,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${cormorant.variable} ${beau.variable} ${bellefair.variable} ${bodoni.variable} ${marjorie.variable} ${marjorieSemiBold.variable} ${lastik.variable} ${melodrame.variable} ${retrofans.variable} ${queensila.variable} ${snell.variable}`}
+      className={`${inter.variable} ${cormorant.variable} ${beau.variable} ${bellefair.variable} ${bodoni.variable} ${beth.variable} ${apple.variable} ${schoolbell.variable} ${marjorie.variable} ${marjorieSemiBold.variable} ${lastik.variable} ${melodrame.variable} ${retrofans.variable} ${queensila.variable} ${snell.variable}`}
     >
       <body className="overflow-hidden bg-white">
         <Providers>{children}</Providers>
