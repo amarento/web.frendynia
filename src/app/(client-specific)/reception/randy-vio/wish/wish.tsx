@@ -172,7 +172,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
               className="embla embla--auto-height overflow-hidden px-4"
               ref={emblaRef}
             >
-              <div className="embla__container flex gap-x-[13px]">
+              <div className="embla__container flex gap-x-[13px] px-[13px]">
                 {wishes && wishes.length > 0
                   ? [...wishes].reverse().map((wish, index) => (
                       <div
