@@ -131,7 +131,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
   };
 
   return (
-    <div className="text-center font-bodoni text-[#43423D]">
+    <div className="text-center font-schoolbell text-[#43423D]">
       <div className="bg-[#FAFAF8] pb-16 pt-10 md:pb-20 md:pt-12 lg:pt-16">
         <motion.div
           className=""
@@ -141,7 +141,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
         >
-          <h1 className="pl-6 font-snell text-[39px] md:text-[49px]">
+          <h1 className="pl-6 font-schoolbell text-[39px] md:text-[49px]">
             Well Wishes
           </h1>
           <h3 className="-mt-1 mb-10 text-[16px] text-[#5D5C55] md:mb-12 md:text-[20px] lg:mb-14">
@@ -161,7 +161,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
               className="embla embla--auto-height overflow-hidden px-4"
               ref={emblaRef}
             >
-              <div className="embla__container flex gap-x-[13px]">
+              <div className="embla__container flex gap-x-[13px] px-[13px]">
                 {wishes && wishes.length > 0
                   ? [...wishes].reverse().map((wish, index) => (
                       <div

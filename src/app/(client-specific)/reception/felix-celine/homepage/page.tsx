@@ -12,7 +12,7 @@ export default function Homepage() {
     <div className="relative flex h-screen items-center justify-center overflow-hidden text-center text-[#F0F0F0]">
       <Image
         alt="Wedding background"
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 -z-10"
         fill
         priority
         quality={100}
