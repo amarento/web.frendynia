@@ -17,6 +17,8 @@ import {
   useServerActionQuery,
 } from "~/lib/hooks/server-action-hooks";
 import { addWishAction, getAllWishes } from "~/server/actions";
+import bgcrop from "../_images/bg-crop.png";
+import square from "../_images/square.png";
 
 const wishSchema = z.object({
   name: z.string(),
@@ -43,8 +45,8 @@ export default function Wish({ guestName, guestId }: IWishProps) {
     },
   });
 
-  // Progress bar state
-  const [progress, setProgress] = useState(0);
+  // // Progress bar state
+  // const [progress, setProgress] = useState(0);
 
   // Embla Carousel setup with autoplay and auto height
   const autoplayPlugin = Autoplay({ delay: 10000, stopOnInteraction: false });
@@ -58,39 +60,39 @@ export default function Wish({ guestName, guestId }: IWishProps) {
     [autoplayPlugin, autoHeightPlugin],
   );
 
-  // Progress bar effect
-  useEffect(() => {
-    if (!emblaApi) {
-      return;
-    }
+  // // Progress bar effect
+  // useEffect(() => {
+  //   if (!emblaApi) {
+  //     return;
+  //   }
 
-    let interval: NodeJS.Timeout;
-    const resetProgress = () => {
-      setProgress(0);
-      clearInterval(interval);
-      interval = setInterval(() => {
-        setProgress((prev) => {
-          if (prev >= 100) {
-            return 0;
-          }
-          return prev + 100 / 100; // 10000ms / 100ms intervals = 100 steps
-        });
-      }, 100);
-    };
+  //   let interval: NodeJS.Timeout;
+  //   const resetProgress = () => {
+  //     setProgress(0);
+  //     clearInterval(interval);
+  //     interval = setInterval(() => {
+  //       setProgress((prev) => {
+  //         if (prev >= 100) {
+  //           return 0;
+  //         }
+  //         return prev + 100 / 100; // 10000ms / 100ms intervals = 100 steps
+  //       });
+  //     }, 100);
+  //   };
 
-    // Reset progress when slide changes
-    const onSlideChange = () => {
-      resetProgress();
-    };
+  //   // Reset progress when slide changes
+  //   const onSlideChange = () => {
+  //     resetProgress();
+  //   };
 
-    emblaApi.on("select", onSlideChange);
-    resetProgress(); // Start initial progress
+  //   emblaApi.on("select", onSlideChange);
+  //   resetProgress(); // Start initial progress
 
-    return () => {
-      clearInterval(interval);
-      emblaApi.off("select", onSlideChange);
-    };
-  }, [emblaApi]);
+  //   return () => {
+  //     clearInterval(interval);
+  //     emblaApi.off("select", onSlideChange);
+  //   };
+  // }, [emblaApi]);
 
   const {
     register,
@@ -132,7 +134,15 @@ export default function Wish({ guestName, guestId }: IWishProps) {
 
   return (
     <div className="text-center font-schoolbell text-[#43423D]">
-      <div className="bg-[#FAFAF8] pb-16 pt-10 md:pb-20 md:pt-12 lg:pt-16">
+      <div className="relative pt-20">
+        <div
+          className="absolute inset-0 -z-10"
+          style={{
+            backgroundImage: `url(${bgcrop.src})`,
+            backgroundRepeat: "repeat",
+            backgroundSize: "360px",
+          }}
+        />
         <motion.div
           className=""
           custom={0}
@@ -141,12 +151,9 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
         >
-          <h1 className="pl-6 font-schoolbell text-[39px] md:text-[49px]">
+          <h1 className="pb-10 font-beth text-[31px] text-[#43423D] md:pb-12 md:text-[39px] lg:pb-16">
             Well Wishes
           </h1>
-          <h3 className="-mt-1 mb-10 text-[16px] text-[#5D5C55] md:mb-12 md:text-[20px] lg:mb-14">
-            for groom & bride
-          </h3>
 
           {/* Carousel Container with Gradients */}
           <div className="relative">
@@ -165,8 +172,14 @@ export default function Wish({ guestName, guestId }: IWishProps) {
                 {wishes && wishes.length > 0
                   ? [...wishes].reverse().map((wish, index) => (
                       <div
-                        className="embla__slide flex w-[90vw] flex-col items-center justify-center rounded-xl border border-solid border-[#43423D] bg-[#FAFAFA] p-6 text-center shadow md:w-[95vw] md:p-8 lg:w-[40vw] lg:p-10"
+                        className="embla__slide flex h-[340px] w-[340px] flex-col items-center justify-center p-6 text-center md:h-[350px] md:w-[95vw] md:p-8 lg:h-[400px] lg:w-[40vw] lg:p-10"
                         key={index.toString()}
+                        style={{
+                          backgroundImage: `url(${square.src})`,
+                          backgroundRepeat: "no-repeat",
+                          backgroundSize: "contain",
+                          backgroundPosition: "center",
+                        }}
                       >
                         <p className="w-full text-[16px] text-[#5D5C55] md:text-[18px] lg:text-[20px]">
                           {wish.wish}
@@ -180,19 +193,17 @@ export default function Wish({ guestName, guestId }: IWishProps) {
               </div>
             </div>
           </div>
-
-          {/* Progress Bar */}
-          {wishes && wishes.length > 1 && (
-            <div className="mx-auto mt-6 h-[3px] w-16 overflow-hidden rounded-full bg-gray-200">
-              <div
-                className="h-full bg-[#888888] transition-all duration-100 ease-linear"
-                style={{ width: `${progress}%` }}
-              />
-            </div>
-          )}
         </motion.div>
       </div>
-      <div className="bg-[#FCFCF8] pb-10 pt-16 md:pb-12">
+      <div className="relative pb-10 pt-12 md:pb-12">
+        <div
+          className="absolute inset-0 -z-10"
+          style={{
+            backgroundImage: `url(${bgcrop.src})`,
+            backgroundRepeat: "repeat",
+            backgroundSize: "360px",
+          }}
+        />
         <motion.div
           custom={1}
           initial="hidden"
@@ -200,12 +211,9 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
         >
-          <h1 className="pl-6 font-snell text-[39px] md:text-[49px]">
-            Send Wish
+          <h1 className="pb-10 font-beth text-[31px] md:pb-12 md:text-[39px] lg:pb-16">
+            Make your wish
           </h1>
-          <h3 className="-mt-1 mb-10 text-[16px] text-[#5D5C55] md:mb-12 md:text-[20px] lg:mb-16">
-            for groom & bride
-          </h3>
         </motion.div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <motion.div

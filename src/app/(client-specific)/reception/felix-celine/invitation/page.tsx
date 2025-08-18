@@ -33,7 +33,7 @@ export default function Invitation() {
           src={lamp}
           width={150}
         />
-        <p className="w-[70vw] pb-8 font-schoolbell text-[16px] font-medium">
+        <p className="w-[80vw] pb-8 font-schoolbell text-[16px] font-medium">
           GKPB Masa Depan Cerah <br />
           Putat Gede Selatan <br />
           Jl. Raya Putat Gede Selatan No. 2, Surabaya

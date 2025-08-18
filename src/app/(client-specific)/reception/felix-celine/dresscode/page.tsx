@@ -36,10 +36,10 @@ export default function Dresscode() {
             alt="Crop image"
             className="pb-8"
             priority
-            height={220}
+            height={300}
             quality={100}
             src={crop2}
-            width={180}
+            width={190}
           />
           <p className="-rotate-6 pt-24 font-beth text-[20px] text-[#222222]">
             semi-formal <br />
