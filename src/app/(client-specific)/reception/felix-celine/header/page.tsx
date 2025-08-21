@@ -1,8 +1,10 @@
 'use client';
 
+import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import logo from "../_images/logo.png";
+import logoBlack from "../_images/logo-black.png";
 
 export default function Header() {
   const router = useRouter();
@@ -48,24 +50,18 @@ export default function Header() {
   }, [lastScrollY, scrollingTimeout, handleScroll]);
   return (
     <header
-      className={`fixed top-0 left-0 z-10 w-full transition-all duration-300 ease-in-out ${
-        isHeaderVisible ? 'opacity-100' : 'opacity-0'
+      className={`fixed left-0 top-0 z-[9999] w-full transition-all duration-300 ease-in-out ${
+        isHeaderVisible ? "opacity-100" : "opacity-0"
       }`}
     >
       <div className="mx-[4%] mt-4">
         <div className="mt-xs mb-xs flex items-end justify-start">
-          {/* <Image
+          <Image
             alt="Logo"
-            className="z-[2000] h-11 w-11 transition duration-300"
+            className="h-10 w-10 transition duration-300"
             onClick={handleLogoClick}
-            src={lastScrollY > 900 ? logoGray : logo}
-          /> */}
-          {/* <button
-            onClick={handleAboutClick}
-            className="drop-shadow-sm hover:opacity-75"
-          >
-            About
-          </button> */}
+            src={lastScrollY > 900 ? logoBlack : logo}
+          />
         </div>
       </div>
     </header>

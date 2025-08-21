@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import { Button } from "~/components/ui/button";
 
 import teaPai from "../_images/teapot.png";
@@ -12,7 +11,6 @@ import reception from "../_images/dining.png";
 import afterParty from "../_images/bottle.png";
 
 export default function Thewedding() {
-  const path = usePathname();
 
   // Animation variants with stagger delay
   const fadeIn = {
