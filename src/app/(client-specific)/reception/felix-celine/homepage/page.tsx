@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import motion from "motion/react";
+import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import Countdown from "react-countdown";
 
@@ -11,14 +11,48 @@ import table from "../_images/table.png";
 import clip from "../_images/clip.png";
 import decoframe from "../_images/deco-frame.png";
 
-import square from "../_images/square.png";
-import daysImg from "../_images/days.png";
-import hoursImg from "../_images/hours.png";
-import minutesImg from "../_images/minutes.png";
-import secondsImg from "../_images/seconds.png";
-import { Square } from "lucide-react";
-
 export default function Homepage() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const fadeIn = {
+    hidden: { opacity: 0, x: 0, y: 0 },
+    visible: { opacity: 1, x: 0, y: 0 },
+  };
+
+  const fadeInFromLeft = {
+    hidden: { opacity: 0, x: -100, y: 0 },
+    visible: { opacity: 1, x: 0, y: 0 },
+  };
+
+  const fadeInFromBottom = {
+    hidden: { opacity: 0, x: 0, y: 20 },
+    visible: { opacity: 1, x: 0, y: 0 },
+  };
+
+  const fadeInFromRight = {
+    hidden: { opacity: 0, x: 100, y: 0 },
+    visible: { opacity: 1, x: 0, y: 0 },
+  };
+
+  const fadeInFromTop = {
+    hidden: { opacity: 0, x: 0, y: -20 },
+    visible: { opacity: 1, x: 0, y: 0 },
+  };
+
+  const scaleIn = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1 },
+  };
+
   const targetDate = new Date("2025-09-19T06:30:00Z").getTime();
 
   // Only render countdown on client to avoid hydration error
@@ -38,15 +72,31 @@ export default function Homepage() {
     minutes: number;
     seconds: number;
   }) => (
-    <div className="relative flex rotate-2 justify-center text-[#F0F0F0] drop-shadow-2xl lg:-mb-2">
-      <Image
-        alt="Countdown background"
-        className="absolute inset-0 h-[76px] w-full object-cover"
-        height={76}
-        src={bgsquare}
-        width={400}
-      />
-      <div className="relative flex gap-4 px-6 py-4">
+    <motion.div
+      className="relative flex rotate-2 justify-center text-[#F0F0F0] drop-shadow-2xl lg:-mb-2"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+    >
+      <motion.div
+        className="absolute inset-0"
+        variants={fadeInFromBottom}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+      >
+        <Image
+          alt="Countdown background"
+          className="h-[78px] w-full object-cover"
+          height={78}
+          src={bgsquare}
+          width={400}
+        />
+      </motion.div>
+      <motion.div
+        className="relative flex gap-4 px-6 py-4"
+        variants={fadeInFromLeft}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+      >
         {[
           { label: "Days", value: days },
           { label: "Hours", value: hours },
@@ -58,13 +108,13 @@ export default function Homepage() {
             className="flex flex-col items-center text-[#222222]"
           >
             <span className="mb-2 font-beth text-[12px]">{item.label}</span>
-            <span className="font-medium font-apple text-[20px]">
+            <span className="font-apple text-[20px] font-medium">
               {String(item.value).padStart(2, "0")}
             </span>
           </div>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 
   return (
@@ -81,61 +131,101 @@ export default function Homepage() {
           objectPosition: "center",
         }}
       />
-      <div className="relative z-10 flex rotate-2 items-center justify-center">
-        <Image
-          alt="Movie Clip"
-          className="absolute left-0 z-20 -ml-[52px]"
-          height={300}
-          priority
-          quality={100}
-          src={clip}
-          width={120}
-        />
-        <Image
-          alt="Frame Deco"
-          className="absolute z-10"
-          height={450}
-          priority
-          quality={100}
-          src={decoframe}
-          width={278}
-        />
-        <Image
-          alt="Paper background"
-          className="object-cover"
-          height={450}
-          priority
-          quality={100}
-          src={bgsquare}
-          width={280}
-        />
-        <div className="absolute inset-0 flex flex-col items-center">
-          <h5 className="pb-5 pt-12 font-beth text-[20px] text-[#222222] md:text-[39px]">
-            We&apos;re getting <br />
-            married
-          </h5>
-          <div className="pb-5">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <div className="relative z-10 flex rotate-2 items-center justify-center">
+          <motion.div
+            className="absolute left-0 z-20 -ml-[52px]"
+            variants={fadeInFromLeft}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
             <Image
-              alt="Paper background"
-              className="object-cover"
-              height={128}
+              alt="Movie Clip"
+              height={300}
               priority
               quality={100}
-              src={table}
-              width={128}
+              src={clip}
+              width={120}
             />
-          </div>
-          <h5 className="pb-2 font-beth text-[18px] text-[#222222] md:text-[39px]">
-            Felix & Celine
-          </h5>
-          <h5 className="font-beth text-[16px] text-[#222222] md:text-[39px]">
-            Oct, 3 2025
-          </h5>
+          </motion.div>
+          <motion.div
+            className="absolute z-10"
+            variants={fadeInFromRight}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            <Image
+              alt="Frame Deco"
+              height={450}
+              priority
+              quality={100}
+              src={decoframe}
+              width={278}
+            />
+          </motion.div>
+          <motion.div
+            className="object-cover"
+            variants={fadeInFromRight}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            <Image
+              alt="Paper background"
+              height={450}
+              priority
+              quality={100}
+              src={bgsquare}
+              width={280}
+            />
+          </motion.div>
+          <motion.div
+            className="absolute inset-0 flex flex-col items-center"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            <motion.h5
+              className="pb-5 pt-12 font-beth text-[20px] text-[#222222] md:text-[39px]"
+              variants={fadeIn}
+            >
+              We&apos;re getting <br />
+              married
+            </motion.h5>
+            <motion.div className="object-cover pb-5" variants={scaleIn}>
+              <Image
+                alt="Paper background"
+                height={128}
+                priority
+                quality={100}
+                src={table}
+                width={128}
+              />
+            </motion.div>
+            <motion.h5
+              className="pb-2 font-beth text-[18px] text-[#222222] md:text-[39px]"
+              variants={fadeIn}
+            >
+              Felix & Celine
+            </motion.h5>
+            <motion.h5
+              className="font-beth text-[16px] text-[#222222] md:text-[39px]"
+              variants={fadeIn}
+            >
+              Oct, 3 2025
+            </motion.h5>
+          </motion.div>
         </div>
-      </div>
-      <div className="w-[280px] translate-y-4 -translate-x-2">
-        {mounted && <Countdown date={targetDate} renderer={renderer} />}
-      </div>
+        <div className="w-[280px] -translate-x-2 translate-y-4">
+          {mounted && <Countdown date={targetDate} renderer={renderer} />}
+        </div>
+      </motion.div>
     </div>
   );
 }

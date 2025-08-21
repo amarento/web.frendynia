@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { motion } from "motion/react";
 
 import bgcrop from "../_images/bg-crop.png";
 import crop3 from "../_images/crop-3.png";
@@ -31,7 +32,6 @@ import img22 from "../_images/img-22.jpg";
 import img23 from "../_images/img-23.jpg";
 import img24 from "../_images/img-24.jpg";
 import img25 from "../_images/img-25.jpg";
-import { motion } from "motion/react";
 
 export default function Photoalbum() {
   const images = [
@@ -69,9 +69,10 @@ export default function Photoalbum() {
     Array.from({ length: 6 }, (_, index) => index),
   );
   const [isInitialized, setIsInitialized] = useState(false);
-  const [_nextChangeTime, setNextChangeTime] = useState(() =>
+  const [nextChangeTime, setNextChangeTime] = useState(() =>
     Array.from({ length: 6 }, () => 0),
   );
+  void nextChangeTime;
 
   useEffect(() => {
     // Initialize the component after mount
@@ -151,6 +152,47 @@ export default function Photoalbum() {
     return () => clearInterval(interval);
   }, [images.length, isInitialized]);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const fadeIn = {
+    hidden: { opacity: 0, x: 0, y: 0 },
+    visible: { opacity: 1, x: 0, y: 0 },
+  };
+
+  const fadeInFromLeft = {
+    hidden: { opacity: 0, x: -100, y: 0 },
+    visible: { opacity: 1, x: 0, y: 0 },
+  };
+
+  const fadeInFromBottom = {
+    hidden: { opacity: 0, x: 0, y: 20 },
+    visible: { opacity: 1, x: 0, y: 0 },
+  };
+
+  const fadeInFromRight = {
+    hidden: { opacity: 0, x: 100, y: 0 },
+    visible: { opacity: 1, x: 0, y: 0 },
+  };
+
+  const fadeInFromTop = {
+    hidden: { opacity: 0, x: 0, y: -20 },
+    visible: { opacity: 1, x: 0, y: 0 },
+  };
+
+  const scaleIn = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1 },
+  };
+
   return (
     <div className="relative flex w-screen justify-center overflow-hidden pt-16 text-center text-[#F0F0F0]">
       <div
@@ -158,25 +200,46 @@ export default function Photoalbum() {
         style={{
           backgroundImage: `url(${bgcrop.src})`,
           backgroundRepeat: "repeat",
-          backgroundSize: "360px",
+          backgroundSize: "200px",
         }}
       />
       <div className="flex flex-col items-center justify-center">
-        <div className="flex flex-row items-center justify-center gap-2">
-          <p className="pb-8 font-beth text-[25px] text-[#222222]">Felix</p>
-          <Image
-            alt="Crop image"
-            priority
-            className="mb-12"
-            height={300}
-            quality={100}
-            src={crop3}
-            width={140}
-          />
-          <p className="pb-8 pl-2 font-beth text-[25px] text-[#222222]">
+        <motion.div
+          className="flex flex-row items-center justify-center gap-2"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <motion.h5
+            className="pb-8 font-beth text-[25px] text-[#222222]"
+            variants={fadeInFromLeft}
+            transition={{ duration: 0.4, ease: "easeOut", delay: 0 }}
+          >
+            Felix
+          </motion.h5>
+          <motion.div
+            variants={fadeInFromBottom}
+            transition={{ duration: 0.4, ease: "easeOut", delay: 0.6 }}
+          >
+            <Image
+              alt="Crop image"
+              priority
+              className="mb-12"
+              height={300}
+              quality={100}
+              src={crop3}
+              width={140}
+            />
+          </motion.div>
+          <motion.h5
+            className="pb-8 pl-2 font-beth text-[25px] text-[#222222]"
+            variants={fadeInFromRight}
+            transition={{ duration: 0.4, ease: "easeOut", delay: 0.3 }}
+          >
             Celine
-          </p>
-        </div>
+          </motion.h5>
+        </motion.div>
         <div className="grid grid-cols-2 gap-5">
           {Array.from({ length: 6 }, (_, index) => {
             const imageIndex = imageIndices[index];

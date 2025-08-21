@@ -1,6 +1,3 @@
-/** biome-ignore-all lint/a11y/noStaticElementInteractions: drag scrolling functionality */
-/** biome-ignore-all lint/a11y/useKeyWithClickEvents: drag scrolling functionality */
-/** biome-ignore-all lint/nursery/useSortedClasses: embla carousel styling */
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,7 +5,7 @@ import AutoHeight from "embla-carousel-auto-height";
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
 import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "~/components/ui/button";
@@ -40,18 +37,14 @@ export default function Wish({ guestName, guestId }: IWishProps) {
 
   const { mutateAsync: sendWish } = useServerActionMutation(addWishAction, {
     onSuccess: () => {
-      // biome-ignore lint: required for promise handling
       void refetch();
     },
   });
 
-  // // Progress bar state
-  // const [progress, setProgress] = useState(0);
-
   // Embla Carousel setup with autoplay and auto height
   const autoplayPlugin = Autoplay({ delay: 10000, stopOnInteraction: false });
   const autoHeightPlugin = AutoHeight();
-  const [emblaRef, emblaApi] = useEmblaCarousel(
+  const [emblaRef] = useEmblaCarousel(
     {
       loop: true,
       align: "center",
@@ -59,40 +52,6 @@ export default function Wish({ guestName, guestId }: IWishProps) {
     },
     [autoplayPlugin, autoHeightPlugin],
   );
-
-  // // Progress bar effect
-  // useEffect(() => {
-  //   if (!emblaApi) {
-  //     return;
-  //   }
-
-  //   let interval: NodeJS.Timeout;
-  //   const resetProgress = () => {
-  //     setProgress(0);
-  //     clearInterval(interval);
-  //     interval = setInterval(() => {
-  //       setProgress((prev) => {
-  //         if (prev >= 100) {
-  //           return 0;
-  //         }
-  //         return prev + 100 / 100; // 10000ms / 100ms intervals = 100 steps
-  //       });
-  //     }, 100);
-  //   };
-
-  //   // Reset progress when slide changes
-  //   const onSlideChange = () => {
-  //     resetProgress();
-  //   };
-
-  //   emblaApi.on("select", onSlideChange);
-  //   resetProgress(); // Start initial progress
-
-  //   return () => {
-  //     clearInterval(interval);
-  //     emblaApi.off("select", onSlideChange);
-  //   };
-  // }, [emblaApi]);
 
   const {
     register,
@@ -119,17 +78,45 @@ export default function Wish({ guestName, guestId }: IWishProps) {
     }
   };
 
-  const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
       opacity: 1,
-      y: 0,
       transition: {
-        delay: i * 0.1,
-        duration: 0.5,
-        ease: "easeOut",
+        staggerChildren: 0.3,
+        delayChildren: 0.2,
       },
-    }),
+    },
+  };
+
+  const fadeIn = {
+    hidden: { opacity: 0, x: 0, y: 0 },
+    visible: { opacity: 1, x: 0, y: 0 },
+  };
+
+  const fadeInFromLeft = {
+    hidden: { opacity: 0, x: -100, y: 0 },
+    visible: { opacity: 1, x: 0, y: 0 },
+  };
+
+  const fadeInFromBottom = {
+    hidden: { opacity: 0, x: 0, y: 20 },
+    visible: { opacity: 1, x: 0, y: 0 },
+  };
+
+  const fadeInFromRight = {
+    hidden: { opacity: 0, x: 100, y: 0 },
+    visible: { opacity: 1, x: 0, y: 0 },
+  };
+
+  const fadeInFromTop = {
+    hidden: { opacity: 0, x: 0, y: -20 },
+    visible: { opacity: 1, x: 0, y: 0 },
+  };
+
+  const scaleIn = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1 },
   };
 
   return (
@@ -140,124 +127,147 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           style={{
             backgroundImage: `url(${bgcrop.src})`,
             backgroundRepeat: "repeat",
-            backgroundSize: "360px",
+            backgroundSize: "200px",
           }}
         />
         <motion.div
-          className=""
-          custom={0}
+          variants={containerVariants}
           initial="hidden"
-          variants={fadeIn}
-          viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
         >
-          <h1 className="pb-10 font-beth text-[31px] text-[#43423D] md:pb-12 md:text-[39px] lg:pb-16">
+          <motion.h1
+            className="pb-6 font-beth text-[28px] text-[#333333] md:pb-12 md:text-[39px] lg:pb-16"
+            variants={fadeInFromTop}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
             Well Wishes
-          </h1>
+          </motion.h1>
 
           {/* Carousel Container with Gradients */}
-          <div className="relative">
-            {/* Left Gradient Overlay */}
-            <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-8 bg-gradient-to-r from-[#F8F8F7] to-transparent lg:w-80" />
+          <motion.div
+            variants={fadeInFromBottom}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            <div className="relative">
+              {/* Left Gradient Overlay */}
+              <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-8 bg-gradient-to-r from-[#F8F8F7] to-transparent lg:w-80" />
 
-            {/* Right Gradient Overlay */}
-            <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-8 bg-gradient-to-l from-[#F8F8F7] to-transparent lg:w-80" />
+              {/* Right Gradient Overlay */}
+              <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-8 bg-gradient-to-l from-[#F8F8F7] to-transparent lg:w-80" />
 
-            {/* Embla Carousel */}
-            <div
-              className="embla embla--auto-height overflow-hidden px-4"
-              ref={emblaRef}
-            >
-              <div className="embla__container flex gap-x-[13px] px-[13px]">
-                {wishes && wishes.length > 0
-                  ? [...wishes].reverse().map((wish, index) => (
-                      <div
-                        className="embla__slide flex h-[340px] w-[340px] flex-col items-center justify-center p-6 text-center md:h-[350px] md:w-[95vw] md:p-8 lg:h-[400px] lg:w-[40vw] lg:p-10"
-                        key={index.toString()}
-                        style={{
-                          backgroundImage: `url(${square.src})`,
-                          backgroundRepeat: "no-repeat",
-                          backgroundSize: "contain",
-                          backgroundPosition: "center",
-                        }}
-                      >
-                        <p className="w-full text-[16px] text-[#5D5C55] md:text-[18px] lg:text-[20px]">
-                          {wish.wish}
-                        </p>
-                        <p className="mt-2 text-[14px] italic text-[#5D5C55] md:text-[16px] lg:text-[18px]">
-                          – {wish.name}
-                        </p>
-                      </div>
-                    ))
-                  : null}
+              {/* Embla Carousel */}
+              <div
+                className="embla embla--auto-height overflow-hidden px-4"
+                ref={emblaRef}
+              >
+                <div className="embla__container flex gap-x-[13px] px-[13px]">
+                  {wishes && wishes.length > 0
+                    ? [...wishes].reverse().map((wish, index) => (
+                        <div
+                          className="embla__slide flex h-[340px] w-[340px] flex-col items-center justify-center p-6 text-center md:h-[350px] md:w-[95vw] md:p-8 lg:h-[400px] lg:w-[40vw] lg:p-10"
+                          key={index.toString()}
+                          style={{
+                            backgroundImage: `url(${square.src})`,
+                            backgroundRepeat: "no-repeat",
+                            backgroundSize: "contain",
+                            backgroundPosition: "center",
+                          }}
+                        >
+                          <p className="w-full text-[16px] text-[#43423D] md:text-[18px] lg:text-[20px]">
+                            {wish.wish}
+                          </p>
+                          <p className="mt-2 text-[14px] italic text-[#43423D] md:text-[16px] lg:text-[18px]">
+                            – {wish.name}
+                          </p>
+                        </div>
+                      ))
+                    : null}
+                </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
-      <div className="relative pb-10 pt-12 md:pb-12">
+      <div className="relative pt-12 md:pb-12">
         <div
           className="absolute inset-0 -z-10"
           style={{
             backgroundImage: `url(${bgcrop.src})`,
             backgroundRepeat: "repeat",
-            backgroundSize: "360px",
+            backgroundSize: "200px",
           }}
         />
         <motion.div
-          custom={1}
+          variants={containerVariants}
           initial="hidden"
-          variants={fadeIn}
-          viewport={{ once: true, margin: "-100px" }}
           whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
         >
-          <h1 className="pb-10 font-beth text-[31px] md:pb-12 md:text-[39px] lg:pb-16">
-            Make your wish
-          </h1>
-        </motion.div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <motion.div
-            className="mx-auto w-[75vw] text-left lg:w-[60vw] xl:w-[50vw]"
-            custom={2}
-            initial="hidden"
-            variants={fadeIn}
-            viewport={{ once: true, margin: "-100px" }}
-            whileInView="visible"
+          <motion.h1
+            className="pb-8 font-beth text-[28px] text-[#333333] md:pb-12 md:text-[39px] lg:pb-16"
+            variants={fadeInFromTop}
+            transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            <p className="pl-1 text-[14px] md:text-[16px]">Full Name</p>
+            Make your wish
+          </motion.h1>
+        </motion.div>
+        <motion.form
+          onSubmit={handleSubmit(onSubmit)}
+          className="mx-auto w-[75vw] lg:w-[60vw] xl:w-[50vw]"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <motion.div
+            className="text-left"
+            variants={fadeInFromBottom}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            <p className="pl-1 text-[16px] text-[#333333] md:text-[16px]">
+              from:
+            </p>
             <input
               {...register("name")}
-              className="mb-4 block w-full rounded-lg border bg-white p-2 text-[14px] text-muted-foreground"
+              className="mb-4 block w-full rounded-sm border bg-[#FCFCFC] p-2 text-[14px] text-muted-foreground"
               disabled={!!guestName}
             />
-            <p className="pl-1 text-[14px] md:text-[16px]">Your Wishes</p>
+          </motion.div>
+
+          <motion.div
+            className="text-left"
+            variants={fadeInFromBottom}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            <p className="pl-1 text-[16px] text-[#333333] md:text-[16px]">
+              wish:
+            </p>
             <textarea
               {...register("wish")}
-              className="block h-32 w-full resize-none rounded-lg border p-2 text-[12px] placeholder:text-left placeholder:align-top md:text-[14px]"
+              className="block h-32 w-full resize-none rounded-sm border bg-[#FCFCFC] p-3 text-[12px] placeholder:text-left placeholder:align-top md:text-[14px]"
               placeholder="Type Your Wishes"
             />
             {errors.wish && (
               <p className="text-red-500">{errors.wish.message}</p>
             )}
           </motion.div>
+
           <motion.div
-            className="flex justify-center gap-6 pt-6 md:pt-8"
-            custom={3}
-            initial="hidden"
-            variants={fadeIn}
-            viewport={{ once: true, margin: "-100px" }}
-            whileInView="visible"
+            className="flex justify-center gap-6 pt-7 md:pt-8"
+            variants={fadeInFromTop}
+            transition={{ duration: 0.4, ease: "easeOut" }}
           >
             <Button
-              className="rounded-lg bg-[#F8F8F7] px-7 py-2 shadow hover:bg-[#F0F0EF] active:scale-95 active:bg-[#EDEDEB] lg:px-8 lg:py-3"
+              className="rounded-sm bg-[#F8F8F8] px-7 py-2 shadow hover:bg-[#F0F0EF] active:scale-95 active:bg-[#EDEDEB] lg:px-8 lg:py-3"
               type="submit"
             >
-              <p className="text-[12px] text-[#5D5C55] md:text-[14px] lg:text-[16px]">
+              <p className="text-[14px] text-[#43423D] md:text-[14px] lg:text-[16px]">
                 Send Wish
               </p>
             </Button>
           </motion.div>
-        </form>
+        </motion.form>
       </div>
     </div>
   );

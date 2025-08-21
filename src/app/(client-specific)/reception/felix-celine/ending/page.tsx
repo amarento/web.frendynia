@@ -3,10 +3,9 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import bgcrop from "../_images/bg-crop.png";
-import bg1 from "../_images/bg-img-1.png";
-import envelope from "../_images/envelope.png";
+import tabledeco from "../_images/table-deco.png";
 
-export default function Gift() {
+export default function Ending() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -49,7 +48,7 @@ export default function Gift() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative w-screen overflow-hidden text-center text-[#F0F0F0]">
       <div
         className="absolute inset-0 -z-10"
         style={{
@@ -59,38 +58,26 @@ export default function Gift() {
         }}
       />
       <motion.div
-        className="relative flex h-[320px] items-center justify-center overflow-hidden text-center text-[#F0F0F0]"
+        className="flex flex-col items-center overflow-hidden pb-6 pt-12"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >
-        <motion.div
-          className="absolute inset-0 -z-10"
-          variants={fadeIn}
+        <motion.h5
+          className="-rotate-3 pb-4 font-beth text-[25px] text-[#333333]"
+          variants={fadeInFromTop}
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
-          <Image
-            alt="Background"
-            className="h-[320px] w-full object-cover"
-            priority
-            quality={100}
-            src={bg1}
-          />
-        </motion.div>
+          forever <br />
+          and always
+        </motion.h5>
         <motion.div
-          className="absolute top-12"
-          variants={fadeInFromLeft}
+          className="w-[90vw]"
+          variants={fadeInFromBottom}
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
-          <Image
-            alt="Envelope"
-            height={200}
-            priority
-            quality={100}
-            src={envelope}
-            width={200}
-          />
+          <Image alt="Table deco" src={tabledeco} />
         </motion.div>
       </motion.div>
     </div>
