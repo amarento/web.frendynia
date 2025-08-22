@@ -5,8 +5,8 @@ import { motion } from "motion/react";
 import bgcrop from "../_images/bg-crop.png";
 // import timeline from "../_images/timeline.png";
 import timeline from "../_images/pita.png";
-import star3 from "../_images/star-3.png";
-import star4 from "../_images/star-4.png";
+import star from "../_images/star-3.png";
+import star2 from "../_images/star-4.png";
 
 export default function Timeline() {
   const containerVariants = {
@@ -81,193 +81,337 @@ export default function Timeline() {
           />
         </motion.div>
         {/* Decorative Stars */}
-        <motion.div 
-          variants={fadeIn} 
-          transition={{ duration: 0.4, ease: "easeOut", delay: 0.9 }}
+        <motion.div
+          variants={fadeIn}
+          animate={{
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeOut",
+            times: [0, 0.3, 1],
+            delay: 1,
+          }}
         >
           <Image
-            src={star3}
-            alt="star"
+            src={star}
+            alt="star1"
             width={24}
             height={24}
             className="absolute left-[35px] top-[35px]"
           />
         </motion.div>
-        <motion.div 
+        <motion.div
           variants={fadeIn}
-          transition={{ duration: 0.4, ease: "easeOut", delay: 1.7 }}
+          animate={{
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeOut",
+            times: [0, 0.3, 1],
+            delay: 2.4,
+          }}
         >
           <Image
-            src={star3}
-            alt="star"
+            src={star}
+            alt="star2"
             width={24}
             height={24}
             className="absolute left-[180px] top-0"
           />
         </motion.div>
-        <motion.div 
+        <motion.div
           variants={fadeIn}
-          transition={{ duration: 0.4, ease: "easeOut", delay: 0.8 }}
+          animate={{
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeOut",
+            times: [0, 0.3, 1],
+            delay: 1.6,
+          }}
         >
           <Image
-            src={star4}
-            alt="star"
+            src={star2}
+            alt="star3"
             width={22}
             height={22}
             className="absolute right-[55px] top-[30px]"
           />
         </motion.div>
-        <motion.div 
+        <motion.div
           variants={fadeIn}
-          transition={{ duration: 0.4, ease: "easeOut", delay: 1.5 }}
+          animate={{
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeOut",
+            times: [0, 0.3, 1],
+            delay: 2.1,
+          }}
         >
           <Image
-            src={star3}
-            alt="star"
+            src={star}
+            alt="star4"
             width={24}
             height={24}
             className="absolute left-[15px] top-[180px]"
           />
         </motion.div>
-        <motion.div 
+        <motion.div
           variants={fadeIn}
-          transition={{ duration: 0.4, ease: "easeOut", delay: 0.9 }}
+          animate={{
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeOut",
+            times: [0, 0.3, 1],
+            delay: 1.1,
+          }}
         >
           <Image
-            src={star4}
-            alt="star"
+            src={star2}
+            alt="star5"
             width={22}
             height={22}
             className="absolute right-[20px] top-[140px]"
           />
         </motion.div>
-        <motion.div 
+        <motion.div
           variants={fadeIn}
-          transition={{ duration: 0.4, ease: "easeOut", delay: 1.6 }}
+          animate={{
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeOut",
+            times: [0, 0.3, 1],
+            delay: 1.6,
+          }}
         >
           <Image
-            src={star3}
-            alt="star"
+            src={star}
+            alt="star6"
             width={24}
             height={24}
             className="absolute left-[25px] top-[320px]"
           />
         </motion.div>
-        <motion.div 
+        <motion.div
           variants={fadeIn}
-          transition={{ duration: 0.4, ease: "easeOut", delay: 0.8 }}
+          animate={{
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeOut",
+            times: [0, 0.3, 1],
+            delay: 2.8,
+          }}
         >
           <Image
-            src={star4}
-            alt="star"
+            src={star2}
+            alt="star7"
             width={22}
             height={22}
             className="absolute right-[15px] top-[280px]"
           />
         </motion.div>
-        <motion.div 
+        <motion.div
           variants={fadeIn}
-          transition={{ duration: 0.4, ease: "easeOut", delay: 1.5 }}
+          animate={{
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeOut",
+            times: [0, 0.3, 1],
+            delay: 1.3,
+          }}
         >
           <Image
-            src={star3}
-            alt="star"
+            src={star}
+            alt="star8"
             width={24}
             height={24}
             className="absolute left-[15px] top-[450px]"
           />
         </motion.div>
-        <motion.div 
+        <motion.div
           variants={fadeIn}
-          transition={{ duration: 0.4, ease: "easeOut", delay: 1.6 }}
+          animate={{
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeOut",
+            times: [0, 0.3, 1],
+            delay: 1.9,
+          }}
         >
           <Image
-            src={star4}
-            alt="star"
+            src={star2}
+            alt="star9"
             width={22}
             height={22}
             className="absolute right-[35px] top-[430px]"
           />
         </motion.div>
-        <motion.div 
+        <motion.div
           variants={fadeIn}
-          transition={{ duration: 0.4, ease: "easeOut", delay: 1.4 }}
+          animate={{
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeOut",
+            times: [0, 0.3, 1],
+            delay: 2.9,
+          }}
         >
           <Image
-            src={star3}
-            alt="star"
+            src={star}
+            alt="star10"
             width={24}
             height={24}
             className="absolute left-[25px] top-[580px]"
           />
         </motion.div>
-        <motion.div 
+        <motion.div
           variants={fadeIn}
-          transition={{ duration: 0.4, ease: "easeOut", delay: 0.9 }}
+          animate={{
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeOut",
+            times: [0, 0.3, 1],
+            delay: 1.7,
+          }}
         >
           <Image
-            src={star4}
-            alt="star"
+            src={star2}
+            alt="star11"
             width={22}
             height={22}
             className="absolute right-[20px] top-[580px]"
           />
         </motion.div>
-        <motion.div 
+        <motion.div
           variants={fadeIn}
-          transition={{ duration: 0.4, ease: "easeOut", delay: 1.5 }}
+          animate={{
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeOut",
+            times: [0, 0.3, 1],
+            delay: 2.2,
+          }}
         >
           <Image
-            src={star3}
-            alt="star"
+            src={star}
+            alt="star12"
             width={24}
             height={24}
             className="absolute left-[35px] top-[700px]"
           />
         </motion.div>
-        <motion.div 
+        <motion.div
           variants={fadeIn}
-          transition={{ duration: 0.4, ease: "easeOut", delay: 0.8 }}
+          animate={{
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeOut",
+            times: [0, 0.3, 1],
+            delay: 3,
+          }}
         >
           <Image
-            src={star4}
-            alt="star"
+            src={star2}
+            alt="star13"
             width={22}
             height={22}
             className="absolute right-[27px] top-[730px]"
           />
         </motion.div>
-        <motion.div 
+        <motion.div
           variants={fadeIn}
-          transition={{ duration: 0.4, ease: "easeOut", delay: 1 }}
+          animate={{
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeOut",
+            times: [0, 0.3, 1],
+            delay: 1.4,
+          }}
         >
           <Image
-            src={star3}
-            alt="star"
+            src={star}
+            alt="star14"
             width={24}
             height={24}
             className="absolute left-[25px] top-[810px]"
           />
         </motion.div>
-        <motion.div 
+        <motion.div
           variants={fadeIn}
-          transition={{ duration: 0.4, ease: "easeOut", delay: 1.5 }}
+          animate={{
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeOut",
+            times: [0, 0.3, 1],
+            delay: 2,
+          }}
         >
           <Image
-            src={star4}
-            alt="star"
+            src={star2}
+            alt="star15"
             width={22}
             height={22}
             className="absolute right-[110px] top-[830px]"
           />
         </motion.div>
-        <motion.div 
+        <motion.div
           variants={fadeIn}
-          transition={{ duration: 0.4, ease: "easeOut", delay: 0.8 }}
+          animate={{
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeOut",
+            times: [0, 0.3, 1],
+            delay: 2.8,
+          }}
         >
           <Image
-            src={star3}
-            alt="star"
+            src={star}
+            alt="star16"
             width={24}
             height={24}
             className="absolute left-[140px] top-[850px]"
