@@ -6,19 +6,23 @@ import { useEffect, useState } from "react";
 import Countdown from "react-countdown";
 
 import homepage from "../_images/homepage.png";
-import bgsquare from "../_images/bg-paper.png";
+import paper from "../_images/bg-paper.png";
 import table from "../_images/table.png";
 import clip from "../_images/clip.png";
 import decoframe from "../_images/deco-frame.png";
 
-export default function Homepage() {
+export default function Homepage({
+  showAnimations = true,
+}: {
+  showAnimations?: boolean;
+}) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: 0.2,
+        delayChildren: 0.7, // 0.5s delay + 0.2s original delay
       },
     },
   };
@@ -76,8 +80,7 @@ export default function Homepage() {
       className="relative flex rotate-2 justify-center text-[#F0F0F0] drop-shadow-2xl lg:-mb-2"
       variants={containerVariants}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
+      animate={showAnimations ? "visible" : "hidden"}
     >
       <motion.div
         className="absolute inset-0"
@@ -88,7 +91,7 @@ export default function Homepage() {
           alt="Countdown background"
           className="h-[78px] w-full object-cover"
           height={78}
-          src={bgsquare}
+          src={paper}
           width={400}
         />
       </motion.div>
@@ -134,10 +137,19 @@ export default function Homepage() {
       <motion.div
         variants={containerVariants}
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        animate={showAnimations ? "visible" : "hidden"}
       >
         <div className="relative z-10 flex rotate-2 items-center justify-center">
+          <div className="object-cover">
+            <Image
+              alt="Paper background"
+              height={450}
+              priority
+              quality={100}
+              src={paper}
+              width={280}
+            />
+          </div>
           <motion.div
             className="absolute left-0 z-20 -ml-[52px]"
             variants={fadeInFromLeft}
@@ -156,8 +168,8 @@ export default function Homepage() {
             className="absolute z-10"
             variants={fadeInFromRight}
             initial="hidden"
-            whileInView="visible"
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            animate={showAnimations ? "visible" : "hidden"}
+            transition={{ duration: 0.4, ease: "easeOut", delay: 0.5 }}
           >
             <Image
               alt="Frame Deco"
@@ -168,28 +180,13 @@ export default function Homepage() {
               width={278}
             />
           </motion.div>
-          <motion.div
-            className="object-cover"
-            variants={fadeInFromRight}
-            initial="hidden"
-            whileInView="visible"
-            transition={{ duration: 0.4, ease: "easeOut" }}
-          >
-            <Image
-              alt="Paper background"
-              height={450}
-              priority
-              quality={100}
-              src={bgsquare}
-              width={280}
-            />
-          </motion.div>
+
           <motion.div
             className="absolute inset-0 flex flex-col items-center"
             variants={containerVariants}
             initial="hidden"
-            whileInView="visible"
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            animate={showAnimations ? "visible" : "hidden"}
+            transition={{ duration: 0.4, ease: "easeOut", delay: 0.5 }}
           >
             <motion.h5
               className="pb-5 pt-12 font-beth text-[20px] text-[#222222] md:text-[39px]"
