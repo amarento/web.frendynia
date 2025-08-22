@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
 
 import bgcrop from "../_images/bg-crop.png";
@@ -62,95 +62,67 @@ export default function Photoalbum() {
     img25,
   ];
 
-  const [imageIndices, setImageIndices] = useState(() =>
-    Array.from({ length: 6 }, () => Math.floor(Math.random() * 25)),
-  );
-  const [animationKeys, setAnimationKeys] = useState(() =>
-    Array.from({ length: 6 }, (_, index) => index),
-  );
-  const [isInitialized, setIsInitialized] = useState(false);
-  const [nextChangeTime, setNextChangeTime] = useState(() =>
-    Array.from({ length: 6 }, () => 0),
-  );
-  void nextChangeTime;
+  // Split images into three groups for three carousels
+  const carousel1Images = images.slice(0, 9); // First 9 images
+  const carousel2Images = images.slice(9, 17); // Next 8 images
+  const carousel3Images = images.slice(17); // Remaining 8 images
 
+  const [translateX1, setTranslateX1] = useState(0);
+  const [translateX2, setTranslateX2] = useState(
+    -(carousel2Images.length * 320),
+  ); // Start from the left edge for reverse direction
+  const [translateX3, setTranslateX3] = useState(0);
+
+  const animationRef1 = useRef<number>();
+  const animationRef2 = useRef<number>();
+  const animationRef3 = useRef<number>();
+
+  // Smooth auto-scrolling using requestAnimationFrame
   useEffect(() => {
-    // Initialize the component after mount
-    const timer = setTimeout(() => {
-      setIsInitialized(true);
-    }, 100); // Small delay to ensure everything is ready
+    const imageWidth = 320; // 280px image + 40px padding
 
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    if (!isInitialized) return;
-
-    // Initialize change times with staggered intervals to prevent simultaneous changes
-    const now = Date.now();
-    const initialTimes = Array.from({ length: 6 }, (_, index) => {
-      const baseInterval = Math.random() * 6000 + 6000; // 6-12 seconds
-      return now + baseInterval + index * 1500; // Add 1.5 seconds between each image's first change
-    });
-    setNextChangeTime(initialTimes);
-
-    const checkAndUpdate = () => {
-      const currentTime = Date.now();
-
-      setNextChangeTime((prevTimes) => {
-        const newTimes = [...prevTimes];
-        let hasChanges = false;
-
-        for (let i = 0; i < 6; i++) {
-          if (currentTime >= (prevTimes[i] ?? 0)) {
-            // Time to change this image
-            setImageIndices((prev) => {
-              const newIndices = [...prev];
-              // Ensure we get a different image
-              let newIndex;
-              do {
-                newIndex = Math.floor(Math.random() * images.length);
-              } while (newIndex === prev[i] && images.length > 1);
-              newIndices[i] = newIndex;
-              return newIndices;
-            });
-
-            setAnimationKeys((prev) => {
-              const newKeys = [...prev];
-              newKeys[i] = Date.now() + i; // Unique key to trigger animation
-              return newKeys;
-            });
-
-            // Schedule next change for this image, ensuring it's at least 2.5 seconds away from other changes
-            let nextTime: number;
-            const minGap = 2500; // 2.5 seconds minimum gap
-            let attempts = 0;
-
-            do {
-              nextTime = currentTime + Math.random() * 5000 + 7000; // 7-12 seconds from now
-              attempts++;
-            } while (
-              attempts < 15 && // More attempts for better distribution
-              newTimes.some(
-                (time, index) =>
-                  index !== i && Math.abs(time - nextTime) < minGap,
-              )
-            );
-
-            newTimes[i] = nextTime;
-            hasChanges = true;
-          }
-        }
-
-        return hasChanges ? newTimes : prevTimes;
+    // Carousel 1 - moves at 0.5px per frame (slower)
+    const animate1 = () => {
+      setTranslateX1((prev) => {
+        const newTranslate = prev - 0.5;
+        const resetPoint = -(carousel1Images.length * imageWidth);
+        return newTranslate <= resetPoint ? 0 : newTranslate;
       });
+      animationRef1.current = requestAnimationFrame(animate1);
     };
 
-    // Check every 50ms for more responsive updates
-    const interval = setInterval(checkAndUpdate, 50);
+    // Carousel 2 - moves at 0.3px per frame (slowest) - MOVING LEFT (opposite direction)
+    const animate2 = () => {
+      setTranslateX2((prev) => {
+        const newTranslate = prev + 0.3; // Moving in positive direction (left)
+        const resetPoint = carousel2Images.length * imageWidth;
+        return newTranslate >= resetPoint ? 0 : newTranslate;
+      });
+      animationRef2.current = requestAnimationFrame(animate2);
+    };
 
-    return () => clearInterval(interval);
-  }, [images.length, isInitialized]);
+    // Carousel 3 - moves at 0.6px per frame (fastest)
+    const animate3 = () => {
+      setTranslateX3((prev) => {
+        const newTranslate = prev - 0.6;
+        const resetPoint = -(carousel3Images.length * imageWidth);
+        return newTranslate <= resetPoint ? 0 : newTranslate;
+      });
+      animationRef3.current = requestAnimationFrame(animate3);
+    };
+
+    // Start animations
+    animationRef1.current = requestAnimationFrame(animate1);
+    animationRef2.current = requestAnimationFrame(animate2);
+    animationRef3.current = requestAnimationFrame(animate3);
+
+    // Cleanup
+    return () => {
+      if (animationRef1.current) cancelAnimationFrame(animationRef1.current);
+      if (animationRef2.current) cancelAnimationFrame(animationRef2.current);
+      if (animationRef3.current) cancelAnimationFrame(animationRef3.current);
+    };
+  }, [carousel1Images.length, carousel2Images.length, carousel3Images.length]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -161,11 +133,6 @@ export default function Photoalbum() {
         delayChildren: 0.2,
       },
     },
-  };
-
-  const fadeIn = {
-    hidden: { opacity: 0, x: 0, y: 0 },
-    visible: { opacity: 1, x: 0, y: 0 },
   };
 
   const fadeInFromLeft = {
@@ -181,16 +148,6 @@ export default function Photoalbum() {
   const fadeInFromRight = {
     hidden: { opacity: 0, x: 100, y: 0 },
     visible: { opacity: 1, x: 0, y: 0 },
-  };
-
-  const fadeInFromTop = {
-    hidden: { opacity: 0, x: 0, y: -20 },
-    visible: { opacity: 1, x: 0, y: 0 },
-  };
-
-  const scaleIn = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1 },
   };
 
   return (
@@ -240,38 +197,101 @@ export default function Photoalbum() {
             Celine
           </motion.h5>
         </motion.div>
-        <div className="grid grid-cols-2 gap-5">
-          {Array.from({ length: 6 }, (_, index) => {
-            const imageIndex = imageIndices[index];
-            if (imageIndex === undefined || !images[imageIndex]) {
-              return null;
-            }
-            const isInitialLoad = animationKeys[index] === index; // Check if this is the initial render
-            return (
-              <motion.div
-                key={animationKeys[index]}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{
-                  duration: isInitialLoad ? 1.5 : 1.2,
-                  ease: isInitialLoad ? "easeOut" : "easeInOut",
-                  delay: isInitialLoad ? index * 0.4 : 0, // Staggered delay only for initial load
-                  opacity: { duration: isInitialLoad ? 1.8 : 1.0 },
-                  scale: { duration: isInitialLoad ? 1.2 : 0.8 },
-                }}
-              >
-                <Image
-                  alt={`Photo album item ${index + 1}`}
-                  className="h-[168px] w-[168px] rounded-xl border object-cover"
-                  height={200}
-                  quality={100}
-                  src={images[imageIndex]}
-                  width={200}
-                />
-              </motion.div>
-            );
-          })}
+
+        {/* Three Landscape Carousels */}
+        <div className="w-full max-w-6xl space-y-8">
+          {/* First Carousel */}
+          <div className="relative w-full overflow-hidden">
+            <div
+              className="flex will-change-transform"
+              style={{ transform: `translateX(${translateX1}px)` }}
+            >
+              {[...carousel1Images, ...carousel1Images].map((image, index) => (
+                <motion.div
+                  key={`carousel1-${index}`}
+                  className="flex-shrink-0 px-2"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: (index % carousel1Images.length) * 0.05,
+                    ease: "easeOut",
+                  }}
+                >
+                  <Image
+                    alt={`Photo album carousel 1 item ${(index % carousel1Images.length) + 1}`}
+                    className="h-[180px] w-[280px] rounded-sm border object-cover shadow-lg"
+                    height={180}
+                    quality={100}
+                    src={image}
+                    width={280}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Second Carousel */}
+          <div className="relative w-full overflow-hidden">
+            <div
+              className="flex will-change-transform"
+              style={{ transform: `translateX(${translateX2}px)` }}
+            >
+              {[...carousel2Images, ...carousel2Images].map((image, index) => (
+                <motion.div
+                  key={`carousel2-${index}`}
+                  className="flex-shrink-0 px-2"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: (index % carousel2Images.length) * 0.05,
+                    ease: "easeOut",
+                  }}
+                >
+                  <Image
+                    alt={`Photo album carousel 2 item ${(index % carousel2Images.length) + 1}`}
+                    className="h-[180px] w-[280px] rounded-sm border object-cover shadow-lg"
+                    height={180}
+                    quality={100}
+                    src={image}
+                    width={280}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Third Carousel */}
+          <div className="relative w-full overflow-hidden">
+            <div
+              className="flex will-change-transform"
+              style={{ transform: `translateX(${translateX3}px)` }}
+            >
+              {[...carousel3Images, ...carousel3Images].map((image, index) => (
+                <motion.div
+                  key={`carousel3-${index}`}
+                  className="flex-shrink-0 px-2"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: (index % carousel3Images.length) * 0.05,
+                    ease: "easeOut",
+                  }}
+                >
+                  <Image
+                    alt={`Photo album carousel 3 item ${(index % carousel3Images.length) + 1}`}
+                    className="h-[180px] w-[280px] rounded-sm border object-cover shadow-lg"
+                    height={180}
+                    quality={100}
+                    src={image}
+                    width={280}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

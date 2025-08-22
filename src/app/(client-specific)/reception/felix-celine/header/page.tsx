@@ -50,7 +50,7 @@ export default function Header() {
   }, [lastScrollY, scrollingTimeout, handleScroll]);
   return (
     <header
-      className={`fixed left-0 top-0 z-[9999] w-full transition-all duration-300 ease-in-out ${
+      className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ease-in-out ${
         isHeaderVisible ? "opacity-100" : "opacity-0"
       }`}
     >

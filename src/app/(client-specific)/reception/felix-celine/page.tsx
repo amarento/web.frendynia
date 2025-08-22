@@ -26,9 +26,7 @@ import Footer from "./footer/page";
 
 export default function Page() {
   return (
-    <Suspense>
       <PageContent />
-    </Suspense>
   );
 }
 

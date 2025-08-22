@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import bgcrop from "../_images/bg-crop.png";
+import ending from "../_images/ending.jpg";
 import tabledeco from "../_images/table-deco.png";
 
 export default function Ending() {
@@ -58,12 +59,19 @@ export default function Ending() {
         }}
       />
       <motion.div
-        className="flex flex-col items-center overflow-hidden pb-6 pt-12"
+        className="flex flex-col items-center overflow-hidden pb-8"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >
+        <motion.div
+          className="pb-6 pt-12"
+          variants={fadeInFromTop}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+        >
+          <Image alt="Background Image" src={ending} />
+        </motion.div>
         <motion.h5
           className="-rotate-3 pb-4 font-beth text-[25px] text-[#333333]"
           variants={fadeInFromTop}

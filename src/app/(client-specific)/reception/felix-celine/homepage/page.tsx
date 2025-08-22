@@ -156,7 +156,7 @@ export default function Homepage() {
             className="absolute z-10"
             variants={fadeInFromRight}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
             <Image
@@ -172,7 +172,7 @@ export default function Homepage() {
             className="object-cover"
             variants={fadeInFromRight}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
             <Image
@@ -188,7 +188,7 @@ export default function Homepage() {
             className="absolute inset-0 flex flex-col items-center"
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
             <motion.h5
