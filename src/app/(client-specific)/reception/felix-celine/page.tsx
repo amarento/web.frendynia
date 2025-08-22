@@ -17,11 +17,11 @@ import Wish from "./wish/wish";
 import Ending from "./ending/page";
 import Footer from "./footer/page";
 
-import motion1 from "./_images/motion-1.jpg";
-import motion2 from "./_images/motion-2.jpg";
-import motion3 from "./_images/motion-3.jpg";
-import motion4 from "./_images/motion-4.jpg";
-import motion5 from "./_images/motion-5.jpg";
+import motion1 from "./_images/motion-1.png";
+import motion2 from "./_images/motion-2.png";
+import motion3 from "./_images/motion-3.png";
+import motion4 from "./_images/motion-4.png";
+import motion5 from "./_images/motion-5.png";
 import black from "./_images/black.png";
 
 export default function Page() {
@@ -44,7 +44,7 @@ function PageContent() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplash(false);
-    }, 8000); // Show splash for 8 seconds (enough time for all animations)
+    }, 8800); // Show splash for 8 seconds (enough time for all animations)
 
     return () => clearTimeout(timer);
   }, []);
@@ -62,7 +62,7 @@ function PageContent() {
             transition={{ duration: 1.5, ease: "easeOut" }}
           >
             <motion.div
-              className="relative flex h-96 w-96 items-center justify-center"
+              className="relative flex h-[400px] w-[400px] items-center justify-center"
               initial="hidden"
               animate="visible"
               variants={{
@@ -70,7 +70,8 @@ function PageContent() {
                 visible: {
                   opacity: 1,
                   transition: {
-                    staggerChildren: 1.2,
+                    staggerChildren: 1.4,
+                    delayChildren: 0.8,
                   },
                 },
               }}
@@ -78,7 +79,7 @@ function PageContent() {
               <motion.img
                 src={motion1.src}
                 alt=""
-                className="absolute z-10 h-72 w-72 object-contain"
+                className="absolute z-10 h-80 w-80 object-contain"
                 variants={{
                   hidden: {
                     scale: 1,
@@ -96,7 +97,7 @@ function PageContent() {
               <motion.img
                 src={motion2.src}
                 alt=""
-                className="absolute z-20 h-[296px] w-[296px] object-contain"
+                className="absolute z-20 h-[336px] w-[336px] object-contain"
                 variants={{
                   hidden: { scale: 1, opacity: 0 },
                   visible: {
@@ -109,7 +110,7 @@ function PageContent() {
               <motion.img
                 src={motion3.src}
                 alt=""
-                className="absolute z-30 h-[304px] w-[304px] object-contain"
+                className="absolute z-30 h-[352px] w-[352px] object-contain"
                 variants={{
                   hidden: { scale: 1, opacity: 0 },
                   visible: {
@@ -122,7 +123,7 @@ function PageContent() {
               <motion.img
                 src={motion4.src}
                 alt=""
-                className="absolute z-40 h-[312px] w-[312px] object-contain"
+                className="absolute z-40 h-[368px] w-[368px] object-contain"
                 variants={{
                   hidden: { scale: 1, opacity: 0 },
                   visible: {
@@ -135,11 +136,11 @@ function PageContent() {
               <motion.img
                 src={motion5.src}
                 alt=""
-                className="absolute z-50 h-80 w-80 object-contain"
+                className="absolute z-50 h-96 w-96 object-contain"
                 variants={{
                   hidden: {
                     scale: 1,
-                    opacity: 1,
+                    opacity: 0,
                     clipPath: "inset(0 0 100% 0)", // Start hidden from bottom
                   },
                   visible: {
@@ -159,7 +160,7 @@ function PageContent() {
               <motion.img
                 src={black.src}
                 alt=""
-                className="absolute z-[60] h-[328px] w-[328px] object-contain"
+                className="absolute z-[60] w-[400px] object-contain"
                 variants={{
                   hidden: {
                     scale: 1,
@@ -170,7 +171,7 @@ function PageContent() {
                     scale: 1,
                     opacity: 1,
                     clipPath: "inset(0% 0 0 0)",
-                    transition: { duration: 0.8, ease: "easeIn" },
+                    transition: { duration: 0.7, ease: "easeIn" },
                   },
                 }}
               />
