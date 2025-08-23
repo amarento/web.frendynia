@@ -10,8 +10,10 @@ import useEmblaCarousel from "embla-carousel-react";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from 'sonner';
 import { z } from "zod";
 import { Button } from "~/components/ui/button";
+
 import {
   useServerActionMutation,
   useServerActionQuery,
@@ -41,13 +43,18 @@ export default function Wish({ guestName, guestId }: IWishProps) {
       // biome-ignore lint: required for promise handling
       void refetch();
     },
+    onError: (error) => {
+      toast.error(
+        `An error occurred while adding wish. Error: ${error.message}`
+      );
+    },
   });
 
   // Progress bar state
   const [progress, setProgress] = useState(0);
 
   // Embla Carousel setup with autoplay and auto height
-  const autoplayPlugin = Autoplay({ delay: 10000, stopOnInteraction: false });
+  const autoplayPlugin = Autoplay({ delay: 10_000, stopOnInteraction: false });
   const autoHeightPlugin = AutoHeight();
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
@@ -112,6 +119,10 @@ export default function Wish({ guestName, guestId }: IWishProps) {
   }, [guestName, reset]);
 
   const onSubmit = async (data: z.infer<typeof wishSchema>) => {
+    if (!guestId) {
+      toast.error('An error occured while adding wish. Guest not found.');
+    }
+
     if (guestId) {
       await sendWish({ guestId, wish: data.wish, clientId: 4 });
     }
@@ -138,7 +149,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           custom={0}
           initial="hidden"
           variants={fadeIn}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           whileInView="visible"
         >
           <h1 className="pl-6 font-snell text-[39px] md:text-[49px]">
@@ -161,7 +172,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
               className="embla embla--auto-height overflow-hidden px-4"
               ref={emblaRef}
             >
-              <div className="embla__container flex gap-x-[13px]">
+              <div className="embla__container flex gap-x-[13px] px-[13px]">
                 {wishes && wishes.length > 0
                   ? [...wishes].reverse().map((wish, index) => (
                       <div
@@ -197,7 +208,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           custom={1}
           initial="hidden"
           variants={fadeIn}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           whileInView="visible"
         >
           <h1 className="pl-6 font-snell text-[39px] md:text-[49px]">
@@ -213,18 +224,18 @@ export default function Wish({ guestName, guestId }: IWishProps) {
             custom={2}
             initial="hidden"
             variants={fadeIn}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             whileInView="visible"
           >
             <p className="pl-1 text-[14px] md:text-[16px]">Full Name</p>
             <input
-              {...register("name")}
+              {...register('name')}
               className="mb-4 block w-full rounded-lg border bg-white p-2 text-[14px] text-muted-foreground"
               disabled={!!guestName}
             />
             <p className="pl-1 text-[14px] md:text-[16px]">Your Wishes</p>
             <textarea
-              {...register("wish")}
+              {...register('wish')}
               className="block h-32 w-full resize-none rounded-lg border p-2 text-[12px] placeholder:text-left placeholder:align-top md:text-[14px]"
               placeholder="Type Your Wishes"
             />
@@ -237,7 +248,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
             custom={3}
             initial="hidden"
             variants={fadeIn}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             whileInView="visible"
           >
             <Button

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import Header from "./header/page";
+import Header from './header/page';
 
 export default function Layout({
   children,
