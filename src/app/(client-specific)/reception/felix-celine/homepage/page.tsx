@@ -2,14 +2,17 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Countdown from "react-countdown";
+import { MdOutlineMusicNote, MdOutlineMusicOff } from "react-icons/md";
 
 import homepage from "../_images/homepage.png";
 import paper from "../_images/bg-paper.png";
 import table from "../_images/table.png";
 import clip from "../_images/clip.png";
 import decoframe from "../_images/deco-frame.png";
+
+const music = "/music-felix-celine.mp3";
 
 export default function Homepage({
   showAnimations = true,
@@ -56,6 +59,43 @@ export default function Homepage({
     hidden: { opacity: 0, scale: 0.8 },
     visible: { opacity: 1, scale: 1 },
   };
+
+  // Music player state
+
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const toggleMusic = async () => {
+    if (!audioRef.current) return;
+
+    if (isPlaying) {
+      audioRef.current.pause();
+
+      setIsPlaying(false);
+    } else {
+      try {
+        await audioRef.current.play();
+
+        setIsPlaying(true);
+      } catch (err) {
+        // Optionally, surface a non-blocking UI message here
+        setIsPlaying(false);
+      }
+    }
+  };
+
+  // Pause music when unmounting
+
+  useEffect(() => {
+    const audioElement = audioRef.current;
+
+    return () => {
+      if (audioElement) {
+        audioElement.pause();
+      }
+    };
+  }, []);
 
   const targetDate = new Date("2025-09-19T06:30:00Z").getTime();
 
@@ -223,6 +263,26 @@ export default function Homepage({
           {mounted && <Countdown date={targetDate} renderer={renderer} />}
         </div>
       </motion.div>
+      {/* Music player button */}
+
+      <audio loop preload="auto" ref={audioRef} src={music} />
+
+      <button
+        aria-label={isPlaying ? "Mute music" : "Play music"}
+        className="fixed bottom-6 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-[#333333] shadow-lg transition hover:bg-[#444] focus:outline-none"
+        onClick={toggleMusic}
+        type="button"
+      >
+        {isPlaying ? (
+          // Mute icon (simple SVG)
+
+          <MdOutlineMusicNote className="h-6 w-6" />
+        ) : (
+          // Play icon (simple SVG)
+
+          <MdOutlineMusicOff className="h-6 w-6" />
+        )}
+      </button>
     </div>
   );
 }
