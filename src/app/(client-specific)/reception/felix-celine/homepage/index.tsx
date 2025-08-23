@@ -97,7 +97,7 @@ export default function Homepage({
     };
   }, []);
 
-  const targetDate = new Date("2025-09-19T06:30:00Z").getTime();
+  const targetDate = new Date("2025-10-03T04:00:00Z").getTime();
 
   // Only render countdown on client to avoid hydration error
   const [mounted, setMounted] = useState(false);

@@ -240,21 +240,10 @@ function PageContent() {
               <motion.div
                 className="absolute z-50"
                 variants={{
-                  hidden: {
-                    scale: 1,
-                    opacity: 0,
-                    clipPath: "inset(0 0 100% 0)", // Start hidden from bottom
-                  },
+                  hidden: { scale: 1, opacity: 0 },
                   visible: {
                     scale: 1,
                     opacity: 1,
-                    clipPath: "inset(0 0 0% 0)", // Fully visible
-                    transition: { duration: 0.2, ease: "easeOut" },
-                  },
-                  exit: {
-                    scale: 1,
-                    opacity: 0,
-                    clipPath: "inset(0 0 100% 0)", // Hide by clipping from bottom up
                     transition: { duration: 0.2, ease: "easeOut" },
                   },
                 }}
