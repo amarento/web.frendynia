@@ -1,8 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-import deco from "public/decoration.png";
 
 export default function Bibleverse() {
   // Child animation variant with custom delay

@@ -1,28 +1,28 @@
 /** biome-ignore-all lint/a11y/noStaticElementInteractions: drag scrolling functionality */
 /** biome-ignore-all lint/a11y/useKeyWithClickEvents: drag scrolling functionality */
 /** biome-ignore-all lint/nursery/useSortedClasses: embla carousel styling */
-'use client';
+"use client";
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import AutoHeight from 'embla-carousel-auto-height';
-import Autoplay from 'embla-carousel-autoplay';
-import useEmblaCarousel from 'embla-carousel-react';
-import { motion } from 'framer-motion';
-import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { zodResolver } from "@hookform/resolvers/zod";
+import AutoHeight from "embla-carousel-auto-height";
+import Autoplay from "embla-carousel-autoplay";
+import useEmblaCarousel from "embla-carousel-react";
+import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { toast } from 'sonner';
-import { z } from 'zod';
-import { Button } from '~/components/ui/button';
+import { z } from "zod";
+import { Button } from "~/components/ui/button";
 
 import {
   useServerActionMutation,
   useServerActionQuery,
-} from '~/lib/hooks/server-action-hooks';
-import { addWishAction, getAllWishes } from '~/server/actions';
+} from "~/lib/hooks/server-action-hooks";
+import { addWishAction, getAllWishes } from "~/server/actions";
 
 const wishSchema = z.object({
   name: z.string(),
-  wish: z.string().min(1, { message: 'Wish cannot be empty.' }),
+  wish: z.string().min(1, { message: "Wish cannot be empty." }),
 });
 
 interface IWishProps {
@@ -35,7 +35,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
     input: {
       clientId: 4,
     },
-    queryKey: ['wishes'],
+    queryKey: ["wishes"],
   });
 
   const { mutateAsync: sendWish } = useServerActionMutation(addWishAction, {
@@ -59,10 +59,10 @@ export default function Wish({ guestName, guestId }: IWishProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
-      align: 'center',
+      align: "center",
       skipSnaps: false,
     },
-    [autoplayPlugin, autoHeightPlugin]
+    [autoplayPlugin, autoHeightPlugin],
   );
 
   // Progress bar effect
@@ -90,12 +90,12 @@ export default function Wish({ guestName, guestId }: IWishProps) {
       resetProgress();
     };
 
-    emblaApi.on('select', onSlideChange);
+    emblaApi.on("select", onSlideChange);
     resetProgress(); // Start initial progress
 
     return () => {
       clearInterval(interval);
-      emblaApi.off('select', onSlideChange);
+      emblaApi.off("select", onSlideChange);
     };
   }, [emblaApi]);
 
@@ -107,8 +107,8 @@ export default function Wish({ guestName, guestId }: IWishProps) {
   } = useForm({
     resolver: zodResolver(wishSchema),
     defaultValues: {
-      name: guestName ?? '',
-      wish: '',
+      name: guestName ?? "",
+      wish: "",
     },
   });
 
@@ -136,7 +136,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
       transition: {
         delay: i * 0.1,
         duration: 0.5,
-        ease: 'easeOut',
+        ease: "easeOut",
       },
     }),
   };

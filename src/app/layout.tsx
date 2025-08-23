@@ -5,6 +5,9 @@ import {
   Bodoni_Moda,
   Cormorant_Garamond,
   Inter,
+  Beth_Ellen,
+  Homemade_Apple,
+  Schoolbell,
 } from 'next/font/google';
 import localFont from 'next/font/local';
 import { Toaster } from '~/components/ui/sonner';
@@ -31,21 +34,39 @@ const cormorant = Cormorant_Garamond({
 });
 
 const beau = Beau_Rivage({
-  variable: '--font-beau',
-  weight: '400',
-  subsets: ['latin'],
+  variable: "--font-beau",
+  weight: "400",
+  subsets: ["latin"],
 });
 
 const bellefair = Bellefair({
-  variable: '--font-bellefair',
-  weight: '400',
-  subsets: ['latin'],
+  variable: "--font-bellefair",
+  weight: "400",
+  subsets: ["latin"],
 });
 
 const bodoni = Bodoni_Moda({
-  variable: '--font-bodoni',
-  weight: ['400', '500', '600', '700', '800'],
-  subsets: ['latin'],
+  variable: "--font-bodoni",
+  weight: ["400", "500", "600", "700", "800"],
+  subsets: ["latin"],
+});
+
+const beth = Beth_Ellen({
+  variable: "--font-beth",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const apple = Homemade_Apple({
+  variable: "--font-apple",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const schoolbell = Schoolbell({
+  variable: "--font-schoolbell",
+  weight: "400",
+  subsets: ["latin"],
 });
 
 const marjorie = localFont({
@@ -95,7 +116,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
-      className={`${inter.variable} ${cormorant.variable} ${beau.variable} ${bellefair.variable} ${bodoni.variable} ${marjorie.variable} ${marjorieSemiBold.variable} ${lastik.variable} ${melodrame.variable} ${retrofans.variable} ${queensila.variable} ${snell.variable}`}
+      className={`${inter.variable} ${cormorant.variable} ${beau.variable} ${bellefair.variable} ${bodoni.variable} ${beth.variable} ${apple.variable} ${schoolbell.variable} ${marjorie.variable} ${marjorieSemiBold.variable} ${lastik.variable} ${melodrame.variable} ${retrofans.variable} ${queensila.variable} ${snell.variable}`}
       lang="en"
     >
       <body className="overflow-hidden bg-white">

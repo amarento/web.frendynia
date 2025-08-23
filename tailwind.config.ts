@@ -1,6 +1,5 @@
 import type { Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
-import plugin from "tailwindcss/plugin";
 
 const config: Config = {
   darkMode: ["class"],
@@ -93,6 +92,9 @@ const config: Config = {
         bodoni: ['var(--font-bodoni)', 'serif', ...fontFamily.serif],
         queensila: ['var(--font-queensila)', 'serif', ...fontFamily.serif],
         snell: ['var(--font-snell)', 'serif', ...fontFamily.serif],
+        beth: ['var(--font-beth)', 'serif', ...fontFamily.serif],
+        apple: ['var(--font-apple)', 'serif', ...fontFamily.serif],
+        schoolbell: ['var(--font-schoolbell)', 'serif', ...fontFamily.serif],
       },
       borderRadius: {
         lg: "var(--radius)",
