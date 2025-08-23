@@ -112,7 +112,7 @@ export default function Timeline() {
             repeat: Infinity,
             ease: "easeOut",
             times: [0, 0.3, 1],
-            delay: 2.4,
+            delay: 2.5,
           }}
         >
           <Image
@@ -133,7 +133,7 @@ export default function Timeline() {
             repeat: Infinity,
             ease: "easeOut",
             times: [0, 0.3, 1],
-            delay: 1.6,
+            delay: 1.8,
           }}
         >
           <Image
@@ -154,7 +154,7 @@ export default function Timeline() {
             repeat: Infinity,
             ease: "easeOut",
             times: [0, 0.3, 1],
-            delay: 2.1,
+            delay: 3.6,
           }}
         >
           <Image
@@ -175,7 +175,7 @@ export default function Timeline() {
             repeat: Infinity,
             ease: "easeOut",
             times: [0, 0.3, 1],
-            delay: 1.1,
+            delay: 2.8,
           }}
         >
           <Image
@@ -196,7 +196,7 @@ export default function Timeline() {
             repeat: Infinity,
             ease: "easeOut",
             times: [0, 0.3, 1],
-            delay: 1.6,
+            delay: 1.8,
           }}
         >
           <Image
@@ -217,7 +217,7 @@ export default function Timeline() {
             repeat: Infinity,
             ease: "easeOut",
             times: [0, 0.3, 1],
-            delay: 2.8,
+            delay: 1,
           }}
         >
           <Image
@@ -238,7 +238,7 @@ export default function Timeline() {
             repeat: Infinity,
             ease: "easeOut",
             times: [0, 0.3, 1],
-            delay: 1.3,
+            delay: 2.2,
           }}
         >
           <Image
@@ -259,7 +259,7 @@ export default function Timeline() {
             repeat: Infinity,
             ease: "easeOut",
             times: [0, 0.3, 1],
-            delay: 1.9,
+            delay: 1.8,
           }}
         >
           <Image
@@ -280,7 +280,7 @@ export default function Timeline() {
             repeat: Infinity,
             ease: "easeOut",
             times: [0, 0.3, 1],
-            delay: 2.9,
+            delay: 1,
           }}
         >
           <Image
@@ -301,7 +301,7 @@ export default function Timeline() {
             repeat: Infinity,
             ease: "easeOut",
             times: [0, 0.3, 1],
-            delay: 1.7,
+            delay: 2.8,
           }}
         >
           <Image
@@ -322,7 +322,7 @@ export default function Timeline() {
             repeat: Infinity,
             ease: "easeOut",
             times: [0, 0.3, 1],
-            delay: 2.2,
+            delay: 2.5,
           }}
         >
           <Image
@@ -343,7 +343,7 @@ export default function Timeline() {
             repeat: Infinity,
             ease: "easeOut",
             times: [0, 0.3, 1],
-            delay: 3,
+            delay: 1,
           }}
         >
           <Image
@@ -364,7 +364,7 @@ export default function Timeline() {
             repeat: Infinity,
             ease: "easeOut",
             times: [0, 0.3, 1],
-            delay: 1.4,
+            delay: 2.8,
           }}
         >
           <Image
@@ -385,7 +385,7 @@ export default function Timeline() {
             repeat: Infinity,
             ease: "easeOut",
             times: [0, 0.3, 1],
-            delay: 2,
+            delay: 3.6,
           }}
         >
           <Image
@@ -406,7 +406,7 @@ export default function Timeline() {
             repeat: Infinity,
             ease: "easeOut",
             times: [0, 0.3, 1],
-            delay: 2.8,
+            delay: 1.8,
           }}
         >
           <Image
