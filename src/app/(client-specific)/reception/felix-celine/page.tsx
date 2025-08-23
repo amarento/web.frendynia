@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
@@ -44,7 +45,7 @@ function PageContent() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplash(false);
-    }, 8800); // Show splash for 8 seconds (enough time for all animations)
+    }, 8000); // Show splash for 8 seconds (enough time for all animations)
 
     return () => clearTimeout(timer);
   }, []);
@@ -71,15 +72,12 @@ function PageContent() {
                   opacity: 1,
                   transition: {
                     staggerChildren: 1.4,
-                    delayChildren: 0.8,
                   },
                 },
               }}
             >
-              <motion.img
-                src={motion1.src}
-                alt=""
-                className="absolute z-10 h-80 w-80 object-contain"
+              <motion.div
+                className="absolute z-10"
                 variants={{
                   hidden: {
                     scale: 1,
@@ -90,14 +88,39 @@ function PageContent() {
                     scale: 1,
                     opacity: 1,
                     clipPath: "inset(0% 0 0 0)",
-                    transition: { duration: 1.8, ease: "easeOut" },
+                    transition: { duration: 1.2, ease: "easeOut" },
                   },
                 }}
-              />
-              <motion.img
-                src={motion2.src}
-                alt=""
-                className="absolute z-20 h-[336px] w-[336px] object-contain"
+              >
+                <Image
+                  src={motion1}
+                  alt=""
+                  className="h-80 w-80 object-contain"
+                  priority
+                />
+                <div className="-translate-y-2">
+                  <motion.p
+                    className="text-center font-beth text-[25px] text-[#ffffff]"
+                    variants={{
+                      hidden: { opacity: 0, y: 10 },
+                      visible: {
+                        opacity: [0, 1, 0],
+                        y: [0, 0, 0],
+                        transition: {
+                          delay: 0.5,
+                          duration: 1.2,
+                          times: [0, 0.92, 1],
+                          ease: "easeOut",
+                        },
+                      },
+                    }}
+                  >
+                    20%
+                  </motion.p>
+                </div>
+              </motion.div>
+              <motion.div
+                className="absolute z-20"
                 variants={{
                   hidden: { scale: 1, opacity: 0 },
                   visible: {
@@ -106,11 +129,36 @@ function PageContent() {
                     transition: { duration: 0.2, ease: "easeOut" },
                   },
                 }}
-              />
-              <motion.img
-                src={motion3.src}
-                alt=""
-                className="absolute z-30 h-[352px] w-[352px] object-contain"
+              >
+                <Image
+                  src={motion2}
+                  alt=""
+                  className="h-[336px] w-[336px] object-contain"
+                  priority
+                />
+                <div className="-translate-y-4">
+                  <motion.p
+                    className="text-center font-beth text-[25px] text-[#ffffff]"
+                    variants={{
+                      hidden: { opacity: 0, y: 10 },
+                      visible: {
+                        opacity: [0, 1, 0],
+                        y: [0, 0, 0],
+                        transition: {
+                          delay: 1.6,
+                          duration: 1.2,
+                          times: [0, 0.92, 1],
+                          ease: "easeOut",
+                        },
+                      },
+                    }}
+                  >
+                    40%
+                  </motion.p>
+                </div>
+              </motion.div>
+              <motion.div
+                className="absolute z-30"
                 variants={{
                   hidden: { scale: 1, opacity: 0 },
                   visible: {
@@ -119,11 +167,36 @@ function PageContent() {
                     transition: { duration: 0.2, ease: "easeOut" },
                   },
                 }}
-              />
-              <motion.img
-                src={motion4.src}
-                alt=""
-                className="absolute z-40 h-[368px] w-[368px] object-contain"
+              >
+                <Image
+                  src={motion3}
+                  alt=""
+                  className="h-[352px] w-[352px] object-contain"
+                  priority
+                />
+                <div className="-translate-y-6">
+                  <motion.p
+                    className="text-center font-beth text-[25px] text-[#ffffff]"
+                    variants={{
+                      hidden: { opacity: 0, y: 10 },
+                      visible: {
+                        opacity: [0, 1, 0],
+                        y: [0, 0, 0],
+                        transition: {
+                          delay: 2.8,
+                          duration: 1.2,
+                          times: [0, 0.92, 1],
+                          ease: "easeOut",
+                        },
+                      },
+                    }}
+                  >
+                    60%
+                  </motion.p>
+                </div>
+              </motion.div>
+              <motion.div
+                className="absolute z-40"
                 variants={{
                   hidden: { scale: 1, opacity: 0 },
                   visible: {
@@ -132,11 +205,36 @@ function PageContent() {
                     transition: { duration: 0.2, ease: "easeOut" },
                   },
                 }}
-              />
-              <motion.img
-                src={motion5.src}
-                alt=""
-                className="absolute z-50 h-96 w-96 object-contain"
+              >
+                <Image
+                  src={motion4}
+                  alt=""
+                  className="h-[368px] w-[368px] object-contain"
+                  priority
+                />
+                <div className="-translate-y-8">
+                  <motion.p
+                    className="text-center font-beth text-[25px] text-[#ffffff]"
+                    variants={{
+                      hidden: { opacity: 0, y: 10 },
+                      visible: {
+                        opacity: [0, 1, 0],
+                        y: [0, 0, 0],
+                        transition: {
+                          delay: 4.0,
+                          duration: 1.2,
+                          times: [0, 0.92, 1],
+                          ease: "easeOut",
+                        },
+                      },
+                    }}
+                  >
+                    80%
+                  </motion.p>
+                </div>
+              </motion.div>
+              <motion.div
+                className="absolute z-50"
                 variants={{
                   hidden: {
                     scale: 1,
@@ -156,11 +254,38 @@ function PageContent() {
                     transition: { duration: 0.2, ease: "easeOut" },
                   },
                 }}
-              />
+              >
+                <Image
+                  src={motion5}
+                  alt=""
+                  className="h-96 w-96 object-contain"
+                  priority
+                />
+                <div className="-translate-y-10">
+                  <motion.p
+                    className="text-center font-beth text-[25px] text-[#ffffff]"
+                    variants={{
+                      hidden: { opacity: 0, y: 10 },
+                      visible: {
+                        opacity: [0, 1, 0],
+                        y: [0, 0, 0],
+                        transition: {
+                          delay: 5.2,
+                          duration: 1.6,
+                          times: [0, 0.92, 1],
+                          ease: "easeOut",
+                        },
+                      },
+                    }}
+                  >
+                    100%
+                  </motion.p>
+                </div>
+              </motion.div>
               <motion.img
                 src={black.src}
                 alt=""
-                className="absolute z-[60] w-[400px] object-contain"
+                className="absolute z-[60] h-full w-full object-cover"
                 variants={{
                   hidden: {
                     scale: 1,
