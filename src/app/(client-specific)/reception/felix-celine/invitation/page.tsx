@@ -74,11 +74,11 @@ export default function Invitation() {
           invited !
         </motion.h3>
         <motion.p
-          className="w-[70vw] pb-8 font-schoolbell text-[16px] font-medium"
+          className="w-[75vw] pb-8 font-schoolbell text-[16px] font-medium"
           variants={fadeInFromLeft}
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
-          We will exchange vows in MDC Church, on October 3, 2025 at 11 am.
+          We will exchange vows in GKBP Masa Depan Cerah, on October 3, 2025 at 11 am.
         </motion.p>
         <motion.div
           className="pb-8"

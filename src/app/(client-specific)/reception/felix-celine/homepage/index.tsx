@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import Countdown from "react-countdown";
 import { MdOutlineMusicNote, MdOutlineMusicOff } from "react-icons/md";
+import { FaChevronDown } from "react-icons/fa";
 
 import homepage from "../_images/homepage.png";
 import paper from "../_images/bg-paper.png";
@@ -264,7 +265,22 @@ export default function Homepage({
         </div>
       </motion.div>
       {/* Music player button */}
-
+      <motion.div
+        className="absolute bottom-3 flex flex-col items-center justify-center"
+        variants={containerVariants}
+        initial="hidden"
+        animate={showAnimations ? "visible" : "hidden"}
+      >
+        <motion.p
+          className="font-schoolbell text-[16px]"
+          variants={fadeInFromBottom}
+        >
+          Scroll down
+        </motion.p>
+        <motion.div variants={fadeInFromBottom}>
+          <FaChevronDown />
+        </motion.div>
+      </motion.div>
       <audio loop preload="auto" ref={audioRef} src={music} />
 
       <button
@@ -275,11 +291,9 @@ export default function Homepage({
       >
         {isPlaying ? (
           // Mute icon (simple SVG)
-
           <MdOutlineMusicNote className="h-6 w-6" />
         ) : (
           // Play icon (simple SVG)
-
           <MdOutlineMusicOff className="h-6 w-6" />
         )}
       </button>

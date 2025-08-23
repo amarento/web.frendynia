@@ -27,7 +27,7 @@ import black from "./_images/black.png";
 
 export default function Page() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense>
       <PageContent />
     </Suspense>
   );
