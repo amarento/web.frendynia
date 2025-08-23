@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useServerActionQuery } from "~/lib/hooks/server-action-hooks";
 import { getGuestNameByIdAction } from "~/server/actions";
 
-import Homepage from "./homepage/page";
+import Homepage from "./homepage";
 import Invitation from "./invitation/page";
 import Lovestory from "./lovestory/page";
 import Timeline from "./timeline/page";
@@ -26,7 +26,11 @@ import motion5 from "./_images/motion-5.png";
 import black from "./_images/black.png";
 
 export default function Page() {
-  return <PageContent />;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PageContent />
+    </Suspense>
+  );
 }
 
 function PageContent() {
