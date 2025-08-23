@@ -49,7 +49,7 @@ function PageContent() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplash(false);
-    }, 8000); // Show splash for 8 seconds (enough time for all animations)
+    }, 8100); // Show splash for 8.1 seconds (enough time for all animations)
 
     return () => clearTimeout(timer);
   }, []);
