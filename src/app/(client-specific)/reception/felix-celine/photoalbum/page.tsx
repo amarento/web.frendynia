@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
 
 import bgcrop from "../_images/bg-crop.png";
@@ -67,62 +66,7 @@ export default function Photoalbum() {
   const carousel2Images = images.slice(9, 17); // Next 8 images
   const carousel3Images = images.slice(17); // Remaining 8 images
 
-  const [translateX1, setTranslateX1] = useState(0);
-  const [translateX2, setTranslateX2] = useState(
-    -(carousel2Images.length * 320),
-  ); // Start from the left edge for reverse direction
-  const [translateX3, setTranslateX3] = useState(0);
-
-  const animationRef1 = useRef<number>();
-  const animationRef2 = useRef<number>();
-  const animationRef3 = useRef<number>();
-
-  // Smooth auto-scrolling using requestAnimationFrame
-  useEffect(() => {
-    const imageWidth = 320; // 280px image + 40px padding
-
-    // Carousel 1 - moves at 0.5px per frame (slower)
-    const animate1 = () => {
-      setTranslateX1((prev) => {
-        const newTranslate = prev - 0.5;
-        const resetPoint = -(carousel1Images.length * imageWidth);
-        return newTranslate <= resetPoint ? 0 : newTranslate;
-      });
-      animationRef1.current = requestAnimationFrame(animate1);
-    };
-
-    // Carousel 2 - moves at 0.3px per frame (slowest) - MOVING LEFT (opposite direction)
-    const animate2 = () => {
-      setTranslateX2((prev) => {
-        const newTranslate = prev + 0.3; // Moving in positive direction (left)
-        const resetPoint = carousel2Images.length * imageWidth;
-        return newTranslate >= resetPoint ? 0 : newTranslate;
-      });
-      animationRef2.current = requestAnimationFrame(animate2);
-    };
-
-    // Carousel 3 - moves at 0.6px per frame (fastest)
-    const animate3 = () => {
-      setTranslateX3((prev) => {
-        const newTranslate = prev - 0.6;
-        const resetPoint = -(carousel3Images.length * imageWidth);
-        return newTranslate <= resetPoint ? 0 : newTranslate;
-      });
-      animationRef3.current = requestAnimationFrame(animate3);
-    };
-
-    // Start animations
-    animationRef1.current = requestAnimationFrame(animate1);
-    animationRef2.current = requestAnimationFrame(animate2);
-    animationRef3.current = requestAnimationFrame(animate3);
-
-    // Cleanup
-    return () => {
-      if (animationRef1.current) cancelAnimationFrame(animationRef1.current);
-      if (animationRef2.current) cancelAnimationFrame(animationRef2.current);
-      if (animationRef3.current) cancelAnimationFrame(animationRef3.current);
-    };
-  }, [carousel1Images.length, carousel2Images.length, carousel3Images.length]);
+  // CSS-driven marquee animations (no JS RAF to avoid flicker)
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -202,10 +146,7 @@ export default function Photoalbum() {
         <div className="w-full max-w-6xl space-y-8">
           {/* First Carousel */}
           <div className="relative w-full overflow-hidden">
-            <div
-              className="flex will-change-transform"
-              style={{ transform: `translateX(${translateX1}px)` }}
-            >
+            <div className="marquee-track marquee-left-slow">
               {[...carousel1Images, ...carousel1Images].map((image, index) => (
                 <motion.div
                   key={`carousel1-${index}`}
@@ -219,7 +160,7 @@ export default function Photoalbum() {
                   }}
                 >
                   <Image
-                    alt={`Photo album carousel 1 item ${(index % carousel1Images.length) + 1}`}
+                    alt={`Album item ${(index % carousel1Images.length) + 1}`}
                     className="h-[180px] w-[280px] rounded-sm border object-cover shadow-lg"
                     height={180}
                     quality={100}
@@ -233,10 +174,7 @@ export default function Photoalbum() {
 
           {/* Second Carousel */}
           <div className="relative w-full overflow-hidden">
-            <div
-              className="flex will-change-transform"
-              style={{ transform: `translateX(${translateX2}px)` }}
-            >
+            <div className="marquee-track marquee-right-slower">
               {[...carousel2Images, ...carousel2Images].map((image, index) => (
                 <motion.div
                   key={`carousel2-${index}`}
@@ -250,7 +188,7 @@ export default function Photoalbum() {
                   }}
                 >
                   <Image
-                    alt={`Photo album carousel 2 item ${(index % carousel2Images.length) + 1}`}
+                    alt={`Album item ${(index % carousel2Images.length) + 1}`}
                     className="h-[180px] w-[280px] rounded-sm border object-cover shadow-lg"
                     height={180}
                     quality={100}
@@ -264,10 +202,7 @@ export default function Photoalbum() {
 
           {/* Third Carousel */}
           <div className="relative w-full overflow-hidden">
-            <div
-              className="flex will-change-transform"
-              style={{ transform: `translateX(${translateX3}px)` }}
-            >
+            <div className="marquee-track marquee-left-fast">
               {[...carousel3Images, ...carousel3Images].map((image, index) => (
                 <motion.div
                   key={`carousel3-${index}`}
@@ -281,7 +216,7 @@ export default function Photoalbum() {
                   }}
                 >
                   <Image
-                    alt={`Photo album carousel 3 item ${(index % carousel3Images.length) + 1}`}
+                    alt={`Album item ${(index % carousel3Images.length) + 1}`}
                     className="h-[180px] w-[280px] rounded-sm border object-cover shadow-lg"
                     height={180}
                     quality={100}
