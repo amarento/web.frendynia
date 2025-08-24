@@ -131,9 +131,7 @@ export default function Homepage({
         <Image
           alt="Countdown background"
           className="h-[78px] w-full object-cover"
-          height={78}
           src={paper}
-          width={400}
         />
       </motion.div>
       <motion.div
@@ -168,7 +166,6 @@ export default function Homepage({
         className="absolute inset-0 -z-10"
         fill
         priority
-        quality={100}
         src={homepage}
         style={{
           objectFit: "cover",
@@ -181,45 +178,24 @@ export default function Homepage({
         animate={showAnimations ? "visible" : "hidden"}
       >
         <div className="relative z-10 flex rotate-2 items-center justify-center">
-          <div className="object-cover">
-            <Image
-              alt="Paper background"
-              height={450}
-              priority
-              quality={100}
-              src={paper}
-              width={280}
-            />
+          <div className="h-auto w-[280px] object-cover md:w-[320px]">
+            <Image alt="Paper background" priority src={paper} />
           </div>
           <motion.div
-            className="absolute left-0 z-20 -ml-[52px]"
+            className="absolute left-0 z-20 -ml-[52px] h-auto w-[120px] md:w-[136px]"
             variants={fadeInFromLeft}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            <Image
-              alt="Movie Clip"
-              height={300}
-              priority
-              quality={100}
-              src={clip}
-              width={120}
-            />
+            <Image alt="Movie Clip" priority src={clip} />
           </motion.div>
           <motion.div
-            className="absolute z-10"
+            className="absolute z-10 h-auto w-[278px] md:w-[312px]"
             variants={fadeInFromRight}
             initial="hidden"
             animate={showAnimations ? "visible" : "hidden"}
             transition={{ duration: 0.4, ease: "easeOut", delay: 0.5 }}
           >
-            <Image
-              alt="Frame Deco"
-              height={450}
-              priority
-              quality={100}
-              src={decoframe}
-              width={278}
-            />
+            <Image alt="Frame Deco" priority src={decoframe} />
           </motion.div>
 
           <motion.div
@@ -230,30 +206,26 @@ export default function Homepage({
             transition={{ duration: 0.4, ease: "easeOut", delay: 0.5 }}
           >
             <motion.h5
-              className="pb-5 pt-12 font-beth text-[20px] text-[#222222] md:text-[39px]"
+              className="pb-5 pt-12 md:pt-16 font-beth text-[20px] text-[#222222] md:text-[25px]"
               variants={fadeIn}
             >
               We&apos;re getting <br />
               married
             </motion.h5>
-            <motion.div className="object-cover pb-5" variants={scaleIn}>
-              <Image
-                alt="Paper background"
-                height={128}
-                priority
-                quality={100}
-                src={table}
-                width={128}
-              />
+            <motion.div
+              className="h-auto w-[128px] md:w-[140px] object-cover pb-5"
+              variants={scaleIn}
+            >
+              <Image alt="Table" priority src={table} />
             </motion.div>
             <motion.h5
-              className="pb-2 font-beth text-[18px] text-[#222222] md:text-[39px]"
+              className="pb-2 font-beth text-[18px] text-[#222222] md:text-[20px]"
               variants={fadeIn}
             >
               Felix & Celine
             </motion.h5>
             <motion.h5
-              className="font-beth text-[16px] text-[#222222] md:text-[39px]"
+              className="font-beth text-[16px] text-[#222222] md:text-[18px]"
               variants={fadeIn}
             >
               Oct, 3 2025
