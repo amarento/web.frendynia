@@ -204,7 +204,7 @@ export default function Timeline() {
             alt="star6"
             width={24}
             height={24}
-            className="absolute left-[7vw] top-[45vh]"
+            className="absolute left-[3vw] top-[45vh]"
           />
         </motion.div>
         <motion.div
@@ -288,7 +288,7 @@ export default function Timeline() {
             alt="star10"
             width={24}
             height={24}
-            className="absolute left-[6vw] top-[85vh]"
+            className="absolute left-[3vw] top-[85vh]"
           />
         </motion.div>
         <motion.div
@@ -330,7 +330,7 @@ export default function Timeline() {
             alt="star12"
             width={22}
             height={22}
-            className="absolute right-[5vw] top-[84vh]"
+            className="absolute right-[3vw] top-[84vh]"
           />
         </motion.div>
         <motion.div

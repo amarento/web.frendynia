@@ -159,8 +159,25 @@ export default function Homepage({
     </motion.div>
   );
 
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!hasScrolled && window.scrollY > 40) {
+        setShowScrollIndicator(false);
+        setHasScrolled(true);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [hasScrolled]);
+
   return (
-    <div className="relative flex h-screen flex-col items-center justify-center overflow-hidden text-center text-[#F0F0F0]">
+    <div
+      className="relative flex flex-col items-center justify-center overflow-hidden text-center text-[#F0F0F0]"
+      style={{ height: "calc(100vh - 80px)" }}
+    >
       <Image
         alt="Wedding background"
         className="absolute inset-0 -z-10"
@@ -206,14 +223,14 @@ export default function Homepage({
             transition={{ duration: 0.4, ease: "easeOut", delay: 0.5 }}
           >
             <motion.h5
-              className="pb-5 pt-12 md:pt-16 font-beth text-[20px] text-[#222222] md:text-[25px]"
+              className="pb-5 pt-12 font-beth text-[20px] text-[#222222] md:pt-16 md:text-[25px]"
               variants={fadeIn}
             >
               We&apos;re getting <br />
               married
             </motion.h5>
             <motion.div
-              className="h-auto w-[128px] md:w-[140px] object-cover pb-5"
+              className="h-auto w-[128px] object-cover pb-5 md:w-[140px]"
               variants={scaleIn}
             >
               <Image alt="Table" priority src={table} />
@@ -242,15 +259,23 @@ export default function Homepage({
         variants={containerVariants}
         initial="hidden"
         animate={showAnimations ? "visible" : "hidden"}
+        style={{ pointerEvents: "none" }}
       >
-        <motion.p
-          className="font-schoolbell text-[16px]"
-          variants={fadeInFromBottom}
+        <motion.div
+          className="flex flex-col items-center"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: showScrollIndicator ? 1 : 0 }}
+          transition={{ duration: 0.5 }}
         >
-          Scroll down
-        </motion.p>
-        <motion.div variants={fadeInFromBottom}>
-          <FaChevronDown />
+          <motion.p
+            className="font-schoolbell text-[16px]"
+            variants={fadeInFromBottom}
+          >
+            Scroll down
+          </motion.p>
+          <motion.div variants={fadeInFromBottom}>
+            <FaChevronDown />
+          </motion.div>
         </motion.div>
       </motion.div>
       <audio loop preload="auto" ref={audioRef} src={music} />
