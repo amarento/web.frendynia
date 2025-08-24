@@ -118,11 +118,18 @@ export default function Photoalbum() {
             Felix
           </motion.h5>
           <motion.div
-            className="h-auto w-[140px] pb-12"
             variants={fadeInFromBottom}
             transition={{ duration: 0.4, ease: "easeOut", delay: 0.6 }}
           >
-            <Image alt="Crop image" priority src={crop3} />
+            <Image
+              alt="Crop image"
+              priority
+              className="mb-12"
+              height={300}
+              quality={100}
+              src={crop3}
+              width={140}
+            />
           </motion.div>
           <motion.h5
             className="pb-8 pl-2 font-beth text-[25px] text-[#222222]"
@@ -154,7 +161,10 @@ export default function Photoalbum() {
                   <Image
                     alt={`Album item ${(index % carousel1Images.length) + 1}`}
                     className="h-[180px] w-[280px] rounded-sm border object-cover shadow-lg"
+                    height={180}
+                    quality={100}
                     src={image}
+                    width={280}
                   />
                 </motion.div>
               ))}
@@ -179,7 +189,10 @@ export default function Photoalbum() {
                   <Image
                     alt={`Album item ${(index % carousel2Images.length) + 1}`}
                     className="h-[180px] w-[280px] rounded-sm border object-cover shadow-lg"
+                    height={180}
+                    quality={100}
                     src={image}
+                    width={280}
                   />
                 </motion.div>
               ))}
@@ -204,7 +217,10 @@ export default function Photoalbum() {
                   <Image
                     alt={`Album item ${(index % carousel3Images.length) + 1}`}
                     className="h-[180px] w-[280px] rounded-sm border object-cover shadow-lg"
+                    height={180}
+                    quality={100}
                     src={image}
+                    width={280}
                   />
                 </motion.div>
               ))}

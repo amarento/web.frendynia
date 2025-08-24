@@ -19,11 +19,6 @@ export default function Timeline() {
     },
   };
 
-  const fadeIn = {
-    hidden: { opacity: 0, x: 0, y: 0 },
-    visible: { opacity: 1, x: 0, y: 0 },
-  };
-
   const scaleIn = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: { opacity: 1, scale: 1 },
@@ -52,10 +47,9 @@ export default function Timeline() {
         >
           <Image alt="Timeline" priority src={timeline} />
         </motion.div>
-        
+
         {/* Decorative Stars */}
         <motion.div
-          variants={fadeIn}
           animate={{
             opacity: [0, 1, 0],
           }}
@@ -76,7 +70,6 @@ export default function Timeline() {
           />
         </motion.div>
         <motion.div
-          variants={fadeIn}
           animate={{
             opacity: [0, 1, 0],
           }}
@@ -97,7 +90,6 @@ export default function Timeline() {
           />
         </motion.div>
         <motion.div
-          variants={fadeIn}
           animate={{
             opacity: [0, 1, 0],
           }}
@@ -118,7 +110,6 @@ export default function Timeline() {
           />
         </motion.div>
         <motion.div
-          variants={fadeIn}
           animate={{
             opacity: [0, 1, 0],
           }}
@@ -139,7 +130,6 @@ export default function Timeline() {
           />
         </motion.div>
         <motion.div
-          variants={fadeIn}
           animate={{
             opacity: [0, 1, 0],
           }}
@@ -160,7 +150,6 @@ export default function Timeline() {
           />
         </motion.div>
         <motion.div
-          variants={fadeIn}
           animate={{
             opacity: [0, 1, 0],
           }}
@@ -181,7 +170,6 @@ export default function Timeline() {
           />
         </motion.div>
         <motion.div
-          variants={fadeIn}
           animate={{
             opacity: [0, 1, 0],
           }}
@@ -202,7 +190,6 @@ export default function Timeline() {
           />
         </motion.div>
         <motion.div
-          variants={fadeIn}
           animate={{
             opacity: [0, 1, 0],
           }}
@@ -223,7 +210,6 @@ export default function Timeline() {
           />
         </motion.div>
         <motion.div
-          variants={fadeIn}
           animate={{
             opacity: [0, 1, 0],
           }}
@@ -244,7 +230,6 @@ export default function Timeline() {
           />
         </motion.div>
         <motion.div
-          variants={fadeIn}
           animate={{
             opacity: [0, 1, 0],
           }}
@@ -265,7 +250,6 @@ export default function Timeline() {
           />
         </motion.div>
         <motion.div
-          variants={fadeIn}
           animate={{
             opacity: [0, 1, 0],
           }}
@@ -286,7 +270,6 @@ export default function Timeline() {
           />
         </motion.div>
         <motion.div
-          variants={fadeIn}
           animate={{
             opacity: [0, 1, 0],
           }}
@@ -307,7 +290,6 @@ export default function Timeline() {
           />
         </motion.div>
         <motion.div
-          variants={fadeIn}
           animate={{
             opacity: [0, 1, 0],
           }}
@@ -328,7 +310,6 @@ export default function Timeline() {
           />
         </motion.div>
         <motion.div
-          variants={fadeIn}
           animate={{
             opacity: [0, 1, 0],
           }}
@@ -349,7 +330,6 @@ export default function Timeline() {
           />
         </motion.div>
         <motion.div
-          variants={fadeIn}
           animate={{
             opacity: [0, 1, 0],
           }}
