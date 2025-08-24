@@ -3,8 +3,7 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import bgcrop from "../_images/bg-crop.png";
-// import timeline from "../_images/timeline.png";
-import timeline from "../_images/pita.png";
+import timeline from "../_images/timeline.png";
 import star from "../_images/star-3.png";
 import star2 from "../_images/star-4.png";
 
@@ -22,26 +21,6 @@ export default function Timeline() {
 
   const fadeIn = {
     hidden: { opacity: 0, x: 0, y: 0 },
-    visible: { opacity: 1, x: 0, y: 0 },
-  };
-
-  const fadeInFromLeft = {
-    hidden: { opacity: 0, x: -100, y: 0 },
-    visible: { opacity: 1, x: 0, y: 0 },
-  };
-
-  const fadeInFromBottom = {
-    hidden: { opacity: 0, x: 0, y: 20 },
-    visible: { opacity: 1, x: 0, y: 0 },
-  };
-
-  const fadeInFromRight = {
-    hidden: { opacity: 0, x: 100, y: 0 },
-    visible: { opacity: 1, x: 0, y: 0 },
-  };
-
-  const fadeInFromTop = {
-    hidden: { opacity: 0, x: 0, y: -20 },
     visible: { opacity: 1, x: 0, y: 0 },
   };
 
@@ -73,6 +52,7 @@ export default function Timeline() {
         >
           <Image alt="Timeline" priority src={timeline} />
         </motion.div>
+        
         {/* Decorative Stars */}
         <motion.div
           variants={fadeIn}
@@ -92,7 +72,7 @@ export default function Timeline() {
             alt="star1"
             width={24}
             height={24}
-            className="absolute left-[10vw] top-[5vh]"
+            className="absolute left-[9%] top-[5%]"
           />
         </motion.div>
         <motion.div
@@ -113,7 +93,7 @@ export default function Timeline() {
             alt="star2"
             width={24}
             height={24}
-            className="absolute left-[45vw] top-0"
+            className="absolute left-[45%] top-0"
           />
         </motion.div>
         <motion.div
@@ -134,7 +114,7 @@ export default function Timeline() {
             alt="star3"
             width={22}
             height={22}
-            className="absolute right-[10vw] top-[4vh]"
+            className="absolute right-[10%] top-[4%]"
           />
         </motion.div>
         <motion.div
@@ -155,7 +135,7 @@ export default function Timeline() {
             alt="star4"
             width={24}
             height={24}
-            className="absolute left-[3vw] top-[22vh]"
+            className="absolute left-[3%] top-[22%]"
           />
         </motion.div>
         <motion.div
@@ -176,7 +156,7 @@ export default function Timeline() {
             alt="star5"
             width={22}
             height={22}
-            className="absolute right-[22vw] top-[32vw]"
+            className="absolute right-[22%] top-[16%]"
           />
         </motion.div>
         <motion.div
@@ -197,7 +177,7 @@ export default function Timeline() {
             alt="star6"
             width={24}
             height={24}
-            className="absolute left-[3vw] top-[40vh]"
+            className="absolute left-[6%] top-[40%]"
           />
         </motion.div>
         <motion.div
@@ -218,7 +198,7 @@ export default function Timeline() {
             alt="star7"
             width={22}
             height={22}
-            className="absolute right-[5vw] top-[24vh]"
+            className="absolute right-[5%] top-[24%]"
           />
         </motion.div>
         <motion.div
@@ -239,7 +219,7 @@ export default function Timeline() {
             alt="star8"
             width={24}
             height={24}
-            className="absolute bottom-[39vh] left-[2vw]"
+            className="absolute bottom-[39%] left-[3%]"
           />
         </motion.div>
         <motion.div
@@ -260,7 +240,7 @@ export default function Timeline() {
             alt="star9"
             width={22}
             height={22}
-            className="absolute right-[4vw] top-[41vh]"
+            className="absolute right-[7%] top-[41%]"
           />
         </motion.div>
         <motion.div
@@ -281,7 +261,7 @@ export default function Timeline() {
             alt="star10"
             width={24}
             height={24}
-            className="absolute bottom-[22vh] left-[2vw]"
+            className="absolute bottom-[22%] left-[6%]"
           />
         </motion.div>
         <motion.div
@@ -302,7 +282,7 @@ export default function Timeline() {
             alt="star11"
             width={22}
             height={22}
-            className="absolute bottom-[40vh] right-[2vw]"
+            className="absolute bottom-[40%] right-[4%]"
           />
         </motion.div>
         <motion.div
@@ -323,7 +303,7 @@ export default function Timeline() {
             alt="star12"
             width={22}
             height={22}
-            className="absolute bottom-[22vh] right-[1.5vw]"
+            className="absolute bottom-[22%] right-[6%]"
           />
         </motion.div>
         <motion.div
@@ -344,7 +324,7 @@ export default function Timeline() {
             alt="star13"
             width={24}
             height={24}
-            className="absolute bottom-[8vh] left-[11vw]"
+            className="absolute bottom-[8%] left-[12%]"
           />
         </motion.div>
         <motion.div
@@ -365,7 +345,7 @@ export default function Timeline() {
             alt="star14"
             width={24}
             height={24}
-            className="absolute bottom-[5vh] left-[41vw]"
+            className="absolute bottom-[5%] left-[43%]"
           />
         </motion.div>
         <motion.div
@@ -386,7 +366,7 @@ export default function Timeline() {
             alt="star15"
             width={24}
             height={24}
-            className="absolute bottom-[8vh] right-[20vw]"
+            className="absolute bottom-[8%] right-[20%]"
           />
         </motion.div>
       </motion.div>
