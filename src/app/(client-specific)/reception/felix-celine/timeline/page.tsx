@@ -138,7 +138,7 @@ export default function Timeline() {
             repeat: Infinity,
             ease: "easeOut",
             times: [0, 0.3, 1],
-            delay: 2.8,
+            delay: 1,
           }}
         >
           <Image
@@ -146,7 +146,7 @@ export default function Timeline() {
             alt="star5"
             width={22}
             height={22}
-            className="absolute right-[22%] top-[16%]"
+            className="absolute right-[5%] top-[24%]"
           />
         </motion.div>
         <motion.div
@@ -178,7 +178,7 @@ export default function Timeline() {
             repeat: Infinity,
             ease: "easeOut",
             times: [0, 0.3, 1],
-            delay: 1,
+            delay: 3.6,
           }}
         >
           <Image
@@ -186,7 +186,7 @@ export default function Timeline() {
             alt="star7"
             width={22}
             height={22}
-            className="absolute right-[5%] top-[24%]"
+            className="absolute right-[7%] top-[41%]"
           />
         </motion.div>
         <motion.div
@@ -218,7 +218,7 @@ export default function Timeline() {
             repeat: Infinity,
             ease: "easeOut",
             times: [0, 0.3, 1],
-            delay: 3.6,
+            delay: 2.8,
           }}
         >
           <Image
@@ -226,7 +226,7 @@ export default function Timeline() {
             alt="star9"
             width={22}
             height={22}
-            className="absolute right-[7%] top-[41%]"
+            className="absolute bottom-[40%] right-[4%]"
           />
         </motion.div>
         <motion.div
@@ -249,26 +249,7 @@ export default function Timeline() {
             className="absolute bottom-[22%] left-[6%]"
           />
         </motion.div>
-        <motion.div
-          animate={{
-            opacity: [0, 1, 0],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeOut",
-            times: [0, 0.3, 1],
-            delay: 2.8,
-          }}
-        >
-          <Image
-            src={star2}
-            alt="star11"
-            width={22}
-            height={22}
-            className="absolute bottom-[40%] right-[4%]"
-          />
-        </motion.div>
+
         <motion.div
           animate={{
             opacity: [0, 1, 0],
@@ -283,7 +264,7 @@ export default function Timeline() {
         >
           <Image
             src={star2}
-            alt="star12"
+            alt="star11"
             width={22}
             height={22}
             className="absolute bottom-[22%] right-[6%]"
@@ -303,7 +284,7 @@ export default function Timeline() {
         >
           <Image
             src={star}
-            alt="star13"
+            alt="star12"
             width={24}
             height={24}
             className="absolute bottom-[8%] left-[12%]"
@@ -323,7 +304,7 @@ export default function Timeline() {
         >
           <Image
             src={star}
-            alt="star14"
+            alt="star13"
             width={24}
             height={24}
             className="absolute bottom-[5%] left-[43%]"
@@ -343,7 +324,7 @@ export default function Timeline() {
         >
           <Image
             src={star}
-            alt="star15"
+            alt="star14"
             width={24}
             height={24}
             className="absolute bottom-[8%] right-[20%]"
