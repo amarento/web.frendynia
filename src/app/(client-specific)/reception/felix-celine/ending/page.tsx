@@ -52,17 +52,17 @@ export default function Ending() {
         >
           <Image alt="Background Image" src={ending} />
         </motion.div>
-        <motion.h5
-          className="-rotate-3 pb-4 font-beth text-[25px] text-[#333333]"
-          variants={fadeInFromTop}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          forever <br />
-          and always
-        </motion.h5>
+        <div className="-rotate-3 pb-3 pt-4 font-beth text-[25px] text-[#333333]">
+          <motion.h5
+            variants={fadeInFromTop}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            #milestoaisle
+          </motion.h5>
+        </div>
         <motion.div
           className="w-[90vw] md:w-[70vw]"
           variants={fadeInFromBottom}
