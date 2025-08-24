@@ -18,34 +18,14 @@ export default function Ending() {
     },
   };
 
-  const fadeIn = {
-    hidden: { opacity: 0, x: 0, y: 0 },
-    visible: { opacity: 1, x: 0, y: 0 },
-  };
-
-  const fadeInFromLeft = {
-    hidden: { opacity: 0, x: -100, y: 0 },
-    visible: { opacity: 1, x: 0, y: 0 },
-  };
-
   const fadeInFromBottom = {
     hidden: { opacity: 0, x: 0, y: 20 },
-    visible: { opacity: 1, x: 0, y: 0 },
-  };
-
-  const fadeInFromRight = {
-    hidden: { opacity: 0, x: 100, y: 0 },
     visible: { opacity: 1, x: 0, y: 0 },
   };
 
   const fadeInFromTop = {
     hidden: { opacity: 0, x: 0, y: -20 },
     visible: { opacity: 1, x: 0, y: 0 },
-  };
-
-  const scaleIn = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1 },
   };
 
   return (
@@ -59,23 +39,26 @@ export default function Ending() {
         }}
       />
       <motion.div
-        className="flex flex-col items-center overflow-hidden pb-6"
+        className="flex flex-col items-center overflow-hidden pb-8"
         variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
       >
         <motion.div
           className="pb-4 pt-12"
           variants={fadeInFromTop}
           transition={{ duration: 0.4, ease: "easeOut" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
         >
           <Image alt="Background Image" src={ending} />
         </motion.div>
         <motion.h5
-          className="-rotate-3 pb-3 font-beth text-[25px] text-[#333333]"
+          className="-rotate-3 pb-4 font-beth text-[25px] text-[#333333]"
           variants={fadeInFromTop}
           transition={{ duration: 0.4, ease: "easeOut" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
         >
           forever <br />
           and always
@@ -84,6 +67,9 @@ export default function Ending() {
           className="w-[90vw] md:w-[70vw]"
           variants={fadeInFromBottom}
           transition={{ duration: 0.4, ease: "easeOut" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
         >
           <Image alt="Table deco" src={tabledeco} />
         </motion.div>

@@ -18,11 +18,6 @@ export default function Invitation() {
     },
   };
 
-  const fadeIn = {
-    hidden: { opacity: 0, x: 0, y: 0 },
-    visible: { opacity: 1, x: 0, y: 0 },
-  };
-
   const fadeInFromLeft = {
     hidden: { opacity: 0, x: -100, y: 0 },
     visible: { opacity: 1, x: 0, y: 0 },
@@ -61,14 +56,14 @@ export default function Invitation() {
       <motion.div
         className="flex flex-col items-center pt-16 font-beth text-[25px] text-[#222222]"
         variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
       >
         <motion.h3
           className="pb-8"
           variants={fadeInFromTop}
           transition={{ duration: 0.4, ease: "easeOut" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
         >
           You&apos;re <br />
           invited !
@@ -77,28 +72,30 @@ export default function Invitation() {
           className="w-[75vw] pb-8 font-schoolbell text-[16px] font-medium"
           variants={fadeInFromLeft}
           transition={{ duration: 0.4, ease: "easeOut" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
         >
           We will exchange vows in GKBP Masa Depan Cerah, on October 3, 2025 at
           11 am.
         </motion.p>
         <motion.div
-          className="pb-8"
+          className="h-auto w-[150px] pb-8"
           variants={scaleIn}
           transition={{ duration: 0.4, ease: "easeOut" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
         >
-          <Image
-            alt="Lamp deco"
-            height={300}
-            priority
-            quality={100}
-            src={lamp}
-            width={150}
-          />
+          <Image alt="Lamp deco" priority src={lamp} />
         </motion.div>
         <motion.p
           className="w-[80vw] pb-8 font-schoolbell text-[16px] font-medium"
           variants={fadeInFromRight}
           transition={{ duration: 0.4, ease: "easeOut" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
         >
           GKPB Masa Depan Cerah <br />
           Putat Gede Selatan <br />
@@ -108,6 +105,9 @@ export default function Invitation() {
           className="pb-8"
           variants={fadeInFromTop}
           transition={{ duration: 0.4, ease: "easeOut" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
         >
           So see you <br />
           there !
@@ -115,15 +115,15 @@ export default function Invitation() {
         <motion.div
           variants={fadeInFromBottom}
           transition={{ duration: 0.4, ease: "easeOut" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
         >
           <Image
             alt="Table deco"
             className="w-[90vw] md:w-[70vw]"
-            height={300}
             priority
-            quality={100}
             src={tabledeco}
-            width={400}
           />
         </motion.div>
       </motion.div>

@@ -18,11 +18,6 @@ export default function Dresscode() {
     },
   };
 
-  const fadeIn = {
-    hidden: { opacity: 0, x: 0, y: 0 },
-    visible: { opacity: 1, x: 0, y: 0 },
-  };
-
   const fadeInFromLeft = {
     hidden: { opacity: 0, x: -100, y: 0 },
     visible: { opacity: 1, x: 0, y: 0 },
@@ -38,18 +33,8 @@ export default function Dresscode() {
     visible: { opacity: 1, x: 0, y: 0 },
   };
 
-  const fadeInFromTop = {
-    hidden: { opacity: 0, x: 0, y: -20 },
-    visible: { opacity: 1, x: 0, y: 0 },
-  };
-
-  const scaleIn = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1 },
-  };
-
   return (
-    <div className="relative flex w-screen justify-center overflow-hidden pb-12 pt-2 text-center text-[#F0F0F0]">
+    <div className="relative flex w-screen justify-center overflow-hidden pb-12 pt-2 text-center text-[#F0F0F0] px-4">
       <div
         className="absolute inset-0 -z-10"
         style={{
@@ -61,14 +46,14 @@ export default function Dresscode() {
       <motion.div
         className="flex flex-col items-center justify-center"
         variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
       >
         <motion.p
           className="w-[80vw] pb-12 font-apple text-[12px] text-[#222222]"
           variants={fadeInFromBottom}
           transition={{ duration: 0.4, ease: "easeOut" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
         >
           Come in whatever you feel best in, we are truly just happy to have you
           celebrating with us.
@@ -81,32 +66,18 @@ export default function Dresscode() {
           viewport={{ once: true, margin: "-100px" }}
         >
           <motion.div
-            className="pt-20"
+            className="h-auto w-[80px] pt-20"
             variants={fadeInFromLeft}
             transition={{ duration: 0.4, ease: "easeOut", delay: 0 }}
           >
-            <Image
-              alt="Crop image"
-              priority
-              height={140}
-              quality={100}
-              src={wine}
-              width={80}
-            />
+            <Image alt="Crop image" priority src={wine} />
           </motion.div>
           <motion.div
-            className="pb-8"
+            className="h-auto w-[190px] pb-8"
             variants={fadeInFromBottom}
             transition={{ duration: 0.4, ease: "easeOut", delay: 0.6 }}
           >
-            <Image
-              alt="Crop image"
-              priority
-              height={300}
-              quality={100}
-              src={crop2}
-              width={190}
-            />
+            <Image alt="Crop image" priority src={crop2} />
           </motion.div>
           <motion.p
             className="-rotate-6 pt-24 font-beth text-[20px] text-[#222222]"

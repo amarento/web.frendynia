@@ -28,26 +28,6 @@ export default function Gift() {
     visible: { opacity: 1, x: 0, y: 0 },
   };
 
-  const fadeInFromBottom = {
-    hidden: { opacity: 0, x: 0, y: 20 },
-    visible: { opacity: 1, x: 0, y: 0 },
-  };
-
-  const fadeInFromRight = {
-    hidden: { opacity: 0, x: 100, y: 0 },
-    visible: { opacity: 1, x: 0, y: 0 },
-  };
-
-  const fadeInFromTop = {
-    hidden: { opacity: 0, x: 0, y: -20 },
-    visible: { opacity: 1, x: 0, y: 0 },
-  };
-
-  const scaleIn = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1 },
-  };
-
   return (
     <div className="relative">
       <div
@@ -74,23 +54,15 @@ export default function Gift() {
             alt="Background"
             className="h-[320px] w-full object-cover"
             priority
-            quality={100}
             src={bg1}
           />
         </motion.div>
         <motion.div
-          className="absolute top-12"
+          className="absolute top-12 h-auto w-[200px]"
           variants={fadeInFromLeft}
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
-          <Image
-            alt="Envelope"
-            height={200}
-            priority
-            quality={100}
-            src={envelope}
-            width={200}
-          />
+          <Image alt="Envelope" priority src={envelope} />
         </motion.div>
       </motion.div>
     </div>

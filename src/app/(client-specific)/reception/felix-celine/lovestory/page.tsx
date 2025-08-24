@@ -18,11 +18,6 @@ export default function Lovestory() {
     },
   };
 
-  const fadeIn = {
-    hidden: { opacity: 0, x: 0, y: 0 },
-    visible: { opacity: 1, x: 0, y: 0 },
-  };
-
   const fadeInFromLeft = {
     hidden: { opacity: 0, x: -100, y: 0 },
     visible: { opacity: 1, x: 0, y: 0 },
@@ -61,14 +56,14 @@ export default function Lovestory() {
       <motion.div
         className="mx-auto w-[75vw] font-schoolbell text-[16px] italic leading-[1.6] text-[#222222]"
         variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
       >
         <motion.p
           className="mb-6"
           variants={fadeInFromTop}
           transition={{ duration: 0.4, ease: "easeOut" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
         >
           You know that person from middle school who you knew existed but never
           actually talked to?
@@ -77,6 +72,9 @@ export default function Lovestory() {
           className="mb-6"
           variants={fadeInFromBottom}
           transition={{ duration: 0.4, ease: "easeOut" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
         >
           Yeah, turns out they could end up being the love of your life. We
           spent years being complete strangers until 2017 hit and suddenly we
@@ -90,6 +88,9 @@ export default function Lovestory() {
         <motion.p
           variants={fadeInFromTop}
           transition={{ duration: 0.4, ease: "easeOut" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
         >
           The punchline? We&apos;re getting married in 2025 because apparently
           when the universe decides you belong together, not even living on
@@ -104,32 +105,18 @@ export default function Lovestory() {
         viewport={{ once: true, margin: "-100px" }}
       >
         <motion.div
-          className="pb-4 pt-32"
+          className="h-auto w-[75px] pb-4 pt-32"
           variants={fadeInFromLeft}
           transition={{ duration: 0.4, ease: "easeOut", delay: 0 }}
         >
-          <Image
-            alt="Bouquet"
-            priority
-            height={120}
-            quality={100}
-            src={bouquet}
-            width={75}
-          />
+          <Image alt="Bouquet" priority src={bouquet} />
         </motion.div>
         <motion.div
-          className="pb-8"
+          className="h-auto w-[150px] pb-8"
           variants={scaleIn}
           transition={{ duration: 0.4, ease: "easeOut", delay: 0.6 }}
         >
-          <Image
-            alt="Crop image"
-            priority
-            height={300}
-            quality={100}
-            src={crop1}
-            width={150}
-          />
+          <Image alt="Crop image" priority src={crop1} />
         </motion.div>
         <motion.h3
           className="-rotate-6 pt-28 font-beth text-[25px] text-[#222222]"

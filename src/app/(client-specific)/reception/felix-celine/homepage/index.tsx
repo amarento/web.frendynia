@@ -51,22 +51,14 @@ export default function Homepage({
     visible: { opacity: 1, x: 0, y: 0 },
   };
 
-  const fadeInFromTop = {
-    hidden: { opacity: 0, x: 0, y: -20 },
-    visible: { opacity: 1, x: 0, y: 0 },
-  };
-
   const scaleIn = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: { opacity: 1, scale: 1 },
   };
 
   // Music player state
-
   const [isPlaying, setIsPlaying] = useState(false);
-
   const audioRef = useRef<HTMLAudioElement | null>(null);
-
   const toggleMusic = async () => {
     if (!audioRef.current) return;
 
@@ -87,7 +79,6 @@ export default function Homepage({
   };
 
   // Pause music when unmounting
-
   useEffect(() => {
     const audioElement = audioRef.current;
 
@@ -253,6 +244,7 @@ export default function Homepage({
           {mounted && <Countdown date={targetDate} renderer={renderer} />}
         </div>
       </motion.div>
+      
       {/* Music player button */}
       <motion.div
         className="absolute bottom-3 flex flex-col items-center justify-center"

@@ -89,34 +89,14 @@ export default function Wish({ guestName, guestId }: IWishProps) {
     },
   };
 
-  const fadeIn = {
-    hidden: { opacity: 0, x: 0, y: 0 },
-    visible: { opacity: 1, x: 0, y: 0 },
-  };
-
-  const fadeInFromLeft = {
-    hidden: { opacity: 0, x: -100, y: 0 },
-    visible: { opacity: 1, x: 0, y: 0 },
-  };
-
   const fadeInFromBottom = {
     hidden: { opacity: 0, x: 0, y: 20 },
-    visible: { opacity: 1, x: 0, y: 0 },
-  };
-
-  const fadeInFromRight = {
-    hidden: { opacity: 0, x: 100, y: 0 },
     visible: { opacity: 1, x: 0, y: 0 },
   };
 
   const fadeInFromTop = {
     hidden: { opacity: 0, x: 0, y: -20 },
     visible: { opacity: 1, x: 0, y: 0 },
-  };
-
-  const scaleIn = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1 },
   };
 
   return (
@@ -130,16 +110,14 @@ export default function Wish({ guestName, guestId }: IWishProps) {
             backgroundSize: "200px",
           }}
         />
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
+        <motion.div variants={containerVariants}>
           <motion.h1
             className="pb-6 font-beth text-[28px] text-[#333333] md:pb-12 md:text-[39px] lg:pb-16"
             variants={fadeInFromTop}
             transition={{ duration: 0.4, ease: "easeOut" }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
           >
             Well Wishes
           </motion.h1>
@@ -148,6 +126,9 @@ export default function Wish({ guestName, guestId }: IWishProps) {
           <motion.div
             variants={fadeInFromBottom}
             transition={{ duration: 0.4, ease: "easeOut" }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
           >
             <div className="relative">
               {/* Left Gradient Overlay */}
@@ -198,16 +179,14 @@ export default function Wish({ guestName, guestId }: IWishProps) {
             backgroundSize: "200px",
           }}
         />
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
+        <motion.div variants={containerVariants}>
           <motion.h1
             className="pb-8 font-beth text-[28px] text-[#333333] md:pb-12 md:text-[39px] lg:pb-16"
             variants={fadeInFromTop}
             transition={{ duration: 0.4, ease: "easeOut" }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
           >
             Make your wish
           </motion.h1>
@@ -224,6 +203,9 @@ export default function Wish({ guestName, guestId }: IWishProps) {
             className="text-left"
             variants={fadeInFromBottom}
             transition={{ duration: 0.4, ease: "easeOut" }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
           >
             <p className="pl-1 text-[16px] text-[#333333] md:text-[16px]">
               from:
@@ -239,6 +221,9 @@ export default function Wish({ guestName, guestId }: IWishProps) {
             className="text-left"
             variants={fadeInFromBottom}
             transition={{ duration: 0.4, ease: "easeOut" }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
           >
             <p className="pl-1 text-[16px] text-[#333333] md:text-[16px]">
               wish:
@@ -257,6 +242,9 @@ export default function Wish({ guestName, guestId }: IWishProps) {
             className="flex justify-center gap-6 pt-7 md:pt-8"
             variants={fadeInFromTop}
             transition={{ duration: 0.4, ease: "easeOut" }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
           >
             <Button
               className="rounded-sm bg-[#F8F8F8] px-7 py-2 shadow hover:bg-[#F0F0EF] active:scale-95 active:bg-[#EDEDEB] lg:px-8 lg:py-3"
