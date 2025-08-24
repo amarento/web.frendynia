@@ -67,18 +67,11 @@ export default function Timeline() {
         viewport={{ once: true, margin: "-100px" }}
       >
         <motion.div
-          className="ml-[2px]"
+          className="ml-[2px] h-auto w-[80vw]"
           variants={scaleIn}
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
-          <Image
-            alt="Timeline"
-            priority
-            height={120}
-            quality={100}
-            src={timeline}
-            width={350}
-          />
+          <Image alt="Timeline" priority src={timeline} />
         </motion.div>
         {/* Decorative Stars */}
         <motion.div
@@ -162,7 +155,7 @@ export default function Timeline() {
             alt="star4"
             width={24}
             height={24}
-            className="absolute left-[3vw] top-[25vh]"
+            className="absolute left-[3vw] top-[22vh]"
           />
         </motion.div>
         <motion.div
@@ -204,7 +197,7 @@ export default function Timeline() {
             alt="star6"
             width={24}
             height={24}
-            className="absolute left-[3vw] top-[45vh]"
+            className="absolute left-[3vw] top-[40vh]"
           />
         </motion.div>
         <motion.div
@@ -225,7 +218,7 @@ export default function Timeline() {
             alt="star7"
             width={22}
             height={22}
-            className="absolute right-[5vw] top-[28vh]"
+            className="absolute right-[5vw] top-[24vh]"
           />
         </motion.div>
         <motion.div
@@ -246,7 +239,7 @@ export default function Timeline() {
             alt="star8"
             width={24}
             height={24}
-            className="absolute left-[2vw] top-[64vh]"
+            className="absolute bottom-[39vh] left-[2vw]"
           />
         </motion.div>
         <motion.div
@@ -267,7 +260,7 @@ export default function Timeline() {
             alt="star9"
             width={22}
             height={22}
-            className="absolute right-[4vw] top-[46vh]"
+            className="absolute right-[4vw] top-[41vh]"
           />
         </motion.div>
         <motion.div
@@ -288,7 +281,7 @@ export default function Timeline() {
             alt="star10"
             width={24}
             height={24}
-            className="absolute left-[3vw] top-[85vh]"
+            className="absolute bottom-[22vh] left-[2vw]"
           />
         </motion.div>
         <motion.div
@@ -309,7 +302,7 @@ export default function Timeline() {
             alt="star11"
             width={22}
             height={22}
-            className="absolute right-[2vw] top-[65vh]"
+            className="absolute bottom-[40vh] right-[2vw]"
           />
         </motion.div>
         <motion.div
@@ -330,7 +323,28 @@ export default function Timeline() {
             alt="star12"
             width={22}
             height={22}
-            className="absolute right-[3vw] top-[84vh]"
+            className="absolute bottom-[22vh] right-[1.5vw]"
+          />
+        </motion.div>
+        <motion.div
+          variants={fadeIn}
+          animate={{
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeOut",
+            times: [0, 0.3, 1],
+            delay: 2.8,
+          }}
+        >
+          <Image
+            src={star}
+            alt="star13"
+            width={24}
+            height={24}
+            className="absolute bottom-[8vh] left-[11vw]"
           />
         </motion.div>
         <motion.div
@@ -348,10 +362,31 @@ export default function Timeline() {
         >
           <Image
             src={star}
-            alt="star13"
+            alt="star14"
             width={24}
             height={24}
-            className="absolute left-[38vw] bottom-[7vh]"
+            className="absolute bottom-[5vh] left-[41vw]"
+          />
+        </motion.div>
+        <motion.div
+          variants={fadeIn}
+          animate={{
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeOut",
+            times: [0, 0.3, 1],
+            delay: 2,
+          }}
+        >
+          <Image
+            src={star}
+            alt="star15"
+            width={24}
+            height={24}
+            className="absolute bottom-[8vh] right-[20vw]"
           />
         </motion.div>
       </motion.div>
