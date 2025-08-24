@@ -59,21 +59,21 @@ export default function Ending() {
         }}
       />
       <motion.div
-        className="flex flex-col items-center overflow-hidden pb-8"
+        className="flex flex-col items-center overflow-hidden pb-6"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >
         <motion.div
-          className="pb-6 pt-12"
+          className="pb-4 pt-12"
           variants={fadeInFromTop}
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
           <Image alt="Background Image" src={ending} />
         </motion.div>
         <motion.h5
-          className="-rotate-3 pb-4 font-beth text-[25px] text-[#333333]"
+          className="-rotate-3 pb-3 font-beth text-[25px] text-[#333333]"
           variants={fadeInFromTop}
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
@@ -81,7 +81,7 @@ export default function Ending() {
           and always
         </motion.h5>
         <motion.div
-          className="w-[90vw]"
+          className="w-[90vw] md:w-[70vw]"
           variants={fadeInFromBottom}
           transition={{ duration: 0.4, ease: "easeOut" }}
         >

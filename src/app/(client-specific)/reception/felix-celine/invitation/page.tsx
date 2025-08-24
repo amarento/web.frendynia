@@ -78,7 +78,8 @@ export default function Invitation() {
           variants={fadeInFromLeft}
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
-          We will exchange vows in GKBP Masa Depan Cerah, on October 3, 2025 at 11 am.
+          We will exchange vows in GKBP Masa Depan Cerah, on October 3, 2025 at
+          11 am.
         </motion.p>
         <motion.div
           className="pb-8"
@@ -117,7 +118,7 @@ export default function Invitation() {
         >
           <Image
             alt="Table deco"
-            className="w-[90vw]"
+            className="w-[90vw] md:w-[70vw]"
             height={300}
             priority
             quality={100}
