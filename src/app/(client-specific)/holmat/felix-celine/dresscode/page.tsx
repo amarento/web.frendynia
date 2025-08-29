@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { motion } from "motion/react";
-import bgcrop from "../_images/bg-crop.png";
-import wine from "../_images/wine.png";
-import crop2 from "../_images/crop-2.png";
+import { motion } from 'motion/react';
+import Image from 'next/image';
+import bgcrop from '../_images/bg-crop.png';
+import crop2 from '../_images/crop-2.png';
+import wine from '../_images/wine.png';
 
 export default function Dresscode() {
   const containerVariants = {
@@ -34,13 +34,13 @@ export default function Dresscode() {
   };
 
   return (
-    <div className="relative flex w-screen justify-center overflow-hidden pb-12 pt-2 text-center text-[#F0F0F0] px-4">
+    <div className="relative flex w-screen justify-center overflow-hidden px-4 pt-2 pb-12 text-center text-[#F0F0F0]">
       <div
-        className="absolute inset-0 -z-10"
+        className="-z-10 absolute inset-0"
         style={{
           backgroundImage: `url(${bgcrop.src})`,
-          backgroundRepeat: "repeat",
-          backgroundSize: "200px",
+          backgroundRepeat: 'repeat',
+          backgroundSize: '200px',
         }}
       />
       <motion.div
@@ -48,41 +48,41 @@ export default function Dresscode() {
         variants={containerVariants}
       >
         <motion.p
-          className="w-[80vw] pb-12 font-apple text-[12px] text-[#222222]"
-          variants={fadeInFromBottom}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="w-[80vw] pb-12 font-apple text-[#222222] text-[12px]"
           initial="hidden"
+          transition={{ duration: 0.4, ease: 'easeOut' }}
+          variants={fadeInFromBottom}
+          viewport={{ once: true, margin: '-100px' }}
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
         >
           Come in whatever you feel best in, we are truly just happy to have you
           celebrating with us.
         </motion.p>
         <motion.div
           className="flex flex-row items-center justify-center"
-          variants={containerVariants}
           initial="hidden"
+          variants={containerVariants}
+          viewport={{ once: true, margin: '-100px' }}
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
         >
           <motion.div
             className="h-auto w-[80px] pt-20"
+            transition={{ duration: 0.4, ease: 'easeOut', delay: 0 }}
             variants={fadeInFromLeft}
-            transition={{ duration: 0.4, ease: "easeOut", delay: 0 }}
           >
             <Image alt="Crop image" priority src={wine} />
           </motion.div>
           <motion.div
             className="h-auto w-[190px] pb-8"
+            transition={{ duration: 0.4, ease: 'easeOut', delay: 0.6 }}
             variants={fadeInFromBottom}
-            transition={{ duration: 0.4, ease: "easeOut", delay: 0.6 }}
           >
             <Image alt="Crop image" priority src={crop2} />
           </motion.div>
           <motion.p
-            className="-rotate-6 pt-24 font-beth text-[20px] text-[#222222]"
+            className="-rotate-6 pt-24 font-beth text-[#222222] text-[20px]"
+            transition={{ duration: 0.4, ease: 'easeOut', delay: 0.3 }}
             variants={fadeInFromRight}
-            transition={{ duration: 0.4, ease: "easeOut", delay: 0.3 }}
           >
             semi-formal <br />
             attire
