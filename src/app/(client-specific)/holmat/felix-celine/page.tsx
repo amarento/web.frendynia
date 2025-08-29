@@ -1,29 +1,27 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState, Suspense } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { useServerActionQuery } from "~/lib/hooks/server-action-hooks";
-import { getGuestNameByIdAction } from "~/server/actions";
-
-import Homepage from "./homepage";
-import Invitation from "./invitation/page";
-import Lovestory from "./lovestory/page";
-import Timeline from "./timeline/page";
-import Dresscode from "./dresscode/page";
-import Gift from "./gift/page";
-import Photoalbum from "./photoalbum/page";
-import Wish from "./wish/wish";
-import Ending from "./ending/page";
-import Footer from "./footer/page";
-
-import motion1 from "./_images/motion-1.png";
-import motion2 from "./_images/motion-2.png";
-import motion3 from "./_images/motion-3.png";
-import motion4 from "./_images/motion-4.png";
-import motion5 from "./_images/motion-5.png";
-import black from "./_images/black.png";
+import { AnimatePresence, motion } from 'motion/react';
+import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
+import { Suspense, useEffect, useState } from 'react';
+import { useServerActionQuery } from '~/lib/hooks/server-action-hooks';
+import { getGuestNameByIdAction } from '~/server/actions';
+import black from './_images/black.png';
+import motion1 from './_images/motion-1.png';
+import motion2 from './_images/motion-2.png';
+import motion3 from './_images/motion-3.png';
+import motion4 from './_images/motion-4.png';
+import motion5 from './_images/motion-5.png';
+import Dresscode from './dresscode/page';
+import Ending from './ending/page';
+import Footer from './footer/page';
+import Gift from './gift/page';
+import Homepage from './homepage';
+import Invitation from './invitation/page';
+import Lovestory from './lovestory/page';
+import Photoalbum from './photoalbum/page';
+import Timeline from './timeline/page';
+import Wish from './wish/wish';
 
 export default function Page() {
   return (
@@ -35,15 +33,15 @@ export default function Page() {
 
 function PageContent() {
   const searchParams = useSearchParams();
-  const guestId = Number.parseInt(searchParams.get("guestId")!, 10);
+  const guestId = Number.parseInt(searchParams.get('guestId')!, 10);
   const [showSplash, setShowSplash] = useState(true);
 
   const { data: guestName } = useServerActionQuery(getGuestNameByIdAction, {
     input: {
-      clientId: 4,
+      clientId: 9,
       guestId,
     },
-    queryKey: ["guest-name"],
+    queryKey: ['guest-name'],
   });
 
   useEffect(() => {
@@ -59,17 +57,17 @@ function PageContent() {
       <AnimatePresence>
         {showSplash && (
           <motion.div
-            key="splash"
-            className="fixed inset-0 z-50 flex items-center justify-center bg-[#111111]"
-            initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-[#111111]"
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
+            initial={{ opacity: 1 }}
+            key="splash"
+            transition={{ duration: 1.5, ease: 'easeOut' }}
           >
             <motion.div
+              animate="visible"
               className="relative flex h-[400px] w-[400px] items-center justify-center"
               initial="hidden"
-              animate="visible"
               variants={{
                 hidden: { opacity: 0 },
                 visible: {
@@ -86,25 +84,25 @@ function PageContent() {
                   hidden: {
                     scale: 1,
                     opacity: 0,
-                    clipPath: "inset(100% 0 0 0)",
+                    clipPath: 'inset(100% 0 0 0)',
                   },
                   visible: {
                     scale: 1,
                     opacity: 1,
-                    clipPath: "inset(0% 0 0 0)",
-                    transition: { duration: 1.2, ease: "easeOut" },
+                    clipPath: 'inset(0% 0 0 0)',
+                    transition: { duration: 1.2, ease: 'easeOut' },
                   },
                 }}
               >
                 <Image
-                  src={motion1}
                   alt=""
                   className="h-80 w-80 object-contain"
                   priority
+                  src={motion1}
                 />
                 <div className="-translate-y-2">
                   <motion.p
-                    className="text-center font-beth text-[25px] text-[#ffffff]"
+                    className="text-center font-beth text-[#ffffff] text-[25px]"
                     variants={{
                       hidden: { opacity: 0, y: 10 },
                       visible: {
@@ -114,7 +112,7 @@ function PageContent() {
                           delay: 0.5,
                           duration: 1.2,
                           times: [0, 0.92, 1],
-                          ease: "easeOut",
+                          ease: 'easeOut',
                         },
                       },
                     }}
@@ -130,19 +128,19 @@ function PageContent() {
                   visible: {
                     scale: 1,
                     opacity: 1,
-                    transition: { duration: 0.2, ease: "easeOut" },
+                    transition: { duration: 0.2, ease: 'easeOut' },
                   },
                 }}
               >
                 <Image
-                  src={motion2}
                   alt=""
                   className="h-[336px] w-[336px] object-contain"
                   priority
+                  src={motion2}
                 />
                 <div className="-translate-y-4">
                   <motion.p
-                    className="text-center font-beth text-[25px] text-[#ffffff]"
+                    className="text-center font-beth text-[#ffffff] text-[25px]"
                     variants={{
                       hidden: { opacity: 0, y: 10 },
                       visible: {
@@ -152,7 +150,7 @@ function PageContent() {
                           delay: 1.6,
                           duration: 1.2,
                           times: [0, 0.92, 1],
-                          ease: "easeOut",
+                          ease: 'easeOut',
                         },
                       },
                     }}
@@ -168,19 +166,19 @@ function PageContent() {
                   visible: {
                     scale: 1,
                     opacity: 1,
-                    transition: { duration: 0.2, ease: "easeOut" },
+                    transition: { duration: 0.2, ease: 'easeOut' },
                   },
                 }}
               >
                 <Image
-                  src={motion3}
                   alt=""
                   className="h-[352px] w-[352px] object-contain"
                   priority
+                  src={motion3}
                 />
                 <div className="-translate-y-6">
                   <motion.p
-                    className="text-center font-beth text-[25px] text-[#ffffff]"
+                    className="text-center font-beth text-[#ffffff] text-[25px]"
                     variants={{
                       hidden: { opacity: 0, y: 10 },
                       visible: {
@@ -190,7 +188,7 @@ function PageContent() {
                           delay: 2.8,
                           duration: 1.2,
                           times: [0, 0.92, 1],
-                          ease: "easeOut",
+                          ease: 'easeOut',
                         },
                       },
                     }}
@@ -206,19 +204,19 @@ function PageContent() {
                   visible: {
                     scale: 1,
                     opacity: 1,
-                    transition: { duration: 0.2, ease: "easeOut" },
+                    transition: { duration: 0.2, ease: 'easeOut' },
                   },
                 }}
               >
                 <Image
-                  src={motion4}
                   alt=""
                   className="h-[368px] w-[368px] object-contain"
                   priority
+                  src={motion4}
                 />
                 <div className="-translate-y-8">
                   <motion.p
-                    className="text-center font-beth text-[25px] text-[#ffffff]"
+                    className="text-center font-beth text-[#ffffff] text-[25px]"
                     variants={{
                       hidden: { opacity: 0, y: 10 },
                       visible: {
@@ -228,7 +226,7 @@ function PageContent() {
                           delay: 4.0,
                           duration: 1.2,
                           times: [0, 0.92, 1],
-                          ease: "easeOut",
+                          ease: 'easeOut',
                         },
                       },
                     }}
@@ -244,19 +242,19 @@ function PageContent() {
                   visible: {
                     scale: 1,
                     opacity: 1,
-                    transition: { duration: 0.2, ease: "easeOut" },
+                    transition: { duration: 0.2, ease: 'easeOut' },
                   },
                 }}
               >
                 <Image
-                  src={motion5}
                   alt=""
                   className="h-96 w-96 object-contain"
                   priority
+                  src={motion5}
                 />
                 <div className="-translate-y-10">
                   <motion.p
-                    className="text-center font-beth text-[25px] text-[#ffffff]"
+                    className="text-center font-beth text-[#ffffff] text-[25px]"
                     variants={{
                       hidden: { opacity: 0, y: 10 },
                       visible: {
@@ -266,7 +264,7 @@ function PageContent() {
                           delay: 5.2,
                           duration: 1.6,
                           times: [0, 0.92, 1],
-                          ease: "easeOut",
+                          ease: 'easeOut',
                         },
                       },
                     }}
@@ -276,20 +274,20 @@ function PageContent() {
                 </div>
               </motion.div>
               <motion.img
-                src={black.src}
                 alt=""
                 className="absolute z-[60] h-full w-full object-cover"
+                src={black.src}
                 variants={{
                   hidden: {
                     scale: 1,
                     opacity: 1,
-                    clipPath: "inset(100% 0 0 0)",
+                    clipPath: 'inset(100% 0 0 0)',
                   },
                   visible: {
                     scale: 1,
                     opacity: 1,
-                    clipPath: "inset(0% 0 0 0)",
-                    transition: { duration: 0.7, ease: "easeIn" },
+                    clipPath: 'inset(0% 0 0 0)',
+                    transition: { duration: 0.7, ease: 'easeIn' },
                   },
                 }}
               />
@@ -299,11 +297,11 @@ function PageContent() {
       </AnimatePresence>
 
       <motion.div
-        initial={{ opacity: 0 }}
         animate={{ opacity: showSplash ? 0 : 1 }}
+        initial={{ opacity: 0 }}
         transition={{
           duration: 1,
-          ease: "easeOut",
+          ease: 'easeOut',
         }}
       >
         <Homepage showAnimations={!showSplash} />
