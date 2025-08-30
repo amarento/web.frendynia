@@ -31,6 +31,11 @@ import img22 from "../_images/img-22.jpg";
 import img23 from "../_images/img-23.jpg";
 import img24 from "../_images/img-24.jpg";
 import img25 from "../_images/img-25.jpg";
+import img26 from "../_images/img-26.jpg";
+import img27 from "../_images/img-27.jpg";
+import img28 from "../_images/img-28.jpg";
+import img29 from "../_images/img-29.jpg";
+import img30 from "../_images/img-30.jpg";
 
 export default function Photoalbum() {
   const images = [
@@ -59,12 +64,17 @@ export default function Photoalbum() {
     img23,
     img24,
     img25,
+    img26,
+    img27,
+    img28,
+    img29,
+    img30,
   ];
 
   // Split images into three groups for three carousels
-  const carousel1Images = images.slice(0, 9); // First 9 images
-  const carousel2Images = images.slice(9, 17); // Next 8 images
-  const carousel3Images = images.slice(17); // Remaining 8 images
+  const carousel1Images = images.slice(0, 10); // First 10 images
+  const carousel2Images = images.slice(10, 20); // Next 10 images
+  const carousel3Images = images.slice(20, 30); // Remaining 10 images
 
   const containerVariants = {
     hidden: { opacity: 0 },
