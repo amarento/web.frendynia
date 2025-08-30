@@ -379,15 +379,15 @@ body {
 
   /* Tunable durations for parallax feel */
   .marquee-left-slow {
-    animation: marquee-left 90s linear infinite;
+    animation: marquee-left 120s linear infinite;
     animation-fill-mode: both;
   }
   .marquee-right-slower {
-    animation: marquee-right 120s linear infinite;
+    animation: marquee-right 150s linear infinite;
     animation-fill-mode: both;
   }
   .marquee-left-fast {
-    animation: marquee-left 60s linear infinite;
+    animation: marquee-left 90s linear infinite;
     animation-fill-mode: both;
   }
 }

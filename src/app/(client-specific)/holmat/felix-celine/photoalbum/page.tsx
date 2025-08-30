@@ -136,7 +136,6 @@ export default function Photoalbum() {
           >
             <Image
               alt="Crop image"
-              priority
               className="mb-12"
               height={300}
               quality={100}
@@ -174,7 +173,6 @@ export default function Photoalbum() {
                       quality={100}
                       src={image}
                       width={280}
-                      priority={imageIndex < 3} // Prioritize first few images
                       loading={imageIndex < 6 ? "eager" : "lazy"}
                     />
                   </div>
@@ -201,7 +199,6 @@ export default function Photoalbum() {
                       quality={100}
                       src={image}
                       width={280}
-                      priority={imageIndex < 3} // Prioritize first few images
                       loading={imageIndex < 6 ? "eager" : "lazy"}
                     />
                   </div>
@@ -228,7 +225,6 @@ export default function Photoalbum() {
                       quality={100}
                       src={image}
                       width={280}
-                      priority={imageIndex < 3} // Prioritize first few images
                       loading={imageIndex < 6 ? "eager" : "lazy"}
                     />
                   </div>
