@@ -76,6 +76,9 @@ export default function Photoalbum() {
   const carousel2Images = images.slice(10, 20); // Next 10 images
   const carousel3Images = images.slice(20, 30); // Remaining 10 images
 
+  // Create triple arrays for smoother infinite scroll
+  const createTripleArray = (arr: typeof images) => [...arr, ...arr, ...arr];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -152,88 +155,85 @@ export default function Photoalbum() {
 
         {/* Three Landscape Carousels */}
         <div className="w-full max-w-6xl space-y-8">
-          
           {/* First Carousel */}
           <div className="relative w-full overflow-hidden">
             <div className="marquee-track marquee-left-slow">
-              {[...carousel1Images, ...carousel1Images].map((image, index) => (
-                <motion.div
-                  key={`carousel1-${index}`}
-                  className="flex-shrink-0 px-2"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: (index % carousel1Images.length) * 0.05,
-                    ease: "easeOut",
-                  }}
-                >
-                  <Image
-                    alt={`Album item ${(index % carousel1Images.length) + 1}`}
-                    className="h-[180px] w-[280px] rounded-sm border object-cover shadow-lg"
-                    height={180}
-                    quality={100}
-                    src={image}
-                    width={280}
-                  />
-                </motion.div>
-              ))}
+              {/* Triple the array for extra smooth transitions */}
+              {createTripleArray(carousel1Images).map((image, index) => {
+                const imageIndex = index % carousel1Images.length;
+                const setNumber = Math.floor(index / carousel1Images.length);
+                return (
+                  <div
+                    key={`carousel1-${imageIndex}-set${setNumber}`}
+                    className="flex-shrink-0 px-2"
+                  >
+                    <Image
+                      alt={`Album item ${imageIndex + 1}`}
+                      className="h-[180px] w-[280px] rounded-sm border object-cover shadow-lg"
+                      height={180}
+                      quality={100}
+                      src={image}
+                      width={280}
+                      priority={imageIndex < 3} // Prioritize first few images
+                      loading={imageIndex < 6 ? "eager" : "lazy"}
+                    />
+                  </div>
+                );
+              })}
             </div>
           </div>
 
           {/* Second Carousel */}
           <div className="relative w-full overflow-hidden">
             <div className="marquee-track marquee-right-slower">
-              {[...carousel2Images, ...carousel2Images].map((image, index) => (
-                <motion.div
-                  key={`carousel2-${index}`}
-                  className="flex-shrink-0 px-2"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: (index % carousel2Images.length) * 0.05,
-                    ease: "easeOut",
-                  }}
-                >
-                  <Image
-                    alt={`Album item ${(index % carousel2Images.length) + 1}`}
-                    className="h-[180px] w-[280px] rounded-sm border object-cover shadow-lg"
-                    height={180}
-                    quality={100}
-                    src={image}
-                    width={280}
-                  />
-                </motion.div>
-              ))}
+              {createTripleArray(carousel2Images).map((image, index) => {
+                const imageIndex = index % carousel2Images.length;
+                const setNumber = Math.floor(index / carousel2Images.length);
+                return (
+                  <div
+                    key={`carousel2-${imageIndex}-set${setNumber}`}
+                    className="flex-shrink-0 px-2"
+                  >
+                    <Image
+                      alt={`Album item ${imageIndex + 11}`}
+                      className="h-[180px] w-[280px] rounded-sm border object-cover shadow-lg"
+                      height={180}
+                      quality={100}
+                      src={image}
+                      width={280}
+                      priority={imageIndex < 3} // Prioritize first few images
+                      loading={imageIndex < 6 ? "eager" : "lazy"}
+                    />
+                  </div>
+                );
+              })}
             </div>
           </div>
 
           {/* Third Carousel */}
           <div className="relative w-full overflow-hidden">
             <div className="marquee-track marquee-left-fast">
-              {[...carousel3Images, ...carousel3Images].map((image, index) => (
-                <motion.div
-                  key={`carousel3-${index}`}
-                  className="flex-shrink-0 px-2"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: (index % carousel3Images.length) * 0.05,
-                    ease: "easeOut",
-                  }}
-                >
-                  <Image
-                    alt={`Album item ${(index % carousel3Images.length) + 1}`}
-                    className="h-[180px] w-[280px] rounded-sm border object-cover shadow-lg"
-                    height={180}
-                    quality={100}
-                    src={image}
-                    width={280}
-                  />
-                </motion.div>
-              ))}
+              {createTripleArray(carousel3Images).map((image, index) => {
+                const imageIndex = index % carousel3Images.length;
+                const setNumber = Math.floor(index / carousel3Images.length);
+                return (
+                  <div
+                    key={`carousel3-${imageIndex}-set${setNumber}`}
+                    className="flex-shrink-0 px-2"
+                  >
+                    <Image
+                      alt={`Album item ${imageIndex + 21}`}
+                      className="h-[180px] w-[280px] rounded-sm border object-cover shadow-lg"
+                      height={180}
+                      quality={100}
+                      src={image}
+                      width={280}
+                      priority={imageIndex < 3} // Prioritize first few images
+                      loading={imageIndex < 6 ? "eager" : "lazy"}
+                    />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

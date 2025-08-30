@@ -355,13 +355,13 @@ body {
       transform: translateX(0);
     }
     100% {
-      transform: translateX(-50%);
+      transform: translateX(-33.333%);
     }
   }
 
   @keyframes marquee-right {
     0% {
-      transform: translateX(-50%);
+      transform: translateX(-33.333%);
     }
     100% {
       transform: translateX(0);
@@ -372,16 +372,22 @@ body {
     display: flex;
     width: max-content; /* two identical halves side-by-side */
     will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000px;
+    transform: translateZ(0); /* Force hardware acceleration */
   }
 
   /* Tunable durations for parallax feel */
   .marquee-left-slow {
     animation: marquee-left 60s linear infinite;
+    animation-fill-mode: both;
   }
   .marquee-right-slower {
     animation: marquee-right 80s linear infinite;
+    animation-fill-mode: both;
   }
   .marquee-left-fast {
     animation: marquee-left 40s linear infinite;
+    animation-fill-mode: both;
   }
 }
