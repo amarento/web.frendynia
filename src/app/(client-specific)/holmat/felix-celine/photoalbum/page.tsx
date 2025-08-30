@@ -138,7 +138,6 @@ export default function Photoalbum() {
               alt="Crop image"
               className="mb-12"
               height={300}
-              quality={100}
               src={crop3}
               width={140}
             />
@@ -158,9 +157,11 @@ export default function Photoalbum() {
           <div className="relative w-full overflow-hidden">
             <div className="marquee-track marquee-left-slow">
               {/* Triple the array for extra smooth transitions */}
-              {createTripleArray(carousel1Images).map((image, index) => {
+              {createTripleArray(carousel1Images).map((image, index, arr) => {
                 const imageIndex = index % carousel1Images.length;
                 const setNumber = Math.floor(index / carousel1Images.length);
+                const isFirst = index === 0;
+                const isLast = index === arr.length - 1;
                 return (
                   <div
                     key={`carousel1-${imageIndex}-set${setNumber}`}
@@ -170,10 +171,9 @@ export default function Photoalbum() {
                       alt={`Album item ${imageIndex + 1}`}
                       className="h-[180px] w-[280px] rounded-sm border object-cover shadow-lg"
                       height={180}
-                      quality={100}
                       src={image}
                       width={280}
-                      loading={imageIndex < 6 ? "eager" : "lazy"}
+                      loading={isFirst || isLast ? "eager" : "lazy"}
                     />
                   </div>
                 );
@@ -184,9 +184,11 @@ export default function Photoalbum() {
           {/* Second Carousel */}
           <div className="relative w-full overflow-hidden">
             <div className="marquee-track marquee-right-slower">
-              {createTripleArray(carousel2Images).map((image, index) => {
+              {createTripleArray(carousel2Images).map((image, index, arr) => {
                 const imageIndex = index % carousel2Images.length;
                 const setNumber = Math.floor(index / carousel2Images.length);
+                const isFirst = index === 0;
+                const isLast = index === arr.length - 1;
                 return (
                   <div
                     key={`carousel2-${imageIndex}-set${setNumber}`}
@@ -196,10 +198,9 @@ export default function Photoalbum() {
                       alt={`Album item ${imageIndex + 11}`}
                       className="h-[180px] w-[280px] rounded-sm border object-cover shadow-lg"
                       height={180}
-                      quality={100}
                       src={image}
                       width={280}
-                      loading={imageIndex < 6 ? "eager" : "lazy"}
+                      loading={isFirst || isLast ? "eager" : "lazy"}
                     />
                   </div>
                 );
@@ -210,9 +211,11 @@ export default function Photoalbum() {
           {/* Third Carousel */}
           <div className="relative w-full overflow-hidden">
             <div className="marquee-track marquee-left-fast">
-              {createTripleArray(carousel3Images).map((image, index) => {
+              {createTripleArray(carousel3Images).map((image, index, arr) => {
                 const imageIndex = index % carousel3Images.length;
                 const setNumber = Math.floor(index / carousel3Images.length);
+                const isFirst = index === 0;
+                const isLast = index === arr.length - 1;
                 return (
                   <div
                     key={`carousel3-${imageIndex}-set${setNumber}`}
@@ -222,10 +225,9 @@ export default function Photoalbum() {
                       alt={`Album item ${imageIndex + 21}`}
                       className="h-[180px] w-[280px] rounded-sm border object-cover shadow-lg"
                       height={180}
-                      quality={100}
                       src={image}
                       width={280}
-                      loading={imageIndex < 6 ? "eager" : "lazy"}
+                      loading={isFirst || isLast ? "eager" : "lazy"}
                     />
                   </div>
                 );
