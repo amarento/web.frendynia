@@ -157,11 +157,9 @@ export default function Photoalbum() {
           <div className="relative w-full overflow-hidden">
             <div className="marquee-track marquee-left-slow">
               {/* Triple the array for extra smooth transitions */}
-              {createTripleArray(carousel1Images).map((image, index, arr) => {
+              {createTripleArray(carousel1Images).map((image, index) => {
                 const imageIndex = index % carousel1Images.length;
                 const setNumber = Math.floor(index / carousel1Images.length);
-                const isFirst = index === 0;
-                const isLast = index === arr.length - 1;
                 return (
                   <div
                     key={`carousel1-${imageIndex}-set${setNumber}`}
@@ -173,7 +171,7 @@ export default function Photoalbum() {
                       height={180}
                       src={image}
                       width={280}
-                      loading={isFirst || isLast ? "eager" : "lazy"}
+                      loading={"eager"}
                     />
                   </div>
                 );
@@ -184,11 +182,9 @@ export default function Photoalbum() {
           {/* Second Carousel */}
           <div className="relative w-full overflow-hidden">
             <div className="marquee-track marquee-right-slower">
-              {createTripleArray(carousel2Images).map((image, index, arr) => {
+              {createTripleArray(carousel2Images).map((image, index) => {
                 const imageIndex = index % carousel2Images.length;
                 const setNumber = Math.floor(index / carousel2Images.length);
-                const isFirst = index === 0;
-                const isLast = index === arr.length - 1;
                 return (
                   <div
                     key={`carousel2-${imageIndex}-set${setNumber}`}
@@ -200,7 +196,7 @@ export default function Photoalbum() {
                       height={180}
                       src={image}
                       width={280}
-                      loading={isFirst || isLast ? "eager" : "lazy"}
+                      loading={"eager"}
                     />
                   </div>
                 );
@@ -211,11 +207,9 @@ export default function Photoalbum() {
           {/* Third Carousel */}
           <div className="relative w-full overflow-hidden">
             <div className="marquee-track marquee-left-fast">
-              {createTripleArray(carousel3Images).map((image, index, arr) => {
+              {createTripleArray(carousel3Images).map((image, index) => {
                 const imageIndex = index % carousel3Images.length;
-                const setNumber = Math.floor(index / carousel3Images.length);
-                const isFirst = index === 0;
-                const isLast = index === arr.length - 1;
+                const setNumber = Math.floor(index / carousel3Images.length); 1;
                 return (
                   <div
                     key={`carousel3-${imageIndex}-set${setNumber}`}
@@ -227,7 +221,7 @@ export default function Photoalbum() {
                       height={180}
                       src={image}
                       width={280}
-                      loading={isFirst || isLast ? "eager" : "lazy"}
+                      loading={"eager"}
                     />
                   </div>
                 );
