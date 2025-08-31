@@ -74,7 +74,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
 
   const onSubmit = async (data: z.infer<typeof wishSchema>) => {
     if (guestId) {
-      await sendWish({ guestId, wish: data.wish, clientId: 4 });
+      await sendWish({ guestId, wish: data.wish, clientId: 9 });
     }
   };
 
