@@ -1,6 +1,6 @@
 'use server';
 
-import { and, eq, inArray } from 'drizzle-orm';
+import { and, eq, inArray, or } from 'drizzle-orm';
 import { z } from 'zod';
 import { createServerAction } from 'zsa';
 import { db } from '~/server/db';
@@ -23,12 +23,15 @@ export const addWishAction = createServerAction()
       .where(
         and(
           eq(events.clientId, input.clientId),
-          eq(events.eventCategory, 'reception')
+          or(
+            eq(events.eventCategory, 'reception'),
+            eq(events.eventCategory, 'holy_matrimony')
+          )
         )
       );
 
     if ((await guestIds).length === 0) {
-      throw new Error('No guests found in the reception event of the client.');
+      throw new Error('No guests found in the events of the client.');
     }
 
     await db
