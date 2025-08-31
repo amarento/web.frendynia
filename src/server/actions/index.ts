@@ -1,6 +1,6 @@
 'use server';
 
-import { and, eq, inArray, or } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
 import { z } from 'zod';
 import { createServerAction } from 'zsa';
 import { db } from '~/server/db';
@@ -12,35 +12,46 @@ export const addWishAction = createServerAction()
       clientId: z.number(),
       guestId: z.number(),
       wish: z.string(),
+      eventCategory: z.enum([
+        "reception",
+        "holy_matrimony",
+        "engagement",
+        "ceremony",
+        "party",
+        "meeting",
+        "conference",
+        "other",
+      ]),
     })
   )
   .handler(async ({ input }) => {
-    /** load guest all guest ids for the clients. */
-    const guestIds = db
-      .select({ id: eventsToGuests.guestId })
-      .from(eventsToGuests)
-      .leftJoin(events, eq(eventsToGuests.eventId, events.id))
-      .where(
-        and(
-          eq(events.clientId, input.clientId),
-          or(
-            eq(events.eventCategory, 'reception'),
-            eq(events.eventCategory, 'holy_matrimony')
-          )
-        )
-      );
-
-    if ((await guestIds).length === 0) {
-      throw new Error('No guests found in the events of the client.');
+    // Find the eventId for this client and eventCategory
+    const event = await db.query.events.findFirst({
+      where: and(
+        eq(events.clientId, input.clientId),
+        eq(events.eventCategory, input.eventCategory)
+      ),
+    });
+    if (!event) {
+      throw new Error('Event not found for this client and category.');
     }
-
+    // Find the eventsToGuests row for this guest in this event
+    const e2g = await db.query.eventsToGuests.findFirst({
+      where: and(
+        eq(eventsToGuests.eventId, event.id),
+        eq(eventsToGuests.guestId, input.guestId)
+      ),
+    });
+    if (!e2g) {
+      throw new Error('Guest not found in this event.');
+    }
     await db
       .update(eventsToGuests)
       .set({ wish: input.wish })
       .where(
         and(
-          eq(eventsToGuests.guestId, input.guestId),
-          inArray(eventsToGuests.guestId, guestIds)
+          eq(eventsToGuests.eventId, event.id),
+          eq(eventsToGuests.guestId, input.guestId)
         )
       );
   });
@@ -78,36 +89,36 @@ export const getAllWishes = createServerAction()
   .input(
     z.object({
       clientId: z.number(),
+      eventCategory: z.enum([
+        "reception",
+        "holy_matrimony",
+      ]),
     })
   )
   .handler(async ({ input }) => {
-    const client = await db.query.clients.findFirst({
-      where: eq(clients.id, input.clientId),
+    // Find the eventId for this client and eventCategory
+    const event = await db.query.events.findFirst({
+      where: and(
+        eq(events.clientId, input.clientId),
+        eq(events.eventCategory, input.eventCategory)
+      ),
       with: {
-        events: {
+        eventsToGuests: {
           with: {
-            eventsToGuests: {
-              with: {
-                guest: true,
-              },
-            },
+            guest: true,
           },
         },
       },
     });
-
-    if (!client) {
+    if (!event) {
       return [];
     }
-
-    const allWishes = client.events
-      .flatMap((event) =>
-        event.eventsToGuests.map((e2g) => ({
-          guestId: e2g.guestId,
-          wish: e2g.wish,
-          name: e2g.guest.names,
-        }))
-      )
+    const allWishes = event.eventsToGuests
+      .map((e2g) => ({
+        guestId: e2g.guestId,
+        wish: e2g.wish,
+        name: e2g.guest.names,
+      }))
       .filter(
         (
           item
@@ -117,10 +128,8 @@ export const getAllWishes = createServerAction()
           name: string;
         } => Boolean(item.wish)
       );
-
     const uniqueWishes = [
       ...new Map(allWishes.map((item) => [item.guestId, item])).values(),
     ];
-
     return uniqueWishes.map(({ wish, name }) => ({ wish, name }));
   });

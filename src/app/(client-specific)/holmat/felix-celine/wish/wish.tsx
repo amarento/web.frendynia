@@ -32,6 +32,7 @@ export default function Wish({ guestName, guestId }: IWishProps) {
   const { data: wishes, refetch } = useServerActionQuery(getAllWishes, {
     input: {
       clientId: 9,
+      eventCategory: "holy_matrimony",
     },
     queryKey: ["wishes"],
   });
@@ -79,7 +80,12 @@ export default function Wish({ guestName, guestId }: IWishProps) {
     }
 
     if (guestId) {
-      await sendWish({ guestId, wish: data.wish, clientId: 9 });
+      await sendWish({
+        guestId,
+        wish: data.wish,
+        clientId: 9,
+        eventCategory: "holy_matrimony",
+      });
     }
   };
 
